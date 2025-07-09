@@ -1,6 +1,6 @@
 /* Variáveis de cores para temas */
 :root {
-    --background-color: #f0f2f5; /* Um cinza claro para o tema claro, suave */
+    --background-color: #f0f2f5;
     --text-color: #333;
     --navbar-bg: #ffffff;
     --navbar-link-color: #555;
@@ -9,74 +9,67 @@
     --button-text: #fff;
     --card-bg: #ffffff;
     --border-color: #e0e0e0;
-    --shadow-color: rgba(0,0,0,0.1); /* Sombra mais suave */
-    --glow-color-light: rgba(0, 123, 255, 0.4); /* Cor da iluminação para tema claro (azul), com opacidade aumentada */
+    --shadow-color: rgba(0,0,0,0.1);
+    --glow-color-light: rgba(0, 123, 255, 0.4);
 }
 
 body.dark-theme {
-    --background-color: #1a2a3a; /* Azul escuro principal */
-    --text-color: #e0e0e0; /* Texto claro */
-    --navbar-bg: #112233; /* Azul mais escuro para a navbar */
-    --navbar-link-hover: #a0c0e0; /* Azul claro para links */
-    --navbar-link-hover: #4dc2f0; /* Azul vibrante no hover */
-    --button-bg: #4dc2f0; /* Azul vibrante para botões */
-    --button-text: #1a2a3a; /* Texto escuro nos botões claros */
-    --card-bg: #223a4f; /* Azul médio para cards */
+    --background-color: #1a2a3a;
+    --text-color: #e0e0e0;
+    --navbar-bg: #112233;
+    --navbar-link-hover: #4dc2f0;
+    --button-bg: #4dc2f0;
+    --button-text: #1a2a3a;
+    --card-bg: #223a4f;
     --border-color: #334d66;
     --shadow-color: rgba(0,0,0,0.3);
-    --glow-color-dark: rgba(77, 194, 240, 0.3); /* Cor da iluminação para tema escuro (azul vibrante), com opacidade aumentada */
+    --glow-color-dark: rgba(77, 194, 240, 0.3);
 }
 
 /* --- Efeito de iluminação que segue o cursor --- */
 .mouse-glow {
-    position: fixed; /* Fixa o elemento na tela, independentemente da rolagem */
-    pointer-events: none; /* Crucial: garante que o elemento não interfira com cliques ou seleções */
-    border-radius: 50%; /* Transforma o div em um círculo */
-    width: 800px; /* Tamanho da área de iluminação (aumentado para mais intensidade) */
-    height: 800px; /* Manter igual ao width para um círculo perfeito */
-    transform: translate(-50%, -50%); /* Centraliza o elemento exatamente na posição do cursor */
-    filter: blur(150px); /* Aplica um desfoque forte para o efeito de "glow" (aumentado) */
-    opacity: 0.9; /* Opacidade da iluminação (aumentada para mais intensidade) */
-    z-index: 0; /* Coloca a luz em um plano padrão, acima do fundo, mas abaixo da navbar */
-    transition: transform 0.1s ease-out, background 0.4s ease, opacity 0.4s ease; /* Transições suaves para movimento, cor e opacidade */
+    position: fixed;
+    pointer-events: none;
+    border-radius: 50%;
+    width: 800px;
+    height: 800px;
+    transform: translate(-50%, -50%);
+    filter: blur(150px);
+    opacity: 0.9;
+    z-index: 0;
+    transition: transform 0.1s ease-out, background 0.4s ease, opacity 0.4s ease;
 }
 
-/* Ajusta a cor da iluminação para o tema claro */
 body:not(.dark-theme) .mouse-glow {
     background: radial-gradient(circle, var(--glow-color-light) 0%, transparent 70%);
 }
 
-/* Ajusta a cor da iluminação para o tema escuro */
 body.dark-theme .mouse-glow {
     background: radial-gradient(circle, var(--glow-color-dark) 0%, transparent 70%);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais moderna */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    padding-top: 60px; /* Espaço para a navbar fixa */
-    /* REMOVIDO: background-color: var(--background-color); diretamente do body */
+    padding-top: 60px;
     color: var(--text-color);
-    transition: color 0.4s ease; /* Apenas transição de cor, pois o fundo agora é um pseudo-elemento */
-    line-height: 1.9; /* Espaçamento entre linhas de texto */
-    /* cursor: none; */ /* Opcional: esconde o cursor padrão para uma experiência mais imersiva */
+    transition: color 0.4s ease;
+    line-height: 1.9;
 }
 
-/* NOVO: Pseudo-elemento para o fundo do body. Isso garante que o mouse-glow esteja acima do fundo. */
 body::before {
     content: '';
-    position: fixed; /* Fixa o pseudo-elemento na tela */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--background-color); /* Aplica a cor de fundo aqui */
-    z-index: -2; /* Coloca o fundo *atrás* do mouse-glow (que agora é z-index: 0) */
-    transition: background-color 0.4s ease; /* Transição para a mudança de tema */
+    background-color: var(--background-color);
+    z-index: -2;
+    transition: background-color 0.4s ease;
 }
 
-
-/* --- Navbar (Desktop Styles - Default) --- */
+/* --- Navbar --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -88,15 +81,10 @@ body::before {
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 1000; /* Permanece na frente de tudo, incluindo a luz e o fundo */
+    z-index: 1000;
     transition: background-color 0.4s ease;
-    flex-wrap: nowrap; /* Impede quebra de linha por padrão no desktop */
+    flex-wrap: nowrap;
     box-sizing: border-box;
-}
-
-.navbar-left {
-    flex-shrink: 0;
-    white-space: nowrap; /* Mantém o logo em uma linha */
 }
 
 .navbar-left .logo {
@@ -108,11 +96,9 @@ body::before {
 
 .navbar-center {
     flex-grow: 1;
-    display: flex; /* Visível por padrão no desktop */
+    display: flex;
     justify-content: center;
     margin: 0 50px;
-    min-width: 0;
-    overflow: hidden;
 }
 
 .navbar-center ul {
@@ -120,7 +106,7 @@ body::before {
     margin: 0;
     padding: 0;
     display: flex;
-    white-space: nowrap; /* Mantém os links em uma linha */
+    white-space: nowrap;
 }
 
 .navbar-center ul li {
@@ -145,7 +131,6 @@ body::before {
     display: flex;
     align-items: center;
     gap: 25px;
-    flex-shrink: 0;
 }
 
 .navbar-right .icon-button {
@@ -168,18 +153,17 @@ body.dark-theme .navbar-right .icon-button:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-/* Novo estilo para o botão de menu (hamburguer) - Escondido por padrão no desktop */
 .menu-toggle {
-    display: none; /* ESCONDIDO no desktop */
+    display: none;
     background: none;
     border: none;
     color: var(--text-color);
-    font-size: 28px; /* Tamanho do ícone */
+    font-size: 28px;
     cursor: pointer;
     padding: 5px 10px;
 }
 
-/* Seções */
+/* --- Seções --- */
 .section {
     padding: 180px 100px;
     border-bottom: 1px solid var(--border-color);
@@ -190,7 +174,6 @@ body.dark-theme .navbar-right .icon-button:hover {
     padding-bottom: 160px;
 }
 
-
 h2 {
     text-align: center;
     font-size: 44px;
@@ -199,20 +182,22 @@ h2 {
     font-weight: 600;
 }
 
-/* Hero Section (Início) */
+/* --- Hero Section (Início) --- */
 .hero-section {
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 200px 100px;
-    background-color: var(--background-color); /* MANTEM o background-color aqui */
-    /* Removido position: relative e overflow: hidden para evitar conflitos com o mouse-glow */
+    position: relative;
+    overflow: hidden;
 }
 
 .hero-content {
     flex: 1;
     text-align: center;
     margin-right: 100px;
+    position: relative;
+    z-index: 1;
 }
 
 .hero-content h1 {
@@ -227,21 +212,81 @@ h2 {
     color: var(--text-color);
 }
 
-.hero-image {
+/* Contêiner que agrupa a imagem e o balão */
+.hero-image-wrapper {
+    position: relative;
     flex: 0.5;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.hero-image img {
-    width: 300px;;
+/* Div que serve de moldura para a imagem (círculo) */
+.hero-image {
+    width: 300px;
     height: 300px;
     border-radius: 50%;
     box-shadow: 0 8px 20px var(--shadow-color);
-    object-fit: cover;
-    object-position: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
 }
 
-/* Habilidades */
+.hero-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent 60%);
+    animation: pulse-led-white 2s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+.profile-image-animated {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    animation: float-image 2s ease-in-out infinite alternate;
+    image-rendering: pixelated;
+}
+
+/* --- Balão de Fala --- */
+.speech-bubble {
+    position: absolute;
+    top: 0; /* ALTERADO: De 20px para 0 para subir o balão */
+    left: 72%;
+    background-color: white;
+    color: #333;
+    padding: 12px 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-size: 16px;
+    font-weight: 500;
+    white-space: nowrap;
+    z-index: 10;
+    opacity: 0;
+    animation: fadeInBubble 0.6s ease-out 2s forwards;
+}
+
+/* Ponta do balão */
+.speech-bubble::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 25px;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color: white;
+}
+
+
+/* --- Habilidades --- */
 .skills-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -281,7 +326,7 @@ h2 {
     color: var(--text-color);
 }
 
-/* Experiência */
+/* --- Experiência --- */
 .experience-item {
     background-color: var(--card-bg);
     border-radius: 10px;
@@ -314,7 +359,7 @@ h2 {
     margin-bottom: 12px;
 }
 
-/* Projetos */
+/* --- Projetos --- */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
@@ -337,7 +382,7 @@ h2 {
 
 .project-card img {
     width: 100%;
-    height: auto; /* IMPORTANTE: altura automática para manter a proporção */
+    height: auto;
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 30px;
@@ -367,7 +412,7 @@ h2 {
     object-fit: contain;
 }
 
-/* Contato */
+/* --- Contato --- */
 .contact-container {
     display: flex;
     flex-wrap: wrap;
@@ -407,7 +452,7 @@ h2 {
     background-color: var(--button-bg);
     color: var(--button-text);
     border: none;
-    border-radius: 8px; /* CORRIGIDO */
+    border-radius: 8px;
     font-size: 22px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -437,245 +482,101 @@ h2 {
     transform: translateY(-3px);
 }
 
-/* Media Queries para Responsividade */
+/* --- Media Queries para Responsividade --- */
 
-/* Estilos para telas com largura máxima de 992px (tablets e celulares) */
 @media (max-width: 992px) {
     .navbar {
-        padding: 15px 20px; /* Reduz o padding da navbar */
-        flex-wrap: wrap; /* PERMITE que os itens quebrem para a linha de baixo */
-        justify-content: space-between; /* Mantém o logo e os ícones nas extremidades */
+        padding: 15px 20px;
+        flex-wrap: wrap;
     }
-
-    .navbar-left {
-        order: 1; /* Garante que o logo apareça primeiro */
-    }
-
-    .navbar-right {
-        order: 2; /* Garante que os botões (tema, idioma, hamburguer) apareçam depois do logo */
-        gap: 15px; /* Reduz o espaçamento entre os botões */
-    }
-
-    /* Oculta o menu de navegação principal por padrão no mobile */
     .navbar-center {
-        display: none; /* ESCONDIDO por padrão */
-        flex-basis: 100%; /* Ocupa a largura total da navbar */
-        margin: 0; /* Remove margens horizontais */
-        order: 3; /* Aparece abaixo do logo e dos botões */
-        flex-direction: column; /* Empilha os links verticalmente */
+        display: none;
+        flex-basis: 100%;
+        order: 3;
+        flex-direction: column;
         text-align: center;
-        background-color: var(--navbar-bg); /* Fundo do menu quando aberto */
-        box-shadow: 0 4px 10px var(--shadow-color); /* Sombra para o menu aberto */
-        padding: 10px 0; /* Padding vertical para o menu aberto */
+        background-color: var(--navbar-bg);
     }
-
-    /* Classe ativada por JavaScript para mostrar o menu */
     .navbar-center.active {
         display: flex;
     }
-
     .navbar-center ul {
-        flex-direction: column; /* Empilha os itens do menu verticalmente */
+        flex-direction: column;
         width: 100%;
-        white-space: normal; /* Permite que o texto do link quebre a linha se for muito longo */
     }
-
     .navbar-center ul li {
-        margin: 10px 0; /* Ajusta a margem vertical para os links do menu */
-        width: 100%; /* Faz com que cada link ocupe a largura total */
+        margin: 10px 0;
     }
-
-    .navbar-center ul li a {
-        display: block; /* Transforma os links em blocos para facilitar o toque */
-        padding: 10px; /* Adiciona padding para aumentar a área clicável */
-    }
-
-    /* Mostra o botão de hamburguer no mobile */
     .menu-toggle {
-        display: block; /* VISÍVEL no mobile */
+        display: block;
     }
-
-    /* Ajustes gerais para seções e elementos em telas menores */
     body {
-        font-size: 14px;
-        line-height: 1.5;
-        padding-top: 50px; /* Ajusta o padding do body para a altura da navbar mobile */
+        padding-top: 50px;
     }
-
     .hero-section {
-        flex-direction: column-reverse; /* Imagem acima do texto no mobile */
+        flex-direction: column-reverse;
         padding: 80px 20px;
         text-align: center;
     }
-
     .hero-content {
         margin-right: 0;
-        margin-top: 30px; /* Espaço entre imagem e texto */
+        margin-top: 30px;
     }
-
     .hero-content h1 {
         font-size: 34px;
-        margin-bottom: 15px;
     }
-
     .hero-content p {
         font-size: 18px;
     }
-
-    .hero-image img {
-        max-width: 250px; /* Imagem um pouco maior que a sua sugestão */
+    .hero-image {
+        width: 250px;
         height: 250px;
     }
-
     .section {
-        padding: 60px 20px; /* Padding das seções menor */
+        padding: 60px 20px;
     }
-
     h2 {
         font-size: 28px;
         margin-bottom: 40px;
     }
-
-    .skills-container {
-        gap: 30px;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Min-width menor para caber mais cards */
-    }
-
-    .skill-card {
-        padding: 20px;
-    }
-
-    .skill-card img {
-        width: 50px;
-        height: 50px;
-        margin-bottom: 10px;
-    }
-
-    .skill-card h3 {
-        font-size: 18px;
-    }
-
-    .skill-card p {
-        font-size: 14px;
-    }
-
-    .experience-item {
-        padding: 20px;
-        margin-bottom: 25px;
-    }
-
-    .experience-item h3 {
-        font-size: 20px;
-    }
-
-    .experience-item p {
-        font-size: 15px;
-    }
-
     .projects-grid {
-        gap: 25px;
-        grid-template-columns: 1fr; /* Uma coluna para projetos no mobile */
+        grid-template-columns: 1fr;
     }
-
-    .project-card {
-        padding: 20px;
-    }
-
-    .project-card img {
-        margin-bottom: 20px;
-    }
-
-    .project-card h3 {
-        font-size: 20px;
-    }
-
-    .project-card p {
-        font-size: 15px;
-        margin-bottom: 20px;
-    }
-
-    .project-tech-icons {
-        display: flex;
-        gap: 10px;
-    }
-
-    .project-tech-icons img {
-        width: 35px;
-        height: 35px;
-    }
-
     .contact-container {
         flex-direction: column;
         gap: 40px;
-        text-align: center;
-    }
-
-    .contact-form {
-        min-width: unset; /* Remove min-width para o form no mobile */
-        width: 100%; /* Ocupa a largura total */
-    }
-
-    .contact-form input,
-    .contact-form textarea {
-        padding: 15px;
-        font-size: 16px;
-    }
-
-    .contact-form button {
-        padding: 15px 30px;
-        font-size: 18px;
-    }
-
-    .social-links {
-        gap: 30px;
-        margin-top: 20px;
-    }
-
-    .social-icon {
-        font-size: 40px;
     }
 }
 
-/* Estilos para telas muito pequenas (abaixo de 480px, ajustes finos) */
-@media (max-width: 480px) {
-    .navbar {
-        padding: 10px 10px;
+/* --- ANIMAÇÕES --- */
+
+@keyframes float-image {
+    from {
+        transform: translateY(0px);
     }
-    .navbar-left .logo {
-        font-size: 18px;
+    to {
+        transform: translateY(-10px);
     }
-    .navbar-right .icon-button {
-        font-size: 16px;
-        padding: 4px;
+}
+
+@keyframes pulse-led-white {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
     }
-    .menu-toggle {
-        font-size: 24px;
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
-    .hero-content h1 {
-        font-size: 28px;
+}
+
+@keyframes fadeInBubble {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
-    .hero-content p {
-        font-size: 16px;
-    }
-    .hero-image img {
-        max-width: 200px;
-        height: 200px;
-    }
-    h2 {
-        font-size: 24px;
-        margin-bottom: 30px;
-    }
-    .skills-container {
-        grid-template-columns: 1fr; /* Uma coluna para habilidades em telas muito pequenas */
-    }
-    .skill-card {
-        padding: 15px;
-    }
-    .skill-card img {
-        width: 40px;
-        height: 40px;
-    }
-    .project-card img {
-        height: auto; /* Mantém a altura automática */
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
