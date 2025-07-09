@@ -5,12 +5,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Elementos da Navbar para o menu mobile ---
     const menuToggle = document.getElementById('menuToggle');
-    // A navbar-center é a <nav> que contém o <ul> de links
     const navbarCenter = document.querySelector('.navbar-center');
-    const navLinks = document.querySelectorAll('.navbar-center a'); // Seleciona todos os links dentro do menu
+    const navLinks = document.querySelectorAll('.navbar-center a');
+
+    // --- Elemento da iluminação do cursor ---
+    const mouseGlow = document.querySelector('.mouse-glow');
+    let mouseX = 0;
+    let mouseY = 0;
+    let glowX = 0;
+    let glowY = 0;
+    const speed = 0.08; // Ajuste este valor para controlar o "arrasto" da luz (0.1 é um bom começo)
+
+    // --- Função para animar a iluminação ---
+    function animateGlow() {
+        // Interpola a posição da luz para que ela siga o mouse com um pequeno atraso
+        glowX += (mouseX - glowX) * speed;
+        glowY += (mouseY - glowY) * speed;
+
+        // Aplica a nova posição ao elemento
+        if (mouseGlow) {
+            mouseGlow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%, -50%)`;
+        }
+
+        // Continua a animação no próximo frame
+        requestAnimationFrame(animateGlow);
+    }
+
+    // --- Event Listener para rastrear o movimento do mouse ---
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+    });
+
+    // Inicia a animação da iluminação
+    animateGlow();
+
 
     // --- Objeto de Tradução ---
     const translations = {
+        // ... (Seu objeto de traduções existente) ...
         'en': {
             'nav-home': 'Home',
             'nav-projects': 'Projects',
@@ -148,8 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Função principal para mudar o idioma ---
     const setLanguage = (lang) => {
-        // Atualiza o texto do botão de idioma
-        // Certifique-se de que o ícone 'fa-globe' está persistente no botão
         languageToggle.innerHTML = `<i class="fas fa-globe"></i> ${lang === 'en' ? 'EN/PT' : 'PT/EN'}`;
 
         const allTranslatableElements = document.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
@@ -202,23 +233,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Lógica do Menu Hamburguer ---
     if (menuToggle && navbarCenter) {
         menuToggle.addEventListener('click', () => {
-            navbarCenter.classList.toggle('active'); // Alterna a classe 'active'
+            navbarCenter.classList.toggle('active');
         });
 
-        // Fecha o menu ao clicar em um link (útil para mobile)
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                // Verifica se a largura da tela é menor ou igual ao breakpoint mobile
-                // Use o mesmo breakpoint do CSS para consistência
                 if (window.innerWidth <= 992) {
-                    navbarCenter.classList.remove('active'); // Fecha o menu removendo a classe 'active'
+                    navbarCenter.classList.remove('active');
                 }
             });
         });
     }
 
     // Smooth scroll para os links da navbar
-    // Adicionado um pequeno ajuste para pegar tanto os links diretos quanto os dentro da nav.navbar-center
     document.querySelectorAll('.navbar a[href^="#"], .navbar-center a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -226,7 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetElement = document.querySelector(targetId);
 
             if (targetElement) {
-                // Calcula a posição de rolagem, subtraindo a altura da navbar fixa
                 const navbarHeight = document.querySelector('.navbar').offsetHeight;
                 const offsetTop = targetElement.offsetTop - navbarHeight;
 
@@ -235,7 +261,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     behavior: 'smooth'
                 });
 
-                // Fecha o menu mobile após o clique, se estiver aberto
                 if (navbarCenter.classList.contains('active') && window.innerWidth <= 992) {
                     navbarCenter.classList.remove('active');
                 }

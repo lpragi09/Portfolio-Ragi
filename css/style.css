@@ -10,6 +10,7 @@
     --card-bg: #ffffff;
     --border-color: #e0e0e0;
     --shadow-color: rgba(0,0,0,0.1); /* Sombra mais suave */
+    --glow-color-light: rgba(0, 123, 255, 0.4); /* Cor da iluminação para tema claro (azul), com opacidade aumentada */
 }
 
 body.dark-theme {
@@ -23,17 +24,57 @@ body.dark-theme {
     --card-bg: #223a4f; /* Azul médio para cards */
     --border-color: #334d66;
     --shadow-color: rgba(0,0,0,0.3);
+    --glow-color-dark: rgba(77, 194, 240, 0.3); /* Cor da iluminação para tema escuro (azul vibrante), com opacidade aumentada */
+}
+
+/* --- Efeito de iluminação que segue o cursor --- */
+.mouse-glow {
+    position: fixed; /* Fixa o elemento na tela, independentemente da rolagem */
+    pointer-events: none; /* Crucial: garante que o elemento não interfira com cliques ou seleções */
+    border-radius: 50%; /* Transforma o div em um círculo */
+    width: 800px; /* Tamanho da área de iluminação (aumentado para mais intensidade) */
+    height: 800px; /* Manter igual ao width para um círculo perfeito */
+    transform: translate(-50%, -50%); /* Centraliza o elemento exatamente na posição do cursor */
+    filter: blur(150px); /* Aplica um desfoque forte para o efeito de "glow" (aumentado) */
+    opacity: 0.9; /* Opacidade da iluminação (aumentada para mais intensidade) */
+    z-index: 0; /* Coloca a luz em um plano padrão, acima do fundo, mas abaixo da navbar */
+    transition: transform 0.1s ease-out, background 0.4s ease, opacity 0.4s ease; /* Transições suaves para movimento, cor e opacidade */
+}
+
+/* Ajusta a cor da iluminação para o tema claro */
+body:not(.dark-theme) .mouse-glow {
+    background: radial-gradient(circle, var(--glow-color-light) 0%, transparent 70%);
+}
+
+/* Ajusta a cor da iluminação para o tema escuro */
+body.dark-theme .mouse-glow {
+    background: radial-gradient(circle, var(--glow-color-dark) 0%, transparent 70%);
 }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte mais moderna */
     margin: 0;
     padding-top: 60px; /* Espaço para a navbar fixa */
-    background-color: var(--background-color);
+    /* REMOVIDO: background-color: var(--background-color); diretamente do body */
     color: var(--text-color);
-    transition: background-color 0.4s ease, color 0.4s ease; /* Transição mais suave */
+    transition: color 0.4s ease; /* Apenas transição de cor, pois o fundo agora é um pseudo-elemento */
     line-height: 1.9; /* Espaçamento entre linhas de texto */
+    /* cursor: none; */ /* Opcional: esconde o cursor padrão para uma experiência mais imersiva */
 }
+
+/* NOVO: Pseudo-elemento para o fundo do body. Isso garante que o mouse-glow esteja acima do fundo. */
+body::before {
+    content: '';
+    position: fixed; /* Fixa o pseudo-elemento na tela */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color); /* Aplica a cor de fundo aqui */
+    z-index: -2; /* Coloca o fundo *atrás* do mouse-glow (que agora é z-index: 0) */
+    transition: background-color 0.4s ease; /* Transição para a mudança de tema */
+}
+
 
 /* --- Navbar (Desktop Styles - Default) --- */
 .navbar {
@@ -47,7 +88,7 @@ body {
     width: 100%;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 1000; /* Permanece na frente de tudo, incluindo a luz e o fundo */
     transition: background-color 0.4s ease;
     flex-wrap: nowrap; /* Impede quebra de linha por padrão no desktop */
     box-sizing: border-box;
@@ -136,7 +177,6 @@ body.dark-theme .navbar-right .icon-button:hover {
     font-size: 28px; /* Tamanho do ícone */
     cursor: pointer;
     padding: 5px 10px;
-    /* order: 4; */ /* A ordem pode ser ajustada ou removida se não for necessária */
 }
 
 /* Seções */
@@ -165,7 +205,8 @@ h2 {
     align-items: center;
     justify-content: center;
     padding: 200px 100px;
-    background-color: var(--background-color);
+    background-color: var(--background-color); /* MANTEM o background-color aqui */
+    /* Removido position: relative e overflow: hidden para evitar conflitos com o mouse-glow */
 }
 
 .hero-content {
@@ -554,6 +595,7 @@ h2 {
     }
 
     .project-tech-icons {
+        display: flex;
         gap: 10px;
     }
 
