@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let mouseY = 0;
     let glowX = 0;
     let glowY = 0;
-    const speed = 0.08; // Ajuste este valor para controlar o "arrasto" da luz (0.1 é um bom começo)
+    const speed = 0.3; // Ajuste este valor para controlar o "arrasto" da luz (0.1 é um bom começo)
 
     // --- Função para animar a iluminação ---
     function animateGlow() {
