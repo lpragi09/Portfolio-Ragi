@@ -233,8 +233,8 @@ h2 {
 }
 
 .hero-image img {
-    max-width: 350px;
-    height: 350px;
+    width: 300px;;
+    height: 300px;
     border-radius: 50%;
     box-shadow: 0 8px 20px var(--shadow-color);
     object-fit: cover;
