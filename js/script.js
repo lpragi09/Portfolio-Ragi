@@ -3,6 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const languageToggle = document.getElementById('language-toggle');
     const body = document.body;
 
+    // --- Elementos da Navbar para o menu mobile ---
+    const menuToggle = document.getElementById('menuToggle');
+    // A navbar-center é a <nav> que contém o <ul> de links
+    const navbarCenter = document.querySelector('.navbar-center');
+    const navLinks = document.querySelectorAll('.navbar-center a'); // Seleciona todos os links dentro do menu
+
     // --- Objeto de Tradução ---
     const translations = {
         'en': {
@@ -34,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'skill-yolo-title': 'YoloV8',
             'skill-yolo-desc': 'Image identifications using Ultralytics',
             'exp-ufla-title': 'Federal University of Lavras (UFLA)',
-            'exp-ufla-desc1': 'Bachelor in Engineering - Currently Enrolled', // Corrigido para ser mais genérico, o "Currently Enrolled" será aplicado dinamicamente se necessário
+            'exp-ufla-desc1': 'Bachelor in Engineering - Currently Enrolled',
             'exp-ufla-desc2': '2024 - Present',
             'exp-unilavras-title': 'University Center of Lavras (Unilavras)',
             'exp-unilavras-desc1': 'Systems Analysis and Development - Currently Enrolled',
@@ -51,8 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'dynamic-exp-title': 'Dynamic Experience Item',
             'dynamic-exp-desc1': 'Dynamic Description 1',
             'dynamic-exp-desc2': 'Dynamic Description 2',
-
-
         },
         'pt': {
             'nav-home': 'Início',
@@ -83,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             'skill-yolo-title': 'YoloV8',
             'skill-yolo-desc': 'Identificações de imagens utilizando Ultralytics',
             'exp-ufla-title': 'Universidade Federal de Lavras (UFLA)',
-            'exp-ufla-desc1': 'Bacharelado em Engenharia - Cursando', // Corrigido para ser mais genérico
+            'exp-ufla-desc1': 'Bacharelado em Engenharia - Cursando',
             'exp-ufla-desc2': '2024 - Presente',
             'exp-unilavras-title': 'Centro Universitário de Lavras (Unilavras)',
             'exp-unilavras-desc1': 'Análise e Desenvolvimento de Sistemas - Cursando',
@@ -100,7 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
             'dynamic-exp-title': 'Item de Experiência Dinâmico',
             'dynamic-exp-desc1': 'Descrição Dinâmica 1',
             'dynamic-exp-desc2': 'Descrição Dinâmica 2',
-
         }
     };
 
@@ -131,13 +134,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Função auxiliar para aplicar traduções a um conjunto de elementos ---
     const applyTranslationsToElements = (elements, lang) => {
         elements.forEach(element => {
-            // Traduz elementos com textContent
             const textKey = element.getAttribute('data-i18n');
             if (textKey && translations[lang] && translations[lang][textKey]) {
                 element.textContent = translations[lang][textKey];
             }
 
-            // Traduz placeholders
             const placeholderKey = element.getAttribute('data-i18n-placeholder');
             if (placeholderKey && translations[lang] && translations[lang][placeholderKey]) {
                 element.placeholder = translations[lang][placeholderKey];
@@ -148,10 +149,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Função principal para mudar o idioma ---
     const setLanguage = (lang) => {
         // Atualiza o texto do botão de idioma
-        languageToggle.textContent = lang === 'en' ? 'EN/PT' : 'PT/EN';
-        // O ícone fas fa-globe já está no HTML, não precisa ser manipulado aqui.
+        // Certifique-se de que o ícone 'fa-globe' está persistente no botão
+        languageToggle.innerHTML = `<i class="fas fa-globe"></i> ${lang === 'en' ? 'EN/PT' : 'PT/EN'}`;
 
-        // Seleciona e traduz todos os elementos existentes na página
         const allTranslatableElements = document.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
         applyTranslationsToElements(allTranslatableElements, lang);
 
@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Carrega o tema e o idioma ao carregar a página
     loadTheme();
-    loadLanguage(); // Isso traduzirá os elementos iniciais
+    loadLanguage();
 
     // --- Configuração do MutationObserver ---
     const observer = new MutationObserver((mutationsList) => {
@@ -184,12 +184,8 @@ document.addEventListener('DOMContentLoaded', () => {
         for (const mutation of mutationsList) {
             if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
                 mutation.addedNodes.forEach(node => {
-                    // Se o nó adicionado for um elemento (ou seja, um HTMLElement)
                     if (node.nodeType === Node.ELEMENT_NODE) {
-                        // Aplica a tradução ao próprio nó, se ele for traduzível
                         applyTranslationsToElements([node], currentLang);
-
-                        // Aplica a tradução a todos os descendentes do nó adicionado
                         const translatableChildren = node.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
                         if (translatableChildren.length > 0) {
                             applyTranslationsToElements(translatableChildren, currentLang);
@@ -203,24 +199,55 @@ document.addEventListener('DOMContentLoaded', () => {
     // Começa a observar o corpo do documento para mudanças nos filhos e nos descendentes
     observer.observe(document.body, { childList: true, subtree: true });
 
+    // --- Lógica do Menu Hamburguer ---
+    if (menuToggle && navbarCenter) {
+        menuToggle.addEventListener('click', () => {
+            navbarCenter.classList.toggle('active'); // Alterna a classe 'active'
+        });
+
+        // Fecha o menu ao clicar em um link (útil para mobile)
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // Verifica se a largura da tela é menor ou igual ao breakpoint mobile
+                // Use o mesmo breakpoint do CSS para consistência
+                if (window.innerWidth <= 992) {
+                    navbarCenter.classList.remove('active'); // Fecha o menu removendo a classe 'active'
+                }
+            });
+        });
+    }
+
     // Smooth scroll para os links da navbar
-    document.querySelectorAll('.navbar-center a').forEach(anchor => {
+    // Adicionado um pequeno ajuste para pegar tanto os links diretos quanto os dentro da nav.navbar-center
+    document.querySelectorAll('.navbar a[href^="#"], .navbar-center a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (targetElement) {
+                // Calcula a posição de rolagem, subtraindo a altura da navbar fixa
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const offsetTop = targetElement.offsetTop - navbarHeight;
+
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+
+                // Fecha o menu mobile após o clique, se estiver aberto
+                if (navbarCenter.classList.contains('active') && window.innerWidth <= 992) {
+                    navbarCenter.classList.remove('active');
+                }
+            }
         });
     });
 
     // --- Exemplo de como você poderia adicionar um elemento dinamicamente (para teste) ---
-    // Você pode chamar window.addDynamicItem() no console do navegador para testar.
-    // Ou ter um botão no HTML: <button onclick="addDynamicItem()">Adicionar Novo Item</button>
     window.addDynamicItem = () => {
         const experienceSection = document.getElementById('experiencia');
         const newExperienceDiv = document.createElement('div');
         newExperienceDiv.classList.add('experience-item');
-        // Importante: use as chaves data-i18n aqui para que o MutationObserver as encontre e traduza!
         newExperienceDiv.innerHTML = `
             <h3 data-i18n="dynamic-exp-title">Título de Novo Item Dinâmico</h3>
             <p data-i18n="dynamic-exp-desc1">Descrição para um novo item dinâmico.</p>

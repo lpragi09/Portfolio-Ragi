@@ -35,7 +35,7 @@ body {
     line-height: 1.9; /* Espaçamento entre linhas de texto */
 }
 
-/* Navbar */
+/* --- Navbar (Desktop Styles - Default) --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -49,13 +49,13 @@ body {
     left: 0;
     z-index: 1000;
     transition: background-color 0.4s ease;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; /* Impede quebra de linha por padrão no desktop */
     box-sizing: border-box;
 }
 
 .navbar-left {
     flex-shrink: 0;
-    white-space: nowrap;
+    white-space: nowrap; /* Mantém o logo em uma linha */
 }
 
 .navbar-left .logo {
@@ -67,7 +67,7 @@ body {
 
 .navbar-center {
     flex-grow: 1;
-    display: flex;
+    display: flex; /* Visível por padrão no desktop */
     justify-content: center;
     margin: 0 50px;
     min-width: 0;
@@ -79,7 +79,7 @@ body {
     margin: 0;
     padding: 0;
     display: flex;
-    white-space: nowrap;
+    white-space: nowrap; /* Mantém os links em uma linha */
 }
 
 .navbar-center ul li {
@@ -127,6 +127,18 @@ body.dark-theme .navbar-right .icon-button:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
+/* Novo estilo para o botão de menu (hamburguer) - Escondido por padrão no desktop */
+.menu-toggle {
+    display: none; /* ESCONDIDO no desktop */
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 28px; /* Tamanho do ícone */
+    cursor: pointer;
+    padding: 5px 10px;
+    /* order: 4; */ /* A ordem pode ser ajustada ou removida se não for necessária */
+}
+
 /* Seções */
 .section {
     padding: 180px 100px;
@@ -136,11 +148,6 @@ body.dark-theme .navbar-right .icon-button:hover {
 .section:last-child {
     border-bottom: none;
     padding-bottom: 160px;
-}
-
-/* Adicionado: Linha divisória para a seção inicial */
-#inicio.hero-section {
-    border-bottom: 1px solid var(--border-color);
 }
 
 
@@ -289,8 +296,7 @@ h2 {
 
 .project-card img {
     width: 100%;
-    /* REMOVIDO: height: 260px; */ /* <-- Esta linha foi o problema */
-    height: auto; /* <-- ADICIONADO: altura automática para manter a proporção */
+    height: auto; /* IMPORTANTE: altura automática para manter a proporção */
     object-fit: cover;
     border-radius: 8px;
     margin-bottom: 30px;
@@ -360,7 +366,7 @@ h2 {
     background-color: var(--button-bg);
     color: var(--button-text);
     border: none;
-    border-radius: 8px;
+    border-radius: 8px; /* CORRIGIDO */
     font-size: 22px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
@@ -390,152 +396,244 @@ h2 {
     transform: translateY(-3px);
 }
 
-/*
-    ========================================================
-    RESPONSIVIDADE - AJUSTES PARA TELAS MENORES (MAX-WIDTH: 768PX)
-    ========================================================
-    CERTIFIQUE-SE DE QUE ESTE BLOCO ESTÁ NO FINAL DO ARQUIVO CSS
-*/
-@media (max-width: 768px) {
-    body {
-        font-size: 14px; /* Reduzi ainda mais o tamanho base da fonte para mobile */
-        line-height: 1.5; /* Ajustei o line-height para melhor legibilidade mobile */
-    }
+/* Media Queries para Responsividade */
 
+/* Estilos para telas com largura máxima de 992px (tablets e celulares) */
+@media (max-width: 992px) {
     .navbar {
-        padding: 10px 10px; /* Reduzido o padding da navbar */
+        padding: 15px 20px; /* Reduz o padding da navbar */
+        flex-wrap: wrap; /* PERMITE que os itens quebrem para a linha de baixo */
+        justify-content: space-between; /* Mantém o logo e os ícones nas extremidades */
     }
 
-    .navbar-left .logo {
-        font-size: 20px; /* Logo menor */
+    .navbar-left {
+        order: 1; /* Garante que o logo apareça primeiro */
+    }
+
+    .navbar-right {
+        order: 2; /* Garante que os botões (tema, idioma, hamburguer) apareçam depois do logo */
+        gap: 15px; /* Reduz o espaçamento entre os botões */
+    }
+
+    /* Oculta o menu de navegação principal por padrão no mobile */
+    .navbar-center {
+        display: none; /* ESCONDIDO por padrão */
+        flex-basis: 100%; /* Ocupa a largura total da navbar */
+        margin: 0; /* Remove margens horizontais */
+        order: 3; /* Aparece abaixo do logo e dos botões */
+        flex-direction: column; /* Empilha os links verticalmente */
+        text-align: center;
+        background-color: var(--navbar-bg); /* Fundo do menu quando aberto */
+        box-shadow: 0 4px 10px var(--shadow-color); /* Sombra para o menu aberto */
+        padding: 10px 0; /* Padding vertical para o menu aberto */
+    }
+
+    /* Classe ativada por JavaScript para mostrar o menu */
+    .navbar-center.active {
+        display: flex;
+    }
+
+    .navbar-center ul {
+        flex-direction: column; /* Empilha os itens do menu verticalmente */
+        width: 100%;
+        white-space: normal; /* Permite que o texto do link quebre a linha se for muito longo */
     }
 
     .navbar-center ul li {
-        margin: 0 8px; /* Reduzido espaçamento dos links do menu */
+        margin: 10px 0; /* Ajusta a margem vertical para os links do menu */
+        width: 100%; /* Faz com que cada link ocupe a largura total */
     }
 
-    .navbar-right .icon-button {
-        font-size: 14px; /* Botões menores */
-        padding: 5px;
+    .navbar-center ul li a {
+        display: block; /* Transforma os links em blocos para facilitar o toque */
+        padding: 10px; /* Adiciona padding para aumentar a área clicável */
+    }
+
+    /* Mostra o botão de hamburguer no mobile */
+    .menu-toggle {
+        display: block; /* VISÍVEL no mobile */
+    }
+
+    /* Ajustes gerais para seções e elementos em telas menores */
+    body {
+        font-size: 14px;
+        line-height: 1.5;
+        padding-top: 50px; /* Ajusta o padding do body para a altura da navbar mobile */
     }
 
     .hero-section {
-        padding: 80px 20px; /* Reduzido o padding da hero section */
+        flex-direction: column-reverse; /* Imagem acima do texto no mobile */
+        padding: 80px 20px;
+        text-align: center;
+    }
+
+    .hero-content {
+        margin-right: 0;
+        margin-top: 30px; /* Espaço entre imagem e texto */
     }
 
     .hero-content h1 {
-        font-size: 34px; /* Título principal menor */
+        font-size: 34px;
         margin-bottom: 15px;
     }
 
     .hero-content p {
-        font-size: 18px; /* Subtítulo menor */
+        font-size: 18px;
     }
 
     .hero-image img {
-        max-width: 180px; /* Imagem menor */
-        height: 180px;
+        max-width: 250px; /* Imagem um pouco maior que a sua sugestão */
+        height: 250px;
     }
 
     .section {
-        padding: 80px 20px; /* Padding das seções menor */
+        padding: 60px 20px; /* Padding das seções menor */
     }
 
     h2 {
-        font-size: 28px; /* Títulos de seção menores */
-        margin-bottom: 50px;
+        font-size: 28px;
+        margin-bottom: 40px;
     }
 
     .skills-container {
-        gap: 30px; /* Espaçamento dos cards de habilidades menor */
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Min-width menor */
+        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Min-width menor para caber mais cards */
     }
 
     .skill-card {
-        padding: 25px; /* Padding interno menor */
+        padding: 20px;
     }
 
     .skill-card img {
-        width: 60px; /* Ícones menores */
-        height: 60px;
-        margin-bottom: 15px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 10px;
     }
 
     .skill-card h3 {
-        font-size: 20px; /* Título de habilidade menor */
+        font-size: 18px;
     }
 
     .skill-card p {
-        font-size: 15px; /* Texto de habilidade menor */
+        font-size: 14px;
     }
 
     .experience-item {
-        padding: 25px; /* Padding interno menor */
-        margin-bottom: 30px; /* Margem inferior menor */
+        padding: 20px;
+        margin-bottom: 25px;
     }
 
     .experience-item h3 {
-        font-size: 22px; /* Título de experiência menor */
+        font-size: 20px;
     }
 
     .experience-item p {
-        font-size: 16px; /* Texto de experiência menor */
+        font-size: 15px;
     }
 
     .projects-grid {
-        gap: 30px; /* Espaçamento dos cards de projetos menor */
-        /* Ajuste para mobile: uma coluna por vez, se o minmax anterior for muito grande */
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+        grid-template-columns: 1fr; /* Uma coluna para projetos no mobile */
     }
 
     .project-card {
-        padding: 20px; /* Padding interno menor */
+        padding: 20px;
     }
 
     .project-card img {
-        height: auto; /* IMPORTANTE: Removi a altura fixa e deixei automática */
-        margin-bottom: 15px;
+        margin-bottom: 20px;
     }
 
     .project-card h3 {
-        font-size: 22px; /* Título de projeto menor */
+        font-size: 20px;
     }
 
     .project-card p {
-        font-size: 15px; /* Texto de projeto menor */
-        margin-bottom: 15px;
+        font-size: 15px;
+        margin-bottom: 20px;
     }
 
     .project-tech-icons {
-        gap: 15px; /* Ícones de tecnologia menores */
+        gap: 10px;
     }
 
     .project-tech-icons img {
-        width: 30px;
-        height: 30px;
+        width: 35px;
+        height: 35px;
     }
 
     .contact-container {
-        gap: 50px; /* Espaçamento do container de contato menor */
+        flex-direction: column;
+        gap: 40px;
+        text-align: center;
+    }
+
+    .contact-form {
+        min-width: unset; /* Remove min-width para o form no mobile */
+        width: 100%; /* Ocupa a largura total */
     }
 
     .contact-form input,
     .contact-form textarea {
-        padding: 12px; /* Padding de campo de form menor */
-        font-size: 15px;
-    }
-
-    .contact-form button {
-        padding: 14px 20px; /* Padding de botão de form menor */
+        padding: 15px;
         font-size: 16px;
     }
 
+    .contact-form button {
+        padding: 15px 30px;
+        font-size: 18px;
+    }
+
     .social-links {
-        gap: 30px; /* Espaçamento de social links menor */
-        margin-top: 30px;
+        gap: 30px;
+        margin-top: 20px;
     }
 
     .social-icon {
-        font-size: 40px; /* Ícone social menor */
+        font-size: 40px;
+    }
+}
+
+/* Estilos para telas muito pequenas (abaixo de 480px, ajustes finos) */
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 10px;
+    }
+    .navbar-left .logo {
+        font-size: 18px;
+    }
+    .navbar-right .icon-button {
+        font-size: 16px;
+        padding: 4px;
+    }
+    .menu-toggle {
+        font-size: 24px;
+    }
+    .hero-content h1 {
+        font-size: 28px;
+    }
+    .hero-content p {
+        font-size: 16px;
+    }
+    .hero-image img {
+        max-width: 200px;
+        height: 200px;
+    }
+    h2 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .skills-container {
+        grid-template-columns: 1fr; /* Uma coluna para habilidades em telas muito pequenas */
+    }
+    .skill-card {
+        padding: 15px;
+    }
+    .skill-card img {
+        width: 40px;
+        height: 40px;
+    }
+    .project-card img {
+        height: auto; /* Mantém a altura automática */
     }
 }
