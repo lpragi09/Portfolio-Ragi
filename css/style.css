@@ -264,10 +264,10 @@ h2 {
 }
 
 /* --- Balão de Fala (POSIÇÃO CORRIGIDA) --- */
-.speech-bubble {
+.speech-bubble h4{
     position: absolute;
     top: 0;
-    left: 90%;
+    left: 95%;
     background-color: white;
     color: #333;
     padding: 12px 18px;
@@ -279,20 +279,22 @@ h2 {
     z-index: 10;
     opacity: 0;
     /* A animação de flutuação foi removida daqui para evitar conflito */
-    animation: fadeInBubble 0.6s ease-out 2s forwards;
+    animation: fadeInBubble 0.0s ease-out 0s forwards;
 }
 
 /* Ponta do balão */
-.speech-bubble::after {
+.speech-bubble::after  {
     content: '';
     position: absolute;
-    top: 100%;
-    left: 25px;
+    top: 25%;
+    left: 320px;
     transform: translateX(-50%);
     width: 0;
     height: 0;
-    border: 8px solid transparent;
+    border: 15px solid transparent;
     border-top-color: white;
+
+
 
 }
 

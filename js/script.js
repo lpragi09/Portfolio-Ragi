@@ -91,7 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'dynamic-exp-desc1': 'Dynamic Description 1',
             'dynamic-exp-desc2': 'Dynamic Description 2',
             'contact-prompt' : 'Contact us',
-            'footer-copyright': '2025 Luiz Paulo Moreno Ragi. All rights reserved.'
+            'footer-copyright': '2025 Luiz Paulo Moreno Ragi. All rights reserved.',
+            'speech-bubble': 'Welcome! ❤️'
         },
         'pt': {
             'nav-home': 'Início',
@@ -140,7 +141,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'dynamic-exp-desc1': 'Descrição Dinâmica 1',
             'dynamic-exp-desc2': 'Descrição Dinâmica 2',
             'contact-prompt' : 'Entre em Contato',
-            'footer-copyright': '2025 Luiz Paulo Moreno Ragi. Todos os direitos reservados.'
+            'footer-copyright': '2025 Luiz Paulo Moreno Ragi. Todos os direitos reservados.',
+            'speech-bubble': 'Seja bem-vindo! ❤️'
         }
     };
 
