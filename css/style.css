@@ -608,13 +608,12 @@ body.dark-theme .skill-bar {
 
 .skill-level {
     height: 20px;
-    width: 0; /* Começa com 0 para a animação */
-    background-color: var(--button-bg); /* Usa a cor de destaque do tema */
+    width: 0;
     border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: flex-end; /* Alinha o texto da porcentagem à direita */
-    transition: width 1.5s ease-in-out; /* A mágica da animação */
+    justify-content: flex-end;
+    transition: width 1.5s ease-in-out;
 }
 
 .skill-percentage {
@@ -629,4 +628,25 @@ body.dark-theme .skill-bar {
 /* Quando a barra é animada, o texto aparece */
 .skill-level[style*="width:"] .skill-percentage {
     opacity: 1;
+}
+/* --- Cores Específicas para Barras de Habilidades --- */
+
+.skill-html { background-color: #E44D26; } /* Laranja */
+.skill-css  { background-color: #1572B6; } /* Azul */
+.skill-js   { background-color: #F7DF1E; } /* Amarelo */
+.skill-react{ background-color: #61DAFB; } /* Azul Claro */
+.skill-node { background-color: #339933; } /* Verde */
+.skill-yolo { background-color: #0000b3; } /* Azul Escuro */
+
+/* Ajuste de cor do texto para melhor leitura na barra amarela do JS.
+  O texto da porcentagem era branco/escuro dependendo do tema,
+  mas em um fundo amarelo, uma cor fixa escura fica melhor.
+*/
+.skill-js .skill-percentage {
+    color: #333; /* Cor escura para o texto da porcentagem */
+}
+
+/* O texto da porcentagem no React azul claro também fica melhor com texto escuro */
+.skill-react .skill-percentage {
+    color: #1a2a3a;
 }
