@@ -312,4 +312,26 @@ document.addEventListener('DOMContentLoaded', () => {
         experienceSection.appendChild(newExperienceDiv);
         console.log("Conteúdo dinâmico adicionado. O MutationObserver deve ter traduzido automaticamente.");
     };
+    // --- Lógica para animação de surgimento dos elementos no scroll (ATUALIZADO) ---
+const fadeInElements = document.querySelectorAll('.fade-in-element');
+
+const fadeInObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Se o elemento entrou na tela, adiciona a classe para animar
+            entry.target.classList.add('is-visible');
+        } else {
+            // Se o elemento saiu da tela, remove a classe para "resetar" a animação
+            entry.target.classList.remove('is-visible');
+        }
+    });
+}, {
+    rootMargin: '0px 0px -100px 0px',
+    threshold: 0.1
+});
+
+// Inicia a observação para cada elemento
+fadeInElements.forEach(el => {
+    fadeInObserver.observe(el);
+});
 });
