@@ -338,4 +338,20 @@ const fadeInObserver = new IntersectionObserver((entries, observer) => {
 fadeInElements.forEach(el => {
     fadeInObserver.observe(el);
 });
+// --- NOVO CÓDIGO PARA INICIALIZAR O TILT EFFECT NAS LOGOS ---
+
+// Espera a biblioteca VanillaTilt ser carregada (incluída via CDN no HTML)
+// Isso é crucial para evitar erros se o script for executado antes do CDN carregar.
+if (typeof VanillaTilt !== 'undefined') {
+    // Inicializa o Vanilla-Tilt para todos os elementos com a classe 'logo-tilt-container'
+    VanillaTilt.init(document.querySelectorAll(".logo-tilt-container"), {
+        max: 20,         // Máximo ângulo de inclinação em graus. (Experimente valores!)
+        speed: 300,      // Velocidade da transição de inclinação em ms.
+        glare: true,     // Habilita o efeito de brilho (opcional).
+        "max-glare": 0.4 // Intensidade máxima do brilho (0-1).
+    });
+    console.log("Vanilla-Tilt.js inicializado para .logo-tilt-container");
+} else {
+    console.warn("Vanilla-Tilt.js não foi carregado. Verifique o link do CDN no HTML.");
+}
 });

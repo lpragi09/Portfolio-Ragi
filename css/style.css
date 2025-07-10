@@ -393,7 +393,7 @@ h2 {
 
 .project-card img {
     width: 100%;
-
+    /* Adicione uma altura fixa e mantenha object-fit para cortar se necessário */
     height: 150px; /* Ou o valor que se adequar melhor ao seu design */
     object-fit: cover;
     border-radius: 8px;
@@ -829,5 +829,89 @@ body.dark-theme .skill-bar {
         flex-direction: row; /* Layout lado a lado */
         justify-content: space-between; /* Texto na esquerda, ícones na direita */
         text-align: left;
+    }
+}
+/* --- NOVOS ESTILOS PARA LOGOS DE CARREIRA E TILT EFFECT --- */
+
+/* Ajuste o item de experiência para ser um flex container */
+.experience-item {
+    /* Mantém os estilos existentes de background, border-radius, box-shadow, transition */
+    display: flex;
+    align-items: center; /* Alinha verticalmente os itens */
+    justify-content: space-between; /* Distribui espaço entre o conteúdo e a logo */
+    gap: 30px; /* Espaçamento entre o conteúdo e a logo */
+    margin-bottom: 70px; /* Mantém o espaçamento entre os itens */
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 50px; /* Mantém o padding existente */
+}
+
+.experience-item:last-of-type {
+    margin-bottom: 0; /* Remove a margem do último item */
+}
+
+/* Garante que o conteúdo de texto ocupe o espaço disponível */
+.experience-content {
+    flex: 1; /* Permite que o texto cresça e ocupe o espaço */
+}
+
+/* Estilos para o container da logo com tilt effect */
+.logo-tilt-container {
+    width: 120px; /* Largura base do container da logo */
+    height: 120px; /* Altura base do container da logo */
+    min-width: 80px; /* Largura mínima para responsividade */
+    min-height: 80px; /* Altura mínima para responsividade */
+    background-color: var(--card-bg); /* AGORA ESTÁ USANDO A VARIÁVEL PARA AMBOS OS TEMAS */
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 0 4px 10px var(--shadow-color); /* Sombra suave */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Garante que a imagem não vaze */
+    transform-style: preserve-3d; /* Essencial para o efeito 3D do tilt */
+    flex-shrink: 0; /* Impede que este container encolha em layouts flex */
+    border: 1px solid var(--border-color); /* Adiciona uma borda sutil para separação */
+}
+
+/* Removemos a regra específica 'body.dark-theme .logo-tilt-container'
+   porque 'background-color: var(--card-bg);' já cuida disso para ambos os temas.
+   Se a logo dentro do container tiver um fundo escuro, podemos clareá-la um pouco:
+*/
+.logo-tilt-container img {
+    max-width: 80%; /* Faz a imagem ocupar 80% do container */
+    max-height: 80%; /* Faz a imagem ocupar 80% do container */
+    object-fit: contain; /* Reduz a imagem sem cortá-la, mantendo proporção */
+    display: block; /* Remove possíveis espaços extras */
+    filter: brightness(0.95); /* Leve ajuste de brilho para destacar a logo */
+}
+
+/* Se as logos originais forem muito escuras para o tema escuro, podemos clareá-las */
+body.dark-theme .logo-tilt-container img {
+    filter: brightness(1.2); /* Aumenta o brilho da imagem da logo no tema escuro */
+}
+
+
+/* Media Query para responsividade da seção Carreira */
+@media (max-width: 768px) {
+    .experience-item {
+        flex-direction: column; /* Empilha o texto e a logo em telas menores */
+        text-align: center; /* Centraliza o texto */
+        padding: 30px; /* Ajusta o padding */
+    }
+
+    .experience-item h3 {
+        font-size: 24px; /* Ajusta o tamanho do título */
+    }
+
+    .experience-item p {
+        font-size: 18px; /* Ajusta o tamanho do parágrafo */
+        margin-bottom: 15px; /* Mais espaço entre o texto e a logo empilhados */
+    }
+
+    .logo-tilt-container {
+        margin-top: 20px; /* Adiciona margem superior quando empilhado */
+        width: 100px; /* Ajusta o tamanho da logo para telas menores */
+        height: 100px;
     }
 }
