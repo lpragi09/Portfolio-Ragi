@@ -780,3 +780,53 @@ body.dark-theme .skill-bar {
         justify-items: start;
     }
 }
+/* --- Estilos do Rodapé --- */
+
+.site-footer {
+    background-color: var(--navbar-bg); /* Usa a cor de fundo da navbar para consistência */
+    padding: 40px 25px;
+    border-top: 1px solid var(--border-color); /* Linha sutil para separar do conteúdo */
+    color: var(--text-color);
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.footer-container {
+    max-width: 1200px; /* Limita a largura em telas muito grandes */
+    margin: 0 auto; /* Centraliza o conteúdo */
+    display: flex;
+    flex-direction: column; /* Mobile First: empilhado e centralizado */
+    align-items: center;
+    text-align: center;
+    gap: 20px; /* Espaço entre o texto e os ícones no mobile */
+}
+
+.footer-copyright p {
+    margin: 0;
+    font-size: 0.9em; /* Tamanho mais legível */
+    opacity: 0.8; /* Deixa o texto um pouco mais sutil */
+}
+
+.footer-social {
+    display: flex;
+    gap: 20px; /* Espaço entre os ícones */
+}
+
+.footer-social a {
+    color: var(--text-color);
+    font-size: 1.5em; /* Tamanho dos ícones */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-social a:hover {
+    color: var(--navbar-link-hover); /* Usa a cor de destaque do seu tema */
+    transform: translateY(-3px); /* Efeito de erguer o ícone */
+}
+
+/* Ajustes para telas maiores (tablets e desktops) */
+@media (min-width: 768px) {
+    .footer-container {
+        flex-direction: row; /* Layout lado a lado */
+        justify-content: space-between; /* Texto na esquerda, ícones na direita */
+        text-align: left;
+    }
+}

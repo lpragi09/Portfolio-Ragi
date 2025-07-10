@@ -90,7 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'dynamic-exp-title': 'Dynamic Experience Item',
             'dynamic-exp-desc1': 'Dynamic Description 1',
             'dynamic-exp-desc2': 'Dynamic Description 2',
-            'contact-prompt' : 'Contact us'
+            'contact-prompt' : 'Contact us',
+            'footer-copyright': '2025 Luiz Paulo Moreno Ragi. All rights reserved.'
         },
         'pt': {
             'nav-home': 'Início',
@@ -138,7 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
             'dynamic-exp-title': 'Item de Experiência Dinâmico',
             'dynamic-exp-desc1': 'Descrição Dinâmica 1',
             'dynamic-exp-desc2': 'Descrição Dinâmica 2',
-            'contact-prompt' : 'Entre em Contato'
+            'contact-prompt' : 'Entre em Contato',
+            'footer-copyright': '2025 Luiz Paulo Moreno Ragi. Todos os direitos reservados.'
         }
     };
 
