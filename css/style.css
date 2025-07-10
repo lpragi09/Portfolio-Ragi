@@ -318,8 +318,9 @@ h2 {
 }
 
 .skill-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) !important;
 }
+
 
 .skill-card img {
     width: 90px;
@@ -353,7 +354,7 @@ h2 {
 }
 
 .experience-item:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) !important;
 }
 
 .experience-item:last-of-type {
@@ -390,7 +391,7 @@ h2 {
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) !important;
 }
 
 .project-card img {
@@ -474,7 +475,7 @@ h2 {
 
 .contact-form button:hover {
     background-color: var(--navbar-link-hover);
-    transform: translateY(-2px);
+    transform: translateY(-2px) !important;
 }
 
 .social-links {
