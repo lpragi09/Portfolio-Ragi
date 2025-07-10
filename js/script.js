@@ -245,6 +245,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- Lógica para animar as barras de habilidades ao rolar (NOVO) ---
+    const skillsSection = document.getElementById('habilidades');
+    const skillLevels = document.querySelectorAll('.skill-level');
+    let skillsAnimated = false; // Flag para garantir que a animação rode apenas uma vez
+
+    const animateSkills = (entries, observer) => {
+        entries.forEach(entry => {
+            // Se a seção de habilidades está visível e a animação ainda não rodou
+            if (entry.isIntersecting && !skillsAnimated) {
+                skillLevels.forEach(skill => {
+                    const level = skill.getAttribute('data-level'); // Pega o valor do data-level (ex: "95%")
+                    skill.style.width = level; // Aplica o valor como largura da barra
+                });
+                skillsAnimated = true; // Marca a animação como concluída
+                observer.unobserve(skillsSection); // Para de observar a seção para otimizar a performance
+            }
+        });
+    };
+
+    // Cria o observador que vai "vigiar" a seção de habilidades
+    const skillObserver = new IntersectionObserver(animateSkills, {
+        root: null, // Observa em relação à viewport
+        threshold: 0.4 // Dispara a animação quando 40% da seção estiver visível
+    });
+
+    // Inicia a observação se a seção de habilidades existir
+    if (skillsSection) {
+        skillObserver.observe(skillsSection);
+    }
+
+
     // Smooth scroll para os links da navbar
     document.querySelectorAll('.navbar a[href^="#"], .navbar-center a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
