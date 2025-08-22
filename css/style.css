@@ -265,36 +265,36 @@ image-rendering: pixelated;
 
 /* --- Balão de Fala (POSIÇÃO CORRIGIDA) --- */
 .speech-bubble h4 {
-position: absolute;
-top: 15%; /* Posição relativa à imagem */
-left: 90%;
-background-color: white;
-color: #333;
-padding: 12px 18px;
-border-radius: 12px;
-box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-font-size: 16px;
-font-weight: 500;
-white-space: nowrap;
-z-index: 10;
-opacity: 0;
-/* A animação de flutuação foi removida daqui para evitar conflito */
-animation: fadeInBubble 0.0s ease-out 0s forwards;
+   position: absolute;
+   top: 15%; /* Posição relativa à imagem */
+   left: 75%; /* Mais para a esquerda */
+   background-color: white;
+   color: #333;
+   padding: 12px 18px;
+   border-radius: 12px;
+   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+   font-size: 16px;
+   font-weight: 500;
+   white-space: nowrap;
+   z-index: 10;
+   opacity: 0;
+   /* A animação de flutuação foi removida daqui para evitar conflito */
+   animation: fadeInBubble 0.0s ease-out 0s forwards;
 }
 
-/* Ponta do balão CORRIGIDA */
+/* Ponta do balão CORRIGIDA (formato de V) */
 .speech-bubble h4::after {
-content: '';
-position: absolute;
-top: 25%;
-left: -10px; /* Posição relativa ao balão */
-transform: translateY(-50%) rotate(45deg);
-width: 20px;
-height: 20px;
-background-color: white;
-border-bottom: 1px solid rgba(0,0,0,0.15);
-border-left: 1px solid rgba(0,0,0,0.15);
-z-index: -1;
+   content: '';
+   position: absolute;
+   top: 100%; /* Posiciona abaixo do balão */
+   left: 50%; /* Centraliza horizontalmente */
+   transform: translateX(-50%);
+   width: 0;
+   height: 0;
+   border-left: 10px solid transparent;
+   border-right: 10px solid transparent;
+   border-top: 10px solid white; /* Cria a ponta */
+   z-index: 11; /* Garante que fique acima de outros elementos */
 }
 
 
