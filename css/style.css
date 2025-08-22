@@ -1,920 +1,931 @@
 /* Variáveis de cores para temas */
 :root {
-    --background-color: #f0f2f5;
-    --text-color: #333;
-    --navbar-bg: #ffffff;
-    --navbar-link-color: #555;
-    --navbar-link-hover: #007bff;
-    --button-bg: #007bff;
-    --button-text: #fff;
-    --card-bg: #ffffff;
-    --border-color: #e0e0e0;
-    --shadow-color: rgba(0,0,0,0.1);
-    --glow-color-light: rgba(0, 123, 255, 0.4);
+--background-color: #f0f2f5;
+--text-color: #333;
+--navbar-bg: #ffffff;
+--navbar-link-color: #555;
+--navbar-link-hover: #007bff;
+--button-bg: #007bff;
+--button-text: #fff;
+--card-bg: #ffffff;
+--border-color: #e0e0e0;
+--shadow-color: rgba(0,0,0,0.1);
+--glow-color-light: rgba(0, 123, 255, 0.4);
 }
 
 body.dark-theme {
-    --background-color: #1a2a3a;
-    --text-color: #e0e0e0;
-    --navbar-bg: #112233;
-    --navbar-link-hover: #4dc2f0;
-    --button-bg: #4dc2f0;
-    --button-text: #1a2a3a;
-    --card-bg: #223a4f;
-    --border-color: #334d66;
-    --shadow-color: rgba(0,0,0,0.3);
-    --glow-color-dark: rgba(77, 194, 240, 0.3);
+--background-color: #1a2a3a;
+--text-color: #e0e0e0;
+--navbar-bg: #112233;
+--navbar-link-hover: #4dc2f0;
+--button-bg: #4dc2f0;
+--button-text: #1a2a3a;
+--card-bg: #223a4f;
+--border-color: #334d66;
+--shadow-color: rgba(0,0,0,0.3);
+--glow-color-dark: rgba(77, 194, 240, 0.3);
 }
 
 /* --- Efeito de iluminação que segue o cursor --- */
 .mouse-glow {
-    position: fixed;
-    pointer-events: none;
-    border-radius: 50%;
-    width: 800px;
-    height: 800px;
-    transform: translate(-50%, -50%);
-    filter: blur(150px);
-    opacity: 0.9;
-    z-index: 0;
-    transition: transform 0.1s ease-out, background 0.4s ease, opacity 0.4s ease;
+position: fixed;
+pointer-events: none;
+border-radius: 50%;
+width: 800px;
+height: 800px;
+transform: translate(-50%, -50%);
+filter: blur(150px);
+opacity: 0.9;
+z-index: 0;
+transition: transform 0.1s ease-out, background 0.4s ease, opacity 0.4s ease;
 }
 
 body:not(.dark-theme) .mouse-glow {
-    background: radial-gradient(circle, var(--glow-color-light) 0%, transparent 70%);
+background: radial-gradient(circle, var(--glow-color-light) 0%, transparent 70%);
 }
 
 body.dark-theme .mouse-glow {
-    background: radial-gradient(circle, var(--glow-color-dark) 0%, transparent 70%);
+background: radial-gradient(circle, var(--glow-color-dark) 0%, transparent 70%);
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding-top: 60px;
-    color: var(--text-color);
-    transition: color 0.4s ease;
-    line-height: 1.9;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+margin: 0;
+padding-top: 60px;
+color: var(--text-color);
+transition: color 0.4s ease;
+line-height: 1.9;
 }
 
 body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-color);
-    z-index: -2;
-    transition: background-color 0.4s ease;
+content: '';
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: var(--background-color);
+z-index: -2;
+transition: background-color 0.4s ease;
 }
 
 /* --- Navbar --- */
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 60px;
-    background-color: var(--navbar-bg);
-    box-shadow: 0 4px 10px var(--shadow-color);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    transition: background-color 0.4s ease;
-    flex-wrap: nowrap;
-    box-sizing: border-box;
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 15px 60px;
+background-color: var(--navbar-bg);
+box-shadow: 0 4px 10px var(--shadow-color);
+position: fixed;
+width: 100%;
+top: 0;
+left: 0;
+z-index: 1000;
+transition: background-color 0.4s ease;
+flex-wrap: nowrap;
+box-sizing: border-box;
 }
 
 .navbar-left .logo {
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    font-size: 26px;
-    color: var(--text-color);
+font-family: Arial, sans-serif;
+font-weight: bold;
+font-size: 26px;
+color: var(--text-color);
 }
 
 .navbar-center {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    margin: 0 50px;
+flex-grow: 1;
+display: flex;
+justify-content: center;
+margin: 0 50px;
 }
 
 .navbar-center ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    white-space: nowrap;
+list-style: none;
+margin: 0;
+padding: 0;
+display: flex;
+white-space: nowrap;
 }
 
 .navbar-center ul li {
-    margin: 0 30px;
+margin: 0 30px;
 }
 
 .navbar-center ul li a {
-    text-decoration: none;
-    color: var(--navbar-link-color);
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s ease, border-bottom 0.2s ease;
+text-decoration: none;
+color: var(--navbar-link-color);
+font-weight: bold;
+transition: color 0.3s ease, transform 0.2s ease, border-bottom 0.2s ease;
 }
 
 .navbar-center ul li a:hover {
-    color: var(--navbar-link-hover);
-    transform: translateY(-2px);
-    border-bottom: 2px solid var(--navbar-link-hover);
-    padding-bottom: 3px;
+color: var(--navbar-link-hover);
+transform: translateY(-2px);
+border-bottom: 2px solid var(--navbar-link-hover);
+padding-bottom: 3px;
 }
 
 .navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 25px;
+display: flex;
+align-items: center;
+gap: 25px;
 }
 
 .navbar-right .icon-button {
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 20px;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.2s ease;
-    padding: 8px;
-    border-radius: 5px;
+background: none;
+border: none;
+color: var(--text-color);
+font-size: 20px;
+cursor: pointer;
+transition: color 0.3s ease, transform 0.2s ease;
+padding: 8px;
+border-radius: 5px;
 }
 
 .navbar-right .icon-button:hover {
-    color: var(--navbar-link-hover);
-    transform: translateY(-2px);
-    background-color: rgba(0, 0, 0, 0.05);
+color: var(--navbar-link-hover);
+transform: translateY(-2px);
+background-color: rgba(0, 0, 0, 0.05);
 }
 body.dark-theme .navbar-right .icon-button:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+background-color: rgba(255, 255, 255, 0.05);
 }
 
 .menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 28px;
-    cursor: pointer;
-    padding: 5px 10px;
+display: none;
+background: none;
+border: none;
+color: var(--text-color);
+font-size: 28px;
+cursor: pointer;
+padding: 5px 10px;
 }
 
 /* --- Seções --- */
 .section {
-    padding: 180px 100px;
-    border-bottom: 1px solid var(--border-color);
+padding: 180px 100px;
+border-bottom: 1px solid var(--border-color);
 }
 
 .section:last-child {
-    border-bottom: none;
-    padding-bottom: 160px;
+border-bottom: none;
+padding-bottom: 160px;
 }
 
 h2 {
-    text-align: center;
-    font-size: 44px;
-    margin-bottom: 140px;
-    color: var(--text-color);
-    font-weight: 600;
+text-align: center;
+font-size: 44px;
+margin-bottom: 140px;
+color: var(--text-color);
+font-weight: 600;
 }
 
 /* --- Hero Section (Início) --- */
 .hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 200px 100px;
-    position: relative;
-    overflow: hidden;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 200px 100px;
+position: relative;
+overflow: hidden;
 }
 
 .hero-content {
-    flex: 1;
-    text-align: center;
-    margin-right: 100px;
-    position: relative;
-    z-index: 1;
+flex: 1;
+text-align: center;
+margin-right: 100px;
+position: relative;
+z-index: 1;
 }
 
 .hero-content h1 {
-    font-size: 60px;
-    margin-bottom: 40px;
-    color: var(--text-color);
-    font-weight: 700;
+font-size: 60px;
+margin-bottom: 40px;
+color: var(--text-color);
+font-weight: 700;
 }
 
 .hero-content p {
-    font-size: 28px;
-    color: var(--text-color);
+font-size: 28px;
+color: var(--text-color);
 }
 
 .hero-image-wrapper {
-    position: relative;
-    flex: 0.5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+position: relative;
+flex: 0.5;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 /* NOVO: Grupo que contém a imagem e o balão e que vai flutuar */
 .floating-group {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* A animação de flutuação foi movida para cá! */
-    animation: float-image 2s ease-in-out infinite alternate;
+position: relative;
+display: flex;
+justify-content: center;
+align-items: center;
+/* A animação de flutuação foi movida para cá! */
+animation: float-image 2s ease-in-out infinite alternate;
 }
 
 /* Div que serve de moldura para a imagem (círculo) */
 .hero-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    box-shadow: 0 8px 20px var(--shadow-color);
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
+width: 300px;
+height: 300px;
+border-radius: 50%;
+box-shadow: 0 8px 20px var(--shadow-color);
+overflow: hidden;
+position: relative;
+z-index: 1;
 }
 
 .hero-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent 60%);
-    animation: pulse-led-white 2s ease-in-out infinite alternate;
-    z-index: -1;
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+border-radius: 50%;
+background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent 60%);
+animation: pulse-led-white 2s ease-in-out infinite alternate;
+z-index: -1;
 }
 
 /* A imagem em si não precisa mais de animação */
 .hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    image-rendering: pixelated;
+width: 100%;
+height: 100%;
+object-fit: cover;
+object-position: center;
+image-rendering: pixelated;
 }
 
 /* --- Balão de Fala (POSIÇÃO CORRIGIDA) --- */
-.speech-bubble h4{
-    position: absolute;
-    top: 0;
-    left: 95%;
-    background-color: white;
-    color: #333;
-    padding: 12px 18px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    font-size: 16px;
-    font-weight: 500;
-    white-space: nowrap;
-    z-index: 10;
-    opacity: 0;
-    /* A animação de flutuação foi removida daqui para evitar conflito */
-    animation: fadeInBubble 0.0s ease-out 0s forwards;
+.speech-bubble h4 {
+position: absolute;
+top: 15%; /* Posição relativa à imagem */
+left: 90%;
+background-color: white;
+color: #333;
+padding: 12px 18px;
+border-radius: 12px;
+box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+font-size: 16px;
+font-weight: 500;
+white-space: nowrap;
+z-index: 10;
+opacity: 0;
+/* A animação de flutuação foi removida daqui para evitar conflito */
+animation: fadeInBubble 0.0s ease-out 0s forwards;
 }
 
-/* Ponta do balão */
-.speech-bubble::after  {
-    content: '';
-    position: absolute;
-    top: 25%;
-    left: 320px;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border: 12px solid transparent;
-    border-top-color: white;
-
-
-
+/* Ponta do balão CORRIGIDA */
+.speech-bubble h4::after {
+content: '';
+position: absolute;
+top: 25%;
+left: -10px; /* Posição relativa ao balão */
+transform: translateY(-50%) rotate(45deg);
+width: 20px;
+height: 20px;
+background-color: white;
+border-bottom: 1px solid rgba(0,0,0,0.15);
+border-left: 1px solid rgba(0,0,0,0.15);
+z-index: -1;
 }
 
 
 /* --- Habilidades --- */
 .skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 80px;
-    max-width: 1400px;
-    margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+gap: 80px;
+max-width: 1400px;
+margin: 0 auto;
 }
 
 .skill-card {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 50px;
-    text-align: center;
-    box-shadow: 0 6px 15px var(--shadow-color);
-    transition: transform 0.3s ease, background-color 0.3s;
+background-color: var(--card-bg);
+border-radius: 10px;
+padding: 50px;
+text-align: center;
+box-shadow: 0 6px 15px var(--shadow-color);
+transition: transform 0.3s ease, background-color 0.3s;
 }
 
 .skill-card:hover {
-    transform: translateY(-10px) !important;
+transform: translateY(-10px) !important;
 }
 
 
 .skill-card img {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    margin-bottom: 30px;
+width: 90px;
+height: 90px;
+object-fit: contain;
+margin-bottom: 30px;
 }
 
 .skill-card h3 {
-    font-size: 28px;
-    color: var(--text-color);
-    margin-bottom: 20px;
+font-size: 28px;
+color: var(--text-color);
+margin-bottom: 20px;
 }
 
 .skill-card p {
-    font-size: 20px;
-    color: var(--text-color);
+font-size: 20px;
+color: var(--text-color);
 }
 
 /* --- Experiência --- */
 .experience-item {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 50px;
-    margin-bottom: 70px;
-    box-shadow: 0 6px 15px var(--shadow-color);
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    transition: background-color 0.3s, transform 0.3s ease;
+background-color: var(--card-bg);
+border-radius: 10px;
+padding: 50px;
+margin-bottom: 70px;
+box-shadow: 0 6px 15px var(--shadow-color);
+max-width: 1100px;
+margin-left: auto;
+margin-right: auto;
+transition: background-color 0.3s, transform 0.3s ease;
 }
 
 .experience-item:hover {
-    transform: translateY(-10px) !important;
+transform: translateY(-10px) !important;
 }
 
 .experience-item:last-of-type {
-    margin-bottom: 0;
+margin-bottom: 0;
 }
 
 .experience-item h3 {
-    font-size: 30px;
-    color: var(--text-color);
-    margin-bottom: 12px;
+font-size: 30px;
+color: var(--text-color);
+margin-bottom: 12px;
 }
 
 .experience-item p {
-    font-size: 22px;
-    color: var(--text-color);
-    margin-bottom: 12px;
+font-size: 22px;
+color: var(--text-color);
+margin-bottom: 12px;
 }
 
 /* --- Projetos --- */
 .projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 80px;
-    max-width: 1400px;
-    margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+gap: 80px;
+max-width: 1400px;
+margin: 0 auto;
 }
 
 .project-card {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0 6px 15px var(--shadow-color);
-    transition: transform 0.3s ease, background-color 0.3s;
+background-color: var(--card-bg);
+border-radius: 10px;
+padding: 40px;
+box-shadow: 0 6px 15px var(--shadow-color);
+transition: transform 0.3s ease, background-color 0.3s;
 }
 
 .project-card:hover {
-    transform: translateY(-10px) !important;
+transform: translateY(-10px) !important;
 }
 
 .project-card img {
-    width: 100%;
-    /* Adicione uma altura fixa e mantenha object-fit para cortar se necessário */
-    height: 150px; /* Ou o valor que se adequar melhor ao seu design */
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 30px;
+width: 100%;
+/* Adicione uma altura fixa e mantenha object-fit para cortar se necessário */
+height: 150px; /* Ou o valor que se adequar melhor ao seu design */
+object-fit: cover;
+border-radius: 8px;
+margin-bottom: 30px;
 }
 
 .project-card h3 {
-    font-size: 28px;
-    color: var(--text-color);
-    margin-bottom: 20px;
+font-size: 28px;
+color: var(--text-color);
+margin-bottom: 20px;
 }
 
 .project-card p {
-    font-size: 20px;
-    color: var(--text-color);
-    margin-bottom: 30px;
+font-size: 20px;
+color: var(--text-color);
+margin-bottom: 30px;
 }
 
 .project-tech-icons {
-    display: flex;
-    gap: 25px;
-    margin-top: 25px;
+display: flex;
+gap: 25px;
+margin-top: 25px;
 }
 
 .project-tech-icons img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
+width: 45px;
+height: 45px;
+object-fit: contain;
 }
 
 /* --- Contato --- */
 .contact-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 150px;
-    max-width: 1100px;
-    margin: 0 auto;
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+gap: 150px;
+max-width: 1100px;
+margin: 0 auto;
 }
 
 .contact-form {
-    flex: 1;
-    min-width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+flex: 1;
+min-width: 350px;
+display: flex;
+flex-direction: column;
+gap: 30px;
 }
 
 .contact-form input,
 .contact-form textarea {
-    padding: 22px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    font-size: 20px;
-    transition: border-color 0.3s, background-color 0.3s;
+padding: 22px;
+border: 1px solid var(--border-color);
+border-radius: 8px;
+background-color: var(--card-bg);
+color: var(--text-color);
+font-size: 20px;
+transition: border-color 0.3s, background-color 0.3s;
 }
 
 .contact-form input:focus,
 .contact-form textarea:focus {
-    border-color: var(--button-bg);
-    outline: none;
+border-color: var(--button-bg);
+outline: none;
 }
 
 .contact-form button {
-    padding: 22px 40px;
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    border-radius: 8px;
-    font-size: 22px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+padding: 22px 40px;
+background-color: var(--button-bg);
+color: var(--button-text);
+border: none;
+border-radius: 8px;
+font-size: 22px;
+cursor: pointer;
+transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .contact-form button:hover {
-    background-color: var(--navbar-link-hover);
-    transform: translateY(-2px) !important;
+background-color: var(--navbar-link-hover);
+transform: translateY(-2px) !important;
 }
 
 .social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 60px;
-    margin-top: 60px;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 60px;
+margin-top: 60px;
 }
 
 .social-icon {
-    font-size: 60px;
-    color: var(--text-color);
-    transition: color 0.3s ease, transform 0.2s ease;
+font-size: 60px;
+color: var(--text-color);
+transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .social-icon:hover {
-    color: var(--navbar-link-hover);
-    transform: translateY(-3px);
+color: var(--navbar-link-hover);
+transform: translateY(-3px);
 }
 
 /* --- Media Queries para Responsividade --- */
 
 @media (max-width: 992px) {
-    .navbar {
-        padding: 15px 20px;
-        flex-wrap: wrap;
-    }
-    .navbar-center {
-        display: none;
-        flex-basis: 100%;
-        order: 3;
-        flex-direction: column;
-        text-align: center;
-        background-color: var(--navbar-bg);
-    }
-    .navbar-center.active {
-        display: flex;
-    }
-    .navbar-center ul {
-        flex-direction: column;
-        width: 100%;
-    }
-    .navbar-center ul li {
-        margin: 10px 0;
-    }
-    .menu-toggle {
-        display: block;
-    }
-    body {
-        padding-top: 50px;
-    }
-    .hero-section {
-        flex-direction: column-reverse;
-        padding: 80px 20px;
-        text-align: center;
-    }
-    .hero-content {
-        margin-right: 0;
-        margin-top: 30px;
-    }
-    .hero-content h1 {
-        font-size: 34px;
-    }
-    .hero-content p {
-        font-size: 18px;
-    }
-    .hero-image {
-        width: 250px;
-        height: 250px;
-    }
-    .section {
-        padding: 60px 20px;
-    }
-    h2 {
-        font-size: 28px;
-        margin-bottom: 40px;
-    }
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    .contact-container {
-        flex-direction: column;
-        gap: 40px;
-    }
+.navbar {
+padding: 15px 20px;
+flex-wrap: wrap;
+}
+.navbar-center {
+display: none;
+flex-basis: 100%;
+order: 3;
+flex-direction: column;
+text-align: center;
+background-color: var(--navbar-bg);
+}
+.navbar-center.active {
+display: flex;
+}
+.navbar-center ul {
+flex-direction: column;
+width: 100%;
+}
+.navbar-center ul li {
+margin: 10px 0;
+}
+.menu-toggle {
+display: block;
+}
+body {
+padding-top: 50px;
+}
+.hero-section {
+flex-direction: column-reverse;
+padding: 80px 20px;
+text-align: center;
+}
+.hero-content {
+margin-right: 0;
+margin-top: 30px;
+}
+.hero-content h1 {
+font-size: 34px;
+}
+.hero-content p {
+font-size: 18px;
+}
+.hero-image {
+width: 250px;
+height: 250px;
+}
+.section {
+padding: 60px 20px;
+}
+h2 {
+font-size: 28px;
+margin-bottom: 40px;
+}
+.projects-grid {
+grid-template-columns: 1fr;
+}
+.contact-container {
+flex-direction: column;
+gap: 40px;
+}
+
+/* Ajustes do balão para telas menores */
+.speech-bubble h4 {
+font-size: 14px;
+top: 10%; /* Posicionamento ajustado */
+left: 80%;
+}
+
+.speech-bubble h4::after {
+left: -5px;
+transform: translateY(-50%) rotate(45deg);
+}
 }
 
 /* --- ANIMAÇÕES --- */
 
 @keyframes float-image {
-    from {
-        transform: translateY(0px);
-    }
-    to {
-        transform: translateY(-10px);
-    }
+from {
+transform: translateY(0px);
+}
+to {
+transform: translateY(-10px);
+}
 }
 
 @keyframes pulse-led-white {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+from {
+opacity: 0;
+transform: scale(0.9);
+}
+to {
+opacity: 1;
+transform: scale(1);
+}
 }
 
 @keyframes fadeInBubble {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+from {
+opacity: 0;
+transform: translateY(10px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
 }
 
 /* --- Estilos para Barras de Habilidades (NOVO) --- */
 .skill-bar {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.1); /* Fundo da barra */
-    border-radius: 5px;
-    margin-top: 25px; /* Espaço entre a descrição e a barra */
-    overflow: hidden; /* Garante que o conteúdo interno não ultrapasse as bordas arredondadas */
-    border: 1px solid var(--border-color);
+width: 100%;
+background-color: rgba(0, 0, 0, 0.1); /* Fundo da barra */
+border-radius: 5px;
+margin-top: 25px; /* Espaço entre a descrição e a barra */
+overflow: hidden; /* Garante que o conteúdo interno não ultrapasse as bordas arredondadas */
+border: 1px solid var(--border-color);
 }
 
 body.dark-theme .skill-bar {
-    background-color: rgba(255, 255, 255, 0.1);
+background-color: rgba(255, 255, 255, 0.1);
 }
 
 .skill-level {
-    height: 20px;
-    width: 0;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    transition: width 1.5s ease-in-out;
+height: 20px;
+width: 0;
+border-radius: 4px;
+display: flex;
+align-items: center;
+justify-content: flex-end;
+transition: width 1.5s ease-in-out;
 }
 
 .skill-percentage {
-    color: var(--button-text); /* Cor do texto da porcentagem */
-    font-size: 12px;
-    font-weight: bold;
-    padding-right: 8px;
-    opacity: 0; /* Começa invisível */
-    transition: opacity 0.5s ease 1s; /* Aparece com um atraso após a barra crescer */
+color: var(--button-text); /* Cor do texto da porcentagem */
+font-size: 12px;
+font-weight: bold;
+padding-right: 8px;
+opacity: 0; /* Começa invisível */
+transition: opacity 0.5s ease 1s; /* Aparece com um atraso após a barra crescer */
 }
 
 /* Quando a barra é animada, o texto aparece */
 .skill-level[style*="width:"] .skill-percentage {
-    opacity: 1;
+opacity: 1;
 }
 /* --- Cores Específicas para Barras de Habilidades --- */
 
 .skill-html { background-color: #E44D26; } /* Laranja */
-.skill-css  { background-color: #1572B6; } /* Azul */
-.skill-js   { background-color: #F7DF1E; } /* Amarelo */
+.skill-css { background-color: #1572B6; } /* Azul */
+.skill-js { background-color: #F7DF1E; } /* Amarelo */
 .skill-react{ background-color: #61DAFB; } /* Azul Claro */
 .skill-node { background-color: #339933; } /* Verde */
 .skill-yolo { background-color: #0000b3; } /* Azul Escuro */
 
 /* Ajuste de cor do texto para melhor leitura na barra amarela do JS.
-  O texto da porcentagem era branco/escuro dependendo do tema,
-  mas em um fundo amarelo, uma cor fixa escura fica melhor.
+O texto da porcentagem era branco/escuro dependendo do tema,
+mas em um fundo amarelo, uma cor fixa escura fica melhor.
 */
 .skill-js .skill-percentage {
-    color: #333; /* Cor escura para o texto da porcentagem */
+color: #333; /* Cor escura para o texto da porcentagem */
 }
 
 /* O texto da porcentagem no React azul claro também fica melhor com texto escuro */
 .skill-react .skill-percentage {
-    color: #1a2a3a;
+color: #1a2a3a;
 }
 /* --- Animações de Scroll (Surgimento de Elementos) --- */
 
 /*
-  Esta é a classe que colocaremos nos elementos HTML.
-  Define o estado inicial: invisível e movido para a esquerda.
-  Também define a transição suave.
+Esta é a classe que colocaremos nos elementos HTML.
+Define o estado inicial: invisível e movido para a esquerda.
+Também define a transição suave.
 */
 .fade-in-element {
-  opacity: 0;
-  transform: translateX(-50px); /* Começa 50px para a esquerda */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+opacity: 0;
+transform: translateX(-50px); /* Começa 50px para a esquerda */
+transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 /*
-  Quando o JavaScript adicionar a classe '.is-visible',
-  o elemento se tornará opaco e voltará à sua posição original (translateX(0)).
-  A transição fará isso acontecer de forma suave.
+Quando o JavaScript adicionar a classe '.is-visible',
+o elemento se tornará opaco e voltará à sua posição original (translateX(0)).
+A transição fará isso acontecer de forma suave.
 */
 .fade-in-element.is-visible {
-  opacity: 1;
-  transform: translateX(0);
+opacity: 1;
+transform: translateX(0);
 }
 /* --- Animação de Entrada para a Seção Inicial --- */
 
 /* Keyframe define a animação: da esquerda e invisível para a posição final e visível */
 @keyframes fadeInFromLeft {
-  from {
-    opacity: 0;
-    transform: translateX(-50px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+from {
+opacity: 0;
+transform: translateX(-50px);
+}
+to {
+opacity: 1;
+transform: translateX(0);
+}
 }
 
 /* Prepara os elementos, garantindo que comecem invisíveis antes da animação */
 .hero-h1, .hero-p, .hero-img {
-  opacity: 0;
+opacity: 0;
 }
 
 /* Aplica a animação ao H1 */
 .hero-h1 {
-  animation: fadeInFromLeft 0.6s ease-out 0.6s forwards;
-  /* Animação | Duração | Curva | Atraso para começar | Manter estado final */
+animation: fadeInFromLeft 0.6s ease-out 0.6s forwards;
+/* Animação | Duração | Curva | Atraso para começar | Manter estado final */
 }
 
 /* Aplica a animação ao Parágrafo, com um atraso maior */
 .hero-p {
-  animation: fadeInFromLeft 0.6s ease-out 0.6s forwards;
+animation: fadeInFromLeft 0.6s ease-out 0.6s forwards;
 }
 
 /* Aplica a animação à Imagem, com o maior atraso */
 .hero-img {
-  animation: fadeInFromLeft 0.6s ease-out 0.9s forwards;
+animation: fadeInFromLeft 0.6s ease-out 0.9s forwards;
 }
 /* --- Estilos para a Nova Seção de Contato (Versão Responsiva Final) --- */
 
 /* --- Estilos para a Nova Seção de Contato (Versão Final Completa) --- */
 
 .contact-box {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 40px 25px;
-    box-shadow: 0 6px 15px var(--shadow-color);
-    max-width: 800px;
-    margin: 40px auto 0 auto;
-    border: 1px solid var(--border-color);
+background-color: var(--card-bg);
+border-radius: 10px;
+padding: 40px 25px;
+box-shadow: 0 6px 15px var(--shadow-color);
+max-width: 800px;
+margin: 40px auto 0 auto;
+border: 1px solid var(--border-color);
 }
 
 .contact-box p {
-    font-size: 22px;
-    line-height: 1.6;
-    color: var(--text-color);
-    text-align: left;
-    max-width: 350px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 40px;
+font-size: 22px;
+line-height: 1.6;
+color: var(--text-color);
+text-align: left;
+max-width: 350px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 40px;
 }
 
 .contact-links-list {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    align-items: flex-start;
-    max-width: 350px;
-    margin: 0 auto;
+display: flex;
+flex-direction: column;
+gap: 25px;
+align-items: flex-start;
+max-width: 350px;
+margin: 0 auto;
 }
 
 .contact-link-item {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 20px;
-    font-weight: 500;
-    transition: color 0.3s ease, transform 0.3s ease;
+display: flex;
+align-items: center;
+text-decoration: none;
+color: var(--text-color);
+font-size: 20px;
+font-weight: 500;
+transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .contact-link-item:hover {
-    color: var(--navbar-link-hover);
-    transform: translateX(5px);
+color: var(--navbar-link-hover);
+transform: translateX(5px);
 }
 
 .contact-link-item i {
-    font-size: 28px;
-    width: 40px;
-    margin-right: 15px;
-    color: var(--navbar-link-hover);
+font-size: 28px;
+width: 40px;
+margin-right: 15px;
+color: var(--navbar-link-hover);
 }
 
 /* ESTILO PARA TELAS MAIORES (TABLET E DESKTOP) */
 @media (min-width: 768px) {
-    .contact-box {
-        padding: 50px;
-    }
+.contact-box {
+padding: 50px;
+}
 
-    .contact-box p {
-        max-width: 650px;
-    }
+.contact-box p {
+max-width: 650px;
+}
 
-    .contact-links-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px 50px;
-        max-width: 650px;
-        justify-items: start;
-    }
+.contact-links-list {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 30px 50px;
+max-width: 650px;
+justify-items: start;
+}
 }
 /* --- Estilos do Rodapé --- */
 
 .site-footer {
-    background-color: var(--navbar-bg); /* Usa a cor de fundo da navbar para consistência */
-    padding: 40px 25px;
-    border-top: 1px solid var(--border-color); /* Linha sutil para separar do conteúdo */
-    color: var(--text-color);
-    transition: background-color 0.4s ease, color 0.4s ease;
+background-color: var(--navbar-bg); /* Usa a cor de fundo da navbar para consistência */
+padding: 40px 25px;
+border-top: 1px solid var(--border-color); /* Linha sutil para separar do conteúdo */
+color: var(--text-color);
+transition: background-color 0.4s ease, color 0.4s ease;
 }
 
 .footer-container {
-    max-width: 1200px; /* Limita a largura em telas muito grandes */
-    margin: 0 auto; /* Centraliza o conteúdo */
-    display: flex;
-    flex-direction: column; /* Mobile First: empilhado e centralizado */
-    align-items: center;
-    text-align: center;
-    gap: 20px; /* Espaço entre o texto e os ícones no mobile */
+max-width: 1200px; /* Limita a largura em telas muito grandes */
+margin: 0 auto; /* Centraliza o conteúdo */
+display: flex;
+flex-direction: column; /* Mobile First: empilhado e centralizado */
+align-items: center;
+text-align: center;
+gap: 20px; /* Espaço entre o texto e os ícones no mobile */
 }
 
 .footer-copyright p {
-    margin: 0;
-    font-size: 0.9em; /* Tamanho mais legível */
-    opacity: 0.8; /* Deixa o texto um pouco mais sutil */
+margin: 0;
+font-size: 0.9em; /* Tamanho mais legível */
+opacity: 0.8; /* Deixa o texto um pouco mais sutil */
 }
 
 .footer-social {
-    display: flex;
-    gap: 20px; /* Espaço entre os ícones */
+display: flex;
+gap: 20px; /* Espaço entre os ícones */
 }
 
 .footer-social a {
-    color: var(--text-color);
-    font-size: 1.5em; /* Tamanho dos ícones */
-    transition: color 0.3s ease, transform 0.3s ease;
+color: var(--text-color);
+font-size: 1.5em; /* Tamanho dos ícones */
+transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .footer-social a:hover {
-    color: var(--navbar-link-hover); /* Usa a cor de destaque do seu tema */
-    transform: translateY(-3px); /* Efeito de erguer o ícone */
+color: var(--navbar-link-hover); /* Usa a cor de destaque do seu tema */
+transform: translateY(-3px); /* Efeito de erguer o ícone */
 }
 
 /* Ajustes para telas maiores (tablets e desktops) */
 @media (min-width: 768px) {
-    .footer-container {
-        flex-direction: row; /* Layout lado a lado */
-        justify-content: space-between; /* Texto na esquerda, ícones na direita */
-        text-align: left;
-    }
+.footer-container {
+flex-direction: row; /* Layout lado a lado */
+justify-content: space-between; /* Texto na esquerda, ícones na direita */
+text-align: left;
+}
 }
 /* --- NOVOS ESTILOS PARA LOGOS DE CARREIRA E TILT EFFECT --- */
 
 /* Ajuste o item de experiência para ser um flex container */
 .experience-item {
-    /* Mantém os estilos existentes de background, border-radius, box-shadow, transition */
-    display: flex;
-    align-items: center; /* Alinha verticalmente os itens */
-    justify-content: space-between; /* Distribui espaço entre o conteúdo e a logo */
-    gap: 30px; /* Espaçamento entre o conteúdo e a logo */
-    margin-bottom: 70px; /* Mantém o espaçamento entre os itens */
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 50px; /* Mantém o padding existente */
+/* Mantém os estilos existentes de background, border-radius, box-shadow, transition */
+display: flex;
+align-items: center; /* Alinha verticalmente os itens */
+justify-content: space-between; /* Distribui espaço entre o conteúdo e a logo */
+gap: 30px; /* Espaçamento entre o conteúdo e a logo */
+margin-bottom: 70px; /* Mantém o espaçamento entre os itens */
+max-width: 1100px;
+margin-left: auto;
+margin-right: auto;
+padding: 50px; /* Mantém o padding existente */
 }
 
 .experience-item:last-of-type {
-    margin-bottom: 0; /* Remove a margem do último item */
+margin-bottom: 0; /* Remove a margem do último item */
 }
 
 /* Garante que o conteúdo de texto ocupe o espaço disponível */
 .experience-content {
-    flex: 1; /* Permite que o texto cresça e ocupe o espaço */
+flex: 1; /* Permite que o texto cresça e ocupe o espaço */
 }
 
 /* Estilos para o container da logo com tilt effect */
 .logo-tilt-container {
-    width: 120px; /* Largura base do container da logo */
-    height: 120px; /* Altura base do container da logo */
-    min-width: 80px; /* Largura mínima para responsividade */
-    min-height: 80px; /* Altura mínima para responsividade */
-    background-color: var(--card-bg); /* AGORA ESTÁ USANDO A VARIÁVEL PARA AMBOS OS TEMAS */
-    border-radius: 10px; /* Cantos arredondados */
-    box-shadow: 0 4px 10px var(--shadow-color); /* Sombra suave */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Garante que a imagem não vaze */
-    transform-style: preserve-3d; /* Essencial para o efeito 3D do tilt */
-    flex-shrink: 0; /* Impede que este container encolha em layouts flex */
-    border: 1px solid var(--border-color); /* Adiciona uma borda sutil para separação */
+width: 120px; /* Largura base do container da logo */
+height: 120px; /* Altura base do container da logo */
+min-width: 80px; /* Largura mínima para responsividade */
+min-height: 80px; /* Altura mínima para responsividade */
+background-color: var(--card-bg); /* AGORA ESTÁ USANDO A VARIÁVEL PARA AMBOS OS TEMAS */
+border-radius: 10px; /* Cantos arredondados */
+box-shadow: 0 4px 10px var(--shadow-color); /* Sombra suave */
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden; /* Garante que a imagem não vaze */
+transform-style: preserve-3d; /* Essencial para o efeito 3D do tilt */
+flex-shrink: 0; /* Impede que este container encolha em layouts flex */
+border: 1px solid var(--border-color); /* Adiciona uma borda sutil para separação */
 }
 
 /* Removemos a regra específica 'body.dark-theme .logo-tilt-container'
-   porque 'background-color: var(--card-bg);' já cuida disso para ambos os temas.
-   Se a logo dentro do container tiver um fundo escuro, podemos clareá-la um pouco:
+porque 'background-color: var(--card-bg);' já cuida disso para ambos os temas.
+Se a logo dentro do container tiver um fundo escuro, podemos clareá-la um pouco:
 */
 .logo-tilt-container img {
-    max-width: 80%; /* Faz a imagem ocupar 80% do container */
-    max-height: 80%; /* Faz a imagem ocupar 80% do container */
-    object-fit: contain; /* Reduz a imagem sem cortá-la, mantendo proporção */
-    display: block; /* Remove possíveis espaços extras */
-    filter: brightness(0.95); /* Leve ajuste de brilho para destacar a logo */
+max-width: 80%; /* Faz a imagem ocupar 80% do container */
+max-height: 80%; /* Faz a imagem ocupar 80% do container */
+object-fit: contain; /* Reduz a imagem sem cortá-la, mantendo proporção */
+display: block; /* Remove possíveis espaços extras */
+filter: brightness(0.95); /* Leve ajuste de brilho para destacar a logo */
 }
 
 /* Se as logos originais forem muito escuras para o tema escuro, podemos clareá-las */
 body.dark-theme .logo-tilt-container img {
-    filter: brightness(1.2); /* Aumenta o brilho da imagem da logo no tema escuro */
+filter: brightness(1.2); /* Aumenta o brilho da imagem da logo no tema escuro */
 }
 
 
 /* Media Query para responsividade da seção Carreira */
 @media (max-width: 768px) {
-    .experience-item {
-        flex-direction: column; /* Empilha o texto e a logo em telas menores */
-        text-align: center; /* Centraliza o texto */
-        padding: 30px; /* Ajusta o padding */
-    }
+.experience-item {
+flex-direction: column; /* Empilha o texto e a logo em telas menores */
+text-align: center; /* Centraliza o texto */
+padding: 30px; /* Ajusta o padding */
+}
 
-    .experience-item h3 {
-        font-size: 24px; /* Ajusta o tamanho do título */
-    }
+.experience-item h3 {
+font-size: 24px; /* Ajusta o tamanho do título */
+}
 
-    .experience-item p {
-        font-size: 18px; /* Ajusta o tamanho do parágrafo */
-        margin-bottom: 15px; /* Mais espaço entre o texto e a logo empilhados */
-    }
+.experience-item p {
+font-size: 18px; /* Ajusta o tamanho do parágrafo */
+margin-bottom: 15px; /* Mais espaço entre o texto e a logo empilhados */
+}
 
-    .logo-tilt-container {
-        margin-top: 20px; /* Adiciona margem superior quando empilhado */
-        width: 100px; /* Ajusta o tamanho da logo para telas menores */
-        height: 100px;
-    }
+.logo-tilt-container {
+margin-top: 20px; /* Adiciona margem superior quando empilhado */
+width: 100px; /* Ajusta o tamanho da logo para telas menores */
+height: 100px;
+}
 }
