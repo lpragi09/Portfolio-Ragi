@@ -266,8 +266,8 @@ image-rendering: pixelated;
 /* --- Balão de Fala (POSIÇÃO CORRIGIDA) --- */
 .speech-bubble h4 {
    position: absolute;
-   top: 15%; /* Posição relativa à imagem */
-   left: 75%; /* Mais para a esquerda */
+   top: 1%; /* Posição relativa à imagem */
+   left: 80%; /* Mais para a esquerda */
    background-color: white;
    color: #333;
    padding: 12px 18px;
@@ -287,7 +287,7 @@ image-rendering: pixelated;
    content: '';
    position: absolute;
    top: 100%; /* Posiciona abaixo do balão */
-   left: 50%; /* Centraliza horizontalmente */
+   left: 20%; /* Centraliza horizontalmente */
    transform: translateX(-50%);
    width: 0;
    height: 0;
