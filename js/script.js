@@ -1,359 +1,287 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const themeToggle = document.getElementById('theme-toggle');
-    const languageToggle = document.getElementById('language-toggle');
-    const body = document.body;
 
-    // --- Elementos da Navbar para o menu mobile ---
+    // --- Seletores Globais ---
+    const languageToggle = document.getElementById('language-toggle');
     const menuToggle = document.getElementById('menuToggle');
     const navbarCenter = document.querySelector('.navbar-center');
-    const navLinks = document.querySelectorAll('.navbar-center a');
-
-    // --- Elemento da iluminação do cursor ---
     const mouseGlow = document.querySelector('.mouse-glow');
-    let mouseX = 0;
-    let mouseY = 0;
-    let glowX = 0;
-    let glowY = 0;
-    const speed = 0.3; // Ajuste este valor para controlar o "arrasto" da luz (0.1 é um bom começo)
+    const body = document.body;
 
-    // --- Função para animar a iluminação ---
-    function animateGlow() {
-        // Interpola a posição da luz para que ela siga o mouse com um pequeno atraso
-        glowX += (mouseX - glowX) * speed;
-        glowY += (mouseY - glowY) * speed;
+    // --- Estado da Aplicação ---
+    let currentLang = localStorage.getItem('language') || 'pt';
 
-        // Aplica a nova posição ao elemento
-        if (mouseGlow) {
-            mouseGlow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%, -50%)`;
-        }
+    // --- DADOS DOS PROJETOS ---
+    const projectsData = [
+        { id: 'proj-portfolio', image: 'img/projeto_1.jpg', tech: ['html', 'css', 'js'] },
+        { id: 'proj-coffee', image: 'img/projeto_2.jpg', tech: ['html', 'css', 'js'] },
+        { id: 'proj-yolo', image: 'img/projeto_3.jpg', tech: ['yolo'] },
+        { id: 'proj-api', image: 'img/projeto_4.jpg', tech: ['node'] },
+        { id: 'proj-dashboard', image: 'img/projeto_5.jpg', tech: ['react', 'node'] },
+    ];
 
-        // Continua a animação no próximo frame
-        requestAnimationFrame(animateGlow);
-    }
+    // --- DADOS DAS HABILIDADES ---
+    const skillsData = [
+        { id: 'html', iconClass: 'fab fa-html5', level: 50, category: 'frontend' },
+        { id: 'css', iconClass: 'fab fa-css3-alt', level: 50, category: 'styling' },
+        { id: 'js', iconClass: 'fab fa-js-square', level: 50, category: 'language' },
+        { id: 'react', iconClass: 'fab fa-react', level: 50, category: 'frontend' },
+        { id: 'node', iconClass: 'fab fa-node-js', level: 50, category: 'backend' },
+        { id: 'typescript', iconClass: 'fas fa-code', level: 50, category: 'language' },
+        { id: 'python', iconClass: 'fab fa-python', level: 50, category: 'language' },
+        { id: 'yolo', iconClass: 'fas fa-robot', level: 50, category: 'backend' },
+        { id: 'cpp', iconClass: 'fas fa-microchip', level: 50, category: 'language' },
+    ];
 
-    // --- Event Listener para rastrear o movimento do mouse ---
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    // Inicia a animação da iluminação
-    animateGlow();
-
-
-    // --- Objeto de Tradução ---
+    // --- TRADUÇÕES ---
     const translations = {
-        // ... (Seu objeto de traduções existente) ...
         'en': {
-            'nav-home': 'Home',
-            'nav-projects': 'Projects',
-            'nav-experience': 'Career',
-            'nav-skills': 'Skills',
-            'nav-contact': 'Contact',
-            'hero-title': 'Luiz Paulo Moreno Ragi',
+            // ATUALIZADO: Adicionada a tradução do título principal
+            'hero-title': 'Hello! 👋<br>I\'m <span class="highlight">Luiz Ragi</span> <br>a <span class="highlight">Full-Stack Dev</span>',
+            'nav-home': 'Home', 'nav-about': 'About', 'nav-projects': 'Projects', 'nav-skills': 'Skills',
             'hero-subtitle': 'Trainee Full Stack Web Developer | Tech Enthusiast | Always Learning',
-            'section-skills': 'Skills',
-            'section-experience': 'Career',
-            'section-projects': 'Projects',
-            'section-contact': 'Contact',
-            'contact-name-placeholder': 'Your Name',
-            'contact-email-placeholder': 'Your Email',
-            'contact-message-placeholder': 'Your Message',
-            'contact-button': 'Send Message',
-            'skill-html-title': 'HTML5',
-            'skill-html-desc': 'Semantic content structuring.',
-            'skill-css-title': 'CSS3',
-            'skill-css-desc': 'Responsive and animated styling.',
-            'skill-js-title': 'JavaScript',
-            'skill-js-desc': 'Programming logic and web interactivity.',
-            'skill-react-title': 'React',
-            'skill-react-desc': 'User interface creation.',
-            'skill-node-title': 'Node.js',
-            'skill-node-desc': 'Back-end development with JavaScript.',
-            'skill-yolo-title': 'YoloV8',
-            'skill-yolo-desc': 'Image identifications using Ultralytics',
-            'exp-ufla-title': 'Federal University of Lavras (UFLA)',
-            'exp-ufla-desc1': 'Bachelor in Engineering - Currently Enrolled',
-            'exp-ufla-desc2': '2024 - Present',
-            'exp-unilavras-title': 'University Center of Lavras (Unilavras)',
-            'exp-unilavras-desc1': 'Systems Analysis and Development - Currently Enrolled',
-            'exp-unilavras-desc2': '2025 - Present',
-            'exp-inatel-title': 'National Institute of Telecommunications (INATEL)',
-            'exp-inatel-desc1': 'Python Course - 72 Hours',
-            'exp-inatel-desc2': '2023 - 2023',
-            'proj-portfolio-title': 'Personal Portfolio Website',
-            'proj-portfolio-desc': 'Development of a responsive web portfolio using HTML, CSS, and JavaScript to showcase my skills and projects.',
-            'proj-coffee-title': 'Coffee brand website',
-            'proj-coffee-desc': 'Development of a responsive website using HTML, CSS and JavaScript to display a coffee shop.',
-            'proj-yolo-title': 'Image identification using YoloV8.',
-            'proj-yolo-desc': 'Identification of boats in Guanabara Bay using Ultralytics YoloV8',
-            'dynamic-exp-title': 'Dynamic Experience Item',
-            'dynamic-exp-desc1': 'Dynamic Description 1',
-            'dynamic-exp-desc2': 'Dynamic Description 2',
-            'contact-prompt' : 'Contact us',
-            'footer-copyright': '2025 Luiz Paulo Moreno Ragi. All rights reserved.',
-            'speech-bubble': 'Welcome! ❤️'
+            'speech-bubble': 'Welcome! ❤️',
+            'about-title': 'About <span class="highlight">Me</span>',
+            'about-intro-text': 'Passionate developer creating incredible web experiences and solving problems through technology.',
+            'about-journey-title': 'My Journey',
+            'timeline-2023-title': 'Journey Start', 'timeline-2023-desc': 'Began my web development studies, focusing on HTML, CSS, JavaScript, and Python.',
+            'timeline-2024-title': 'First Projects', 'timeline-2024-desc': 'Developed personal projects and started working with React and Node.js.',
+            'timeline-2025-title': 'Specialization', 'timeline-2025-desc': 'Deepened my knowledge in Full Stack development and modern technologies.',
+            'about-characteristics-title': 'Characteristics',
+            'char-fullstack-title': 'Full Stack Development', 'char-fullstack-desc': 'Experience with various modern technologies and frameworks',
+            'char-performance-title': 'Performance', 'char-performance-desc': 'Focus on creating fast and optimized applications',
+            'char-teamwork-title': 'Teamwork', 'char-teamwork-desc': 'Effective collaboration and clear communication',
+            'char-learning-title': 'Continuous Learning', 'char-learning-desc': 'Always seeking new knowledge and technologies',
+            'section-projects': 'My <span class="highlight">Projects</span>',
+            'proj-portfolio-title': 'Personal Portfolio Website', 'proj-portfolio-desc': 'Development of a responsive web portfolio to showcase my skills and projects.',
+            'proj-coffee-title': 'Coffee Brand Website', 'proj-coffee-desc': 'Development of a responsive website to display a coffee shop.',
+            'proj-yolo-title': 'Image Identification using YoloV8', 'proj-yolo-desc': 'Identification of boats in Guanabara Bay using Ultralytics YoloV8',
+            'proj-api-title': 'Task API', 'proj-api-desc': 'A RESTful API for task management built with Node.js and Express.',
+            'proj-dashboard-title': 'Admin Dashboard', 'proj-dashboard-desc': 'A complete dashboard with data visualization, built with React and a Node.js backend.',
+            'skill-cat-frontend': 'frontend', 'skill-cat-backend': 'backend', 'skill-cat-language': 'language', 'skill-cat-styling': 'styling', 'skill-cat-database': 'database', 'skill-cat-state': 'state',
+            'skill-name-html': 'HTML', 'skill-name-css': 'CSS', 'skill-name-js': 'JavaScript', 'skill-name-react': 'React', 'skill-name-node': 'Node.js', 'skill-name-typescript': 'TypeScript', 'skill-name-python': 'Python', 'skill-name-yolo': 'YOLOv8', 'skill-name-cpp': 'C++',
+            'footer-copyright': '© 2025 Luiz Paulo Moreno Ragi. All rights reserved.',
         },
         'pt': {
-            'nav-home': 'Início',
-            'nav-projects': 'Projetos',
-            'nav-experience': 'Carreira',
-            'nav-skills': 'Habilidades',
-            'nav-contact': 'Contato',
-            'hero-title': 'Luiz Paulo Moreno Ragi',
+            // ATUALIZADO: Adicionada a tradução do título principal
+            'hero-title': 'Olá! 👋<br>Eu sou o <span class="highlight">Luiz Ragi</span> <br>sou <span class="highlight">Dev Full-Stack</span>',
+            'nav-home': 'Início', 'nav-about': 'Sobre', 'nav-projects': 'Projetos', 'nav-skills': 'Habilidades',
             'hero-subtitle': 'Desenvolvedor Trainee Web Full Stack | Entusiasta de Tecnologia | Sempre aprendendo',
-            'section-skills': 'Habilidades',
-            'section-experience': 'Carreira',
-            'section-projects': 'Projetos',
-            'section-contact': 'Contato',
-            'contact-name-placeholder': 'Seu Nome',
-            'contact-email-placeholder': 'Seu E-mail',
-            'contact-message-placeholder': 'Sua Mensagem',
-            'contact-button': 'Enviar Mensagem',
-            'skill-html-title': 'HTML5',
-            'skill-html-desc': 'Estruturação de conteúdo semântico.',
-            'skill-css-title': 'CSS3',
-            'skill-css-desc': 'Estilização responsiva e animada.',
-            'skill-js-title': 'JavaScript',
-            'skill-js-desc': 'Lógica de programação e interatividade web.',
-            'skill-react-title': 'React',
-            'skill-react-desc': 'Criação de interfaces de usuário.',
-            'skill-node-title': 'Node.js',
-            'skill-node-desc': 'Desenvolvimento de back-end com JavaScript.',
-            'skill-yolo-title': 'YoloV8',
-            'skill-yolo-desc': 'Identificações de imagens utilizando Ultralytics',
-            'exp-ufla-title': 'Universidade Federal de Lavras (UFLA)',
-            'exp-ufla-desc1': 'Bacharelado em Engenharia - Cursando',
-            'exp-ufla-desc2': '2024 - Presente',
-            'exp-unilavras-title': 'Centro Universitário de Lavras (Unilavras)',
-            'exp-unilavras-desc1': 'Análise e Desenvolvimento de Sistemas - Cursando',
-            'exp-unilavras-desc2': '2025 - Presente',
-            'exp-inatel-title': 'Instituto Nacional de Telecomunicações (INATEL)',
-            'exp-inatel-desc1': 'Curso de Python - 72 Horas',
-            'exp-inatel-desc2': '2023 - 2023',
-            'proj-portfolio-title': 'Site de Portfólio Pessoal',
-            'proj-portfolio-desc': 'Desenvolvimento de um portfólio web responsivo utilizando HTML, CSS e JavaScript para exibir minhas habilidades e projetos.',
-            'proj-coffee-title': 'Site marca de café',
-            'proj-coffee-desc': 'Desenvolvimento de um site web responsivo utilizando HTML, CSS e JavaScript para exibir um coffe shop.',
-            'proj-yolo-title': 'Indetificação de imagens utilizando YoloV8.',
-            'proj-yolo-desc': 'Identificação de barcos na Baia de Guanabara utilizando Ultralytics YoloV8',
-            'dynamic-exp-title': 'Item de Experiência Dinâmico',
-            'dynamic-exp-desc1': 'Descrição Dinâmica 1',
-            'dynamic-exp-desc2': 'Descrição Dinâmica 2',
-            'contact-prompt' : 'Entre em Contato',
-            'footer-copyright': '2025 Luiz Paulo Moreno Ragi. Todos os direitos reservados.',
-            'speech-bubble': 'Seja bem-vindo! ❤️'
+            'speech-bubble': 'Seja bem-vindo! ❤️',
+            'about-title': 'Sobre <span class="highlight">Mim</span>',
+            'about-intro-text': 'Desenvolvedor apaixonado por criar experiências web incríveis e solucionar problemas através da tecnologia.',
+            'about-journey-title': 'Minha Jornada',
+            'timeline-2023-title': 'Início da Jornada', 'timeline-2023-desc': 'Comecei meus estudos em desenvolvimento web, focando em HTML, CSS, JavaScript e Python.',
+            'timeline-2024-title': 'Primeiros Projetos', 'timeline-2024-desc': 'Desenvolvi projetos pessoais e comecei a trabalhar com React e Node.js.',
+            'timeline-2025-title': 'Especialização', 'timeline-2025-desc': 'Aprofundei meus conhecimentos em desenvolvimento Full Stack e tecnologias modernas.',
+            'about-characteristics-title': 'Características',
+            'char-fullstack-title': 'Desenvolvimento Full Stack', 'char-fullstack-desc': 'Experiência com diversas tecnologias e frameworks modernos',
+            'char-performance-title': 'Performance', 'char-performance-desc': 'Foco em criar aplicações rápidas e otimizadas',
+            'char-teamwork-title': 'Trabalho em Equipe', 'char-teamwork-desc': 'Colaboração efetiva e comunicação clara',
+            'char-learning-title': 'Aprendizado Contínuo', 'char-learning-desc': 'Sempre buscando novos conhecimentos e tecnologias',
+            'section-projects': 'Meus <span class="highlight">Projetos</span>',
+            'proj-portfolio-title': 'Site de Portfólio Pessoal', 'proj-portfolio-desc': 'Desenvolvimento de um portfólio web responsivo para exibir minhas habilidades e projetos.',
+            'proj-coffee-title': 'Site Marca de Café', 'proj-coffee-desc': 'Desenvolvimento de um site responsivo para exibir uma cafeteria.',
+            'proj-yolo-title': 'Identificação de Imagens com YoloV8', 'proj-yolo-desc': 'Identificação de barcos na Baia de Guanabara utilizando Ultralytics YoloV8.',
+            'proj-api-title': 'API de Tarefas', 'proj-api-desc': 'Uma API RESTful para gerenciamento de tarefas, criada com Node.js e Express.',
+            'proj-dashboard-title': 'Dashboard Admin', 'proj-dashboard-desc': 'Um dashboard completo com visualização de dados, construído com React e back-end em Node.js.',
+            'skill-cat-frontend': 'front-end', 'skill-cat-backend': 'back-end', 'skill-cat-language': 'linguagem', 'skill-cat-styling': 'estilização', 'skill-cat-database': 'banco de dados', 'skill-cat-state': 'estado',
+            'skill-name-html': 'HTML', 'skill-name-css': 'CSS', 'skill-name-js': 'JavaScript', 'skill-name-react': 'React', 'skill-name-node': 'Node.js', 'skill-name-typescript': 'TypeScript', 'skill-name-python': 'Python', 'skill-name-yolo': 'YOLOv8', 'skill-name-cpp': 'C++',
+            'footer-copyright': '© 2025 Luiz Paulo Moreno Ragi. Todos os direitos reservados.',
         }
     };
 
-    // --- Função para carregar e aplicar o tema salvo ---
-    const loadTheme = () => {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-            body.classList.add('dark-theme');
-            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-        } else {
-            body.classList.remove('dark-theme');
-            themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
+    // --- Módulo de Tema ---
+    const themeManager = {
+        init() { this.load(); themeToggle.addEventListener('click', () => this.toggle()); },
+        load() { this.set(localStorage.getItem('theme') === 'dark' ? 'dark' : 'light'); },
+        toggle() { this.set(body.classList.contains('dark-theme') ? 'light' : 'dark'); },
+        set(theme) {
+            body.classList.toggle('dark-theme', theme === 'dark');
+            localStorage.setItem('theme', theme);
+            themeToggle.querySelector('i').className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
         }
     };
 
-    // --- Event Listener para mudança de tema ---
-    themeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-theme');
-        if (body.classList.contains('dark-theme')) {
-            localStorage.setItem('theme', 'dark');
-            themeToggle.querySelector('i').classList.replace('fa-moon', 'fa-sun');
-        } else {
-            localStorage.setItem('theme', 'light');
-            themeToggle.querySelector('i').classList.replace('fa-sun', 'fa-moon');
-        }
-    });
-
-    // --- Função auxiliar para aplicar traduções a um conjunto de elementos ---
-    const applyTranslationsToElements = (elements, lang) => {
-        elements.forEach(element => {
-            const textKey = element.getAttribute('data-i18n');
-            if (textKey && translations[lang] && translations[lang][textKey]) {
-                element.textContent = translations[lang][textKey];
+    // --- Módulo de Idioma ---
+    const languageManager = {
+        init() {
+            this.load();
+            languageToggle.addEventListener('click', () => this.toggle());
+        },
+        load() {
+            this.set(localStorage.getItem('language') || 'pt', false);
+        },
+        toggle() {
+            this.set(currentLang === 'pt' ? 'en' : 'pt', true);
+        },
+        set(lang, needsContentRender) {
+            currentLang = lang;
+            languageToggle.innerHTML = `<i class="fas fa-globe"></i> ${lang === 'en' ? 'EN/PT' : 'PT/EN'}`;
+            this.translateAllStatic();
+            localStorage.setItem('language', lang);
+            if (needsContentRender) {
+                setupExpandingGallery();
+                skillsManager.renderSkills();
             }
-
-            const placeholderKey = element.getAttribute('data-i18n-placeholder');
-            if (placeholderKey && translations[lang] && translations[lang][placeholderKey]) {
-                element.placeholder = translations[lang][placeholderKey];
-            }
-        });
-    };
-
-    // --- Função principal para mudar o idioma ---
-    const setLanguage = (lang) => {
-        languageToggle.innerHTML = `<i class="fas fa-globe"></i> ${lang === 'en' ? 'EN/PT' : 'PT/EN'}`;
-
-        const allTranslatableElements = document.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
-        applyTranslationsToElements(allTranslatableElements, lang);
-
-        localStorage.setItem('language', lang);
-    };
-
-    // --- Função para carregar o idioma salvo ---
-    const loadLanguage = () => {
-        const savedLang = localStorage.getItem('language') || 'pt';
-        setLanguage(savedLang);
-    };
-
-    // Event Listener para mudança de idioma
-    languageToggle.addEventListener('click', () => {
-        const currentLang = localStorage.getItem('language') || 'pt';
-        if (currentLang === 'pt') {
-            setLanguage('en');
-        } else {
-            setLanguage('pt');
-        }
-    });
-
-    // Carrega o tema e o idioma ao carregar a página
-    loadTheme();
-    loadLanguage();
-
-    // --- Configuração do MutationObserver ---
-    const observer = new MutationObserver((mutationsList) => {
-        const currentLang = localStorage.getItem('language') || 'pt';
-        for (const mutation of mutationsList) {
-            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-                mutation.addedNodes.forEach(node => {
-                    if (node.nodeType === Node.ELEMENT_NODE) {
-                        applyTranslationsToElements([node], currentLang);
-                        const translatableChildren = node.querySelectorAll('[data-i18n], [data-i18n-placeholder]');
-                        if (translatableChildren.length > 0) {
-                            applyTranslationsToElements(translatableChildren, currentLang);
-                        }
-                    }
-                });
-            }
-        }
-    });
-
-    // Começa a observar o corpo do documento para mudanças nos filhos e nos descendentes
-    observer.observe(document.body, { childList: true, subtree: true });
-
-    // --- Lógica do Menu Hamburguer ---
-    if (menuToggle && navbarCenter) {
-        menuToggle.addEventListener('click', () => {
-            navbarCenter.classList.toggle('active');
-        });
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 992) {
-                    navbarCenter.classList.remove('active');
+        },
+        translateAllStatic() {
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (key && translations[currentLang]?.[key]) {
+                    element.innerHTML = translations[currentLang][key];
                 }
             });
-        });
-    }
-
-    // --- Lógica para animar as barras de habilidades ao rolar (NOVO) ---
-    const skillsSection = document.getElementById('habilidades');
-    const skillLevels = document.querySelectorAll('.skill-level');
-    let skillsAnimated = false; // Flag para garantir que a animação rode apenas uma vez
-
-    const animateSkills = (entries, observer) => {
-        entries.forEach(entry => {
-            // Se a seção de habilidades está visível e a animação ainda não rodou
-            if (entry.isIntersecting && !skillsAnimated) {
-                skillLevels.forEach(skill => {
-                    const level = skill.getAttribute('data-level'); // Pega o valor do data-level (ex: "95%")
-                    skill.style.width = level; // Aplica o valor como largura da barra
-                });
-                skillsAnimated = true; // Marca a animação como concluída
-                observer.unobserve(skillsSection); // Para de observar a seção para otimizar a performance
-            }
-        });
-    };
-
-    // Cria o observador que vai "vigiar" a seção de habilidades
-    const skillObserver = new IntersectionObserver(animateSkills, {
-        root: null, // Observa em relação à viewport
-        threshold: 0.4 // Dispara a animação quando 40% da seção estiver visível
-    });
-
-    // Inicia a observação se a seção de habilidades existir
-    if (skillsSection) {
-        skillObserver.observe(skillsSection);
-    }
-
-
-    // Smooth scroll para os links da navbar
-    document.querySelectorAll('.navbar a[href^="#"], .navbar-center a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-
-            if (targetElement) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const offsetTop = targetElement.offsetTop - navbarHeight;
-
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
-                });
-
-                if (navbarCenter.classList.contains('active') && window.innerWidth <= 992) {
-                    navbarCenter.classList.remove('active');
-                }
-            }
-        });
-    });
-
-    // --- Exemplo de como você poderia adicionar um elemento dinamicamente (para teste) ---
-    window.addDynamicItem = () => {
-        const experienceSection = document.getElementById('experiencia');
-        const newExperienceDiv = document.createElement('div');
-        newExperienceDiv.classList.add('experience-item');
-        newExperienceDiv.innerHTML = `
-            <h3 data-i18n="dynamic-exp-title">Título de Novo Item Dinâmico</h3>
-            <p data-i18n="dynamic-exp-desc1">Descrição para um novo item dinâmico.</p>
-            <p data-i18n="dynamic-exp-desc2">Detalhes adicionais.</p>
-        `;
-        experienceSection.appendChild(newExperienceDiv);
-        console.log("Conteúdo dinâmico adicionado. O MutationObserver deve ter traduzido automaticamente.");
-    };
-    // --- Lógica para animação de surgimento dos elementos no scroll (ATUALIZADO) ---
-const fadeInElements = document.querySelectorAll('.fade-in-element');
-
-const fadeInObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            // Se o elemento entrou na tela, adiciona a classe para animar
-            entry.target.classList.add('is-visible');
-        } else {
-            // Se o elemento saiu da tela, remove a classe para "resetar" a animação
-            entry.target.classList.remove('is-visible');
         }
-    });
-}, {
-    rootMargin: '0px 0px -100px 0px',
-    threshold: 0.1
-});
+    };
 
-// Inicia a observação para cada elemento
-fadeInElements.forEach(el => {
-    fadeInObserver.observe(el);
-});
-// --- NOVO CÓDIGO PARA INICIALIZAR O TILT EFFECT NAS LOGOS ---
+    // --- Módulo de Habilidades ---
+    const skillsManager = {
+        init() {
+            this.renderSkills();
+        },
+        renderSkills() {
+            const container = document.querySelector('.skills-grid-container');
+            if (!container) return;
+            container.innerHTML = skillsData.map(skill => {
+                const name = translations[currentLang][`skill-name-${skill.id}`] || skill.id;
+                const category = translations[currentLang][`skill-cat-${skill.category}`] || skill.category;
+                return `
+                        <div class="skill-bar-card">
+                            <div class="skill-header">
+                                <div class="skill-info">
+                                    <i class="skill-icon ${skill.iconClass}"></i>
+                                    <div class="skill-title-group">
+                                        <div class="skill-name">${name}</div>
+                                        <div class="skill-category">${category}</div>
+                                    </div>
+                                </div>
+                                <div class="skill-percentage">${skill.level}%</div>
+                            </div>
+                            <div class="progress-bar-container">
+                                <div class="progress-bar-level bar-${skill.id}" data-level="${skill.level}%"></div>
+                            </div>
+                        </div>
+                    `;
+            }).join('');
+        }
+    };
 
-// Espera a biblioteca VanillaTilt ser carregada (incluída via CDN no HTML)
-// Isso é crucial para evitar erros se o script for executado antes do CDN carregar.
-if (typeof VanillaTilt !== 'undefined') {
-    // Inicializa o Vanilla-Tilt para todos os elementos com a classe 'logo-tilt-container'
-    VanillaTilt.init(document.querySelectorAll(".logo-tilt-container"), {
-        max: 20,         // Máximo ângulo de inclinação em graus. (Experimente valores!)
-        speed: 300,      // Velocidade da transição de inclinação em ms.
-        glare: true,     // Habilita o efeito de brilho (opcional).
-        "max-glare": 0.4 // Intensidade máxima do brilho (0-1).
-    });
-    console.log("Vanilla-Tilt.js inicializado para .logo-tilt-container");
-} else {
-    console.warn("Vanilla-Tilt.js não foi carregado. Verifique o link do CDN no HTML.");
-}
+    // --- Módulo de UI e Navegação ---
+    const UIManager = {
+        init() {
+            this.setupMenu();
+            this.setupSmoothScroll();
+            this.initGlowEffect();
+        },
+        setupMenu() {
+            menuToggle.addEventListener('click', () => navbarCenter.classList.toggle('active'));
+            navbarCenter.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        navbarCenter.classList.remove('active');
+                    }
+                });
+            });
+        },
+        setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        const offsetTop = targetElement.offsetTop - document.querySelector('.navbar').offsetHeight;
+                        window.scrollTo({ top: offsetTop, behavior: 'smooth' });
+                    }
+                });
+            });
+        },
+        initGlowEffect() {
+            let mouseX = 0, mouseY = 0, glowX = 0, glowY = 0;
+            const speed = 0.2;
+            document.addEventListener('mousemove', e => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animate() {
+                glowX += (mouseX - glowX) * speed;
+                glowY += (mouseY - glowY) * speed;
+                mouseGlow.style.transform = `translate(${glowX}px, ${glowY}px) translate(-50%, -50%)`;
+                requestAnimationFrame(animate);
+            }
+            if (window.matchMedia('(pointer: fine)').matches) {
+                animate();
+            }
+        }
+    };
+
+    // --- Módulo de Animações de Scroll ---
+    const scrollAnimations = {
+        init() {
+            this.setupFadeIn();
+            this.setupSkillsAnimation();
+        },
+        setupFadeIn() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    entry.target.classList.toggle('is-visible', entry.isIntersecting);
+                });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.fade-in-element').forEach(el => observer.observe(el));
+        },
+        // ATUALIZADO: Lógica da animação de skills corrigida
+        setupSkillsAnimation() {
+            const skillsSection = document.getElementById('habilidades');
+            if (!skillsSection) return;
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                // Roda a animação apenas quando a seção estiver visível
+                if (entries[0].isIntersecting) {
+                    const skillBars = skillsSection.querySelectorAll('.progress-bar-level');
+                    skillBars.forEach(bar => {
+                        // Anima apenas as barras que ainda não foram animadas (width está 0 ou vazio)
+                        if (!bar.style.width || bar.style.width === '0px') {
+                            bar.style.width = bar.dataset.level;
+                        }
+                    });
+                }
+            }, { threshold: 0.4 });
+
+            // Observa a seção de habilidades
+            observer.observe(skillsSection);
+        }
+    };
+
+    // --- LÓGICA DA GALERIA EXPANSÍVEL ---
+    function setupExpandingGallery() {
+        const container = document.getElementById('expanding-gallery-container');
+        if (!container) return;
+
+        container.innerHTML = '';
+
+        projectsData.forEach((project) => {
+            const title = translations[currentLang][`${project.id}-title`] || 'Project Title';
+            const desc = translations[currentLang][`${project.id}-desc`] || 'Project description.';
+
+            const panel = document.createElement('div');
+            panel.classList.add('panel');
+            panel.style.backgroundImage = `url('${project.image}')`;
+
+            panel.innerHTML = `
+                <div class="panel-content">
+                    <h3>${title}</h3>
+                    <p>${desc}</p>
+                </div>
+            `;
+            container.appendChild(panel);
+        });
+    }
+
+    // --- Inicialização de todos os módulos ---
+    languageManager.init();
+    skillsManager.init();
+    UIManager.init();
+    scrollAnimations.init();
+    setupExpandingGallery();
 });

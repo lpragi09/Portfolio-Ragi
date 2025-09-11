@@ -1,920 +1,1202 @@
-/* Variáveis de cores para temas */
-:root {
-    --background-color: #f0f2f5;
-    --text-color: #333;
-    --navbar-bg: #ffffff;
-    --navbar-link-color: #555;
-    --navbar-link-hover: #007bff;
-    --button-bg: #007bff;
-    --button-text: #fff;
-    --card-bg: #ffffff;
-    --border-color: #e0e0e0;
-    --shadow-color: rgba(0,0,0,0.1);
-    --glow-color-light: rgba(0, 123, 255, 0.4);
+/* --- CONFIGURAÇÃO GERAL E TEMAS --- */
+:root { /* Define variáveis CSS globais que podem ser usadas em todo o documento. */
+    /* Tema Padrão (Claro) */
+    --background-color: #f4f4f9; /* Define a cor de fundo principal para o tema claro. */
+    --text-color: #333333; /* Define a cor do texto principal para o tema claro. */
+    --highlight-color: #9333ea; /* Define a cor de destaque (links, botões) para o tema claro. */
+    --navbar-bg: #ffffff; /* Define a cor de fundo da barra de navegação para o tema claro. */
+    --navbar-link-color: #555555; /* Define a cor dos links na barra de navegação para o tema claro. */
+    --navbar-link-hover: #9333ea; /* Define a cor dos links na barra de navegação ao passar o mouse (hover) para o tema claro. */
+    --card-bg: #ffffff; /* Define a cor de fundo dos cards para o tema claro. */
+    --border-color: #dddddd; /* Define a cor das bordas para o tema claro. */
+    --button-bg: #9333ea; /* Define a cor de fundo dos botões para o tema claro. */
+    --button-text: #ffffff; /* Define a cor do texto dos botões para o tema claro. */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Define a cor da sombra padrão. */
+    --glow-color: rgba(147, 51, 234, 0.3); /* Define uma cor de brilho, geralmente para efeitos de foco ou hover. */
+    --shadow-color-light: rgba(0, 0, 0, 0.1); /* Define uma cor de sombra mais suave. */
+    --shadow-color-heavy: rgba(0, 0, 0, 0.25); /* Define uma cor de sombra mais intensa. */
+    --text-color-light: #ffffff; /* Define uma cor de texto clara, usada principalmente nos temas escuros. */
+
+    /* Variáveis do Tema RGB/Dark para uso em todo o site */
+    --rgb-background-color: #0a0520; /* Cor de fundo para o tema escuro/RGB. */
+    --rgb-highlight-color: #8A2BE2; /* Cor de destaque para o tema escuro/RGB. */
+    --rgb-text-color: #e0e0e0; /* Cor do texto para o tema escuro/RGB. */
+    --rgb-navbar-bg: rgba(0, 0, 0, 0.4); /* Cor de fundo da barra de navegação para o tema escuro/RGB (com transparência). */
+    --rgb-border-color: rgba(75, 0, 130, 0.3); /* Cor das bordas para o tema escuro/RGB (com transparência). */
+    --rgb-shadow-color: rgba(0, 0, 0, 0.5); /* Cor da sombra para o tema escuro/RGB (com transparência). */
+
+    /* Variáveis para o tema de grade */
+    --grid-background-color: #191a1a; /* Cor de fundo para as seções com o efeito de grade. */
+    --grid-color: rgba(138, 43, 226, 0.3); /* Cor das linhas da grade (roxo com transparência). */
 }
 
-body.dark-theme {
-    --background-color: #1a2a3a;
-    --text-color: #e0e0e0;
-    --navbar-bg: #112233;
-    --navbar-link-hover: #4dc2f0;
-    --button-bg: #4dc2f0;
-    --button-text: #1a2a3a;
-    --card-bg: #223a4f;
-    --border-color: #334d66;
-    --shadow-color: rgba(0,0,0,0.3);
-    --glow-color-dark: rgba(77, 194, 240, 0.3);
+body.dark-theme { /* Estilos que são aplicados quando o body tem a classe 'dark-theme'. */
+    /* Sobrescreve as variáveis para o Tema Escuro (se ainda for usar) */
+    --background-color: #1a2a3a; /* Altera a cor de fundo para o tema escuro. */
+    --text-color: #e0e0e0; /* Altera a cor do texto para o tema escuro. */
+    --navbar-bg: #112233; /* Altera a cor de fundo da barra de navegação para o tema escuro. */
+    --navbar-link-color: #e0e0e0; /* Altera a cor dos links da barra de navegação para o tema escuro. */
+    --navbar-link-hover: #4dc2f0; /* Altera a cor de hover dos links da barra de navegação para o tema escuro. */
+    --card-bg: #223a4f; /* Altera a cor de fundo dos cards para o tema escuro. */
+    --border-color: #334d66; /* Altera a cor das bordas para o tema escuro. */
+    --button-bg: #4dc2f0; /* Altera a cor de fundo dos botões para o tema escuro. */
+    --button-text: #1a2a3a; /* Altera a cor do texto dos botões para o tema escuro. */
+    --shadow-color: rgba(0, 0, 0, 0.3); /* Altera a cor da sombra para o tema escuro. */
+    --glow-color: rgba(77, 194, 240, 0.3); /* Altera a cor de brilho para o tema escuro. */
+    --shadow-color-light: rgba(0, 0, 0, 0.25); /* Altera a cor da sombra suave para o tema escuro. */
+    --shadow-color-heavy: rgba(0, 0, 0, 0.5); /* Altera a cor da sombra intensa para o tema escuro. */
+    --text-color-light: #ffffff; /* Mantém a cor de texto clara para o tema escuro. */
 }
 
-/* --- Efeito de iluminação que segue o cursor --- */
-.mouse-glow {
-    position: fixed;
-    pointer-events: none;
-    border-radius: 50%;
-    width: 800px;
-    height: 800px;
-    transform: translate(-50%, -50%);
-    filter: blur(150px);
-    opacity: 0.9;
-    z-index: 0;
-    transition: transform 0.1s ease-out, background 0.4s ease, opacity 0.4s ease;
+/* --- ESTILOS GLOBAIS --- */
+body { /* Estiliza o elemento <body>, que é o contêiner principal da página. */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Define a família de fontes para todo o site, com alternativas. */
+    margin: 0; /* Remove a margem padrão do navegador para o body. */
+    padding-top: 80px; /* Adiciona um espaçamento no topo do body para não ficar atrás da navbar fixa. */
+    background-color: #000; /* Define a cor de fundo padrão do site como preto. */
+    color: var(--text-color-light); /* Define a cor padrão do texto usando a variável de cor clara. */
+    transition: background-color 0.4s ease, color 0.4s ease; /* Adiciona uma transição suave para mudanças de cor de fundo e texto. */
+    line-height: 1.7; /* Define a altura da linha para melhorar a legibilidade. */
+    position: relative; /* Define o contexto de posicionamento para elementos filhos. */
+    min-height: 100vh; /* Garante que o corpo da página tenha pelo menos a altura da tela. */
+    overflow-x: hidden; /* Esconde qualquer conteúdo que transborde horizontalmente, evitando a barra de rolagem horizontal. */
 }
 
-body:not(.dark-theme) .mouse-glow {
-    background: radial-gradient(circle, var(--glow-color-light) 0%, transparent 70%);
+h2 { /* Estiliza todos os títulos de nível 2 (h2). */
+    text-align: center; /* Centraliza o texto do h2. */
+    font-size: 44px; /* Define o tamanho da fonte. */
+    margin-bottom: 80px; /* Adiciona uma margem na parte inferior do título. */
+    color: var(--text-color-light); /* Define a cor do texto usando uma variável. */
+    font-weight: 600; /* Define a espessura da fonte como semi-negrito. */
 }
 
-body.dark-theme .mouse-glow {
-    background: radial-gradient(circle, var(--glow-color-dark) 0%, transparent 70%);
+h2 .highlight { /* Estiliza um elemento com a classe 'highlight' dentro de um h2. */
+    color: var(--highlight-color); /* Aplica a cor de destaque a este texto específico. */
 }
 
-body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding-top: 60px;
-    color: var(--text-color);
-    transition: color 0.4s ease;
-    line-height: 1.9;
+.section { /* Estiliza todas as seções principais da página. */
+    padding: 120px 100px; /* Adiciona espaçamento interno (vertical e horizontal). */
+    position: relative; /* Define o contexto de posicionamento para elementos filhos. */
+    z-index: 1; /* Garante que a seção fique acima de elementos de fundo com z-index menor. */
+    color: var(--text-color-light); /* Define a cor do texto para a seção. */
+    border-bottom: none; /* Remove qualquer borda inferior que possa existir. */
 }
 
-body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--background-color);
-    z-index: -2;
-    transition: background-color 0.4s ease;
+/* --- TEMA RGB (PRIMEIRA SEÇÃO) --- */
+.rgb-background { /* Classe para a seção com fundo animado tipo "aurora". */
+    background-color: var(--rgb-background-color); /* Define a cor de fundo base para este tema. */
+    position: relative; /* Necessário para posicionar os pseudo-elementos ::before e ::after. */
+    overflow: hidden; /* Esconde as partes dos gradientes que excedem os limites do elemento. */
+    min-height: calc(100vh - 80px); /* Define a altura mínima como a altura da tela menos a altura da navbar. */
 }
 
-/* --- Navbar --- */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 60px;
-    background-color: var(--navbar-bg);
-    box-shadow: 0 4px 10px var(--shadow-color);
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1000;
-    transition: background-color 0.4s ease;
-    flex-wrap: nowrap;
-    box-sizing: border-box;
+.rgb-background::before { /* Pseudo-elemento para criar o efeito de aurora principal. */
+    content: ""; /* Necessário para que o pseudo-elemento seja exibido. */
+    position: absolute; /* Posiciona o efeito em relação ao elemento pai (.rgb-background). */
+    top: 0; /* Alinha no topo. */
+    left: 0; /* Alinha à esquerda. */
+    width: 100%; /* Ocupa toda a largura. */
+    height: 100%; /* Ocupa toda a altura. */
+    background: /* Define múltiplos gradientes para criar a aparência de aurora. */
+        radial-gradient( /* Primeiro gradiente radial (roxo). */
+            ellipse at 20% 30%,
+            rgba(37, 0, 26, 0.7) 0%,
+            rgba(43, 0, 43, 0) 50%
+        ),
+        radial-gradient( /* Segundo gradiente radial (azul). */
+            ellipse at 80% 50%,
+            rgb(37, 0, 26, 0.7) 0%,
+            rgba(67, 0, 83, 0) 50%
+        ),
+        radial-gradient( /* Terceiro gradiente - AGORA É MAGENTA/ROXO! */
+            ellipse at 10% 80%,
+            rgba(37, 0, 26, 0.7) 0%, /* <-- ESSA LINHA FOI ALTERADA */
+            rgba(0, 0, 0, 0) 50%   /* <-- E ESSA TAMBÉM */
+        ),
+        linear-gradient(135deg, #000000 0%, #0a0520 100%); /* Gradiente de fundo base. */
+    background-blend-mode: overlay, screen, hard-light; /* Mistura os gradientes para um efeito mais complexo. */
+    animation: aurora-drift 0s infinite alternate ease-in-out; /* Aplica uma animação de movimento lento e contínuo. */
+    z-index: -2; /* Coloca o efeito atrás do conteúdo e do ::after. */
 }
 
-.navbar-left .logo {
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    font-size: 26px;
-    color: var(--text-color);
+.rgb-background::after { /* Pseudo-elemento para adicionar um efeito de pulsação e vinheta. */
+    content: ""; /* Necessário para que o pseudo-elemento seja exibido. */
+    position: absolute; /* Posiciona em relação ao elemento pai. */
+    width: 100%; /* Ocupa toda a largura. */
+    height: 100%; /* Ocupa toda a altura. */
+    background: radial-gradient( /* Cria uma vinheta escura nas bordas. */
+        circle at center,
+        transparent 70%,
+        rgba(10, 5, 32, 0.9) 100%
+    );
+    animation: aurora-pulse 8s infinite alternate; /* Aplica uma animação de pulsação suave. */
+    z-index: -1; /* Coloca este efeito entre o ::before e o conteúdo da seção. */
 }
 
-.navbar-center {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    margin: 0 50px;
+/* --- TEMA DE GRADE (OUTRAS SEÇÕES) --- */
+.grid-background { /* Classe para seções com fundo de grade. */
+    background: #000000; /* Define a cor de fundo base como preto. */
+    --gap: 5em; /* Define uma variável local para o espaçamento da grade (não usada diretamente aqui). */
+    --line: 1px; /* Define uma variável local para a espessura da linha (não usada diretamente aqui). */
+    --color: rgba(138, 43, 226, 0.3); /* Define uma variável local para a cor da linha da grade. */
+
+    background-image: linear-gradient( /* Cria as linhas horizontais da grade. */
+        180deg, /* Direção do gradiente (vertical). */
+        transparent 24%, /* Espaço transparente. */
+        var(--color) 25%, /* Início da linha. */
+        var(--color) 26%, /* Fim da linha (define a espessura). */
+        transparent 27%, /* Espaço transparente. */
+        transparent 74%, /* Espaço transparente. */
+        var(--color) 75%, /* Início da segunda linha. */
+        var(--color) 76%, /* Fim da segunda linha. */
+        transparent 77%, /* Espaço transparente. */
+        transparent
+    ),
+    linear-gradient( /* Cria as linhas diagonais da grade. */
+        45deg, /* Direção do gradiente (diagonal). */
+        transparent 24%,
+        var(--color) 35%, /* As porcentagens aqui criam o efeito diagonal. */
+        var(--color) 26%,
+        transparent 17%,
+        transparent 74%,
+        var(--color) 75%,
+        var(--color) 76%,
+        transparent 77%,
+        transparent
+    );
+    background-size: 55px 55px; /* Define o tamanho do padrão que se repete, criando a grade. */
+    border-bottom: 1px solid var(--color); /* Adiciona uma borda na parte inferior da seção com a cor da grade. */
 }
 
-.navbar-center ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    white-space: nowrap;
+/* Remover fundo e borda dos itens da timeline */
+.grid-background .timeline-item .timeline-content { /* Seleciona o conteúdo de um item da timeline dentro da seção de grade. */
+    background-color: transparent; /* Torna o fundo transparente para que a grade seja visível. */
+    border: none; /* Remove a borda. */
+    box-shadow: none; /* Remove a sombra. */
 }
 
-.navbar-center ul li {
-    margin: 0 30px;
-}
-
-.navbar-center ul li a {
-    text-decoration: none;
-    color: var(--navbar-link-color);
-    font-weight: bold;
-    transition: color 0.3s ease, transform 0.2s ease, border-bottom 0.2s ease;
-}
-
-.navbar-center ul li a:hover {
-    color: var(--navbar-link-hover);
-    transform: translateY(-2px);
-    border-bottom: 2px solid var(--navbar-link-hover);
-    padding-bottom: 3px;
-}
-
-.navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.navbar-right .icon-button {
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 20px;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.2s ease;
-    padding: 8px;
-    border-radius: 5px;
-}
-
-.navbar-right .icon-button:hover {
-    color: var(--navbar-link-hover);
-    transform: translateY(-2px);
-    background-color: rgba(0, 0, 0, 0.05);
-}
-body.dark-theme .navbar-right .icon-button:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-}
-
-.menu-toggle {
-    display: none;
-    background: none;
-    border: none;
-    color: var(--text-color);
-    font-size: 28px;
-    cursor: pointer;
-    padding: 5px 10px;
-}
-
-/* --- Seções --- */
-.section {
-    padding: 180px 100px;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.section:last-child {
-    border-bottom: none;
-    padding-bottom: 160px;
-}
-
-h2 {
-    text-align: center;
-    font-size: 44px;
-    margin-bottom: 140px;
-    color: var(--text-color);
-    font-weight: 600;
-}
-
-/* --- Hero Section (Início) --- */
-.hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 200px 100px;
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-content {
-    flex: 1;
-    text-align: center;
-    margin-right: 100px;
-    position: relative;
-    z-index: 1;
-}
-
-.hero-content h1 {
-    font-size: 60px;
-    margin-bottom: 40px;
-    color: var(--text-color);
-    font-weight: 700;
-}
-
-.hero-content p {
-    font-size: 28px;
-    color: var(--text-color);
-}
-
-.hero-image-wrapper {
-    position: relative;
-    flex: 0.5;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* NOVO: Grupo que contém a imagem e o balão e que vai flutuar */
-.floating-group {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* A animação de flutuação foi movida para cá! */
-    animation: float-image 2s ease-in-out infinite alternate;
-}
-
-/* Div que serve de moldura para a imagem (círculo) */
-.hero-image {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    box-shadow: 0 8px 20px var(--shadow-color);
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-}
-
-.hero-image::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.4), transparent 60%);
-    animation: pulse-led-white 2s ease-in-out infinite alternate;
-    z-index: -1;
-}
-
-/* A imagem em si não precisa mais de animação */
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    image-rendering: pixelated;
-}
-
-/* --- Balão de Fala (POSIÇÃO CORRIGIDA) --- */
-.speech-bubble h4{
-    position: absolute;
-    top: 0;
-    left: 95%;
-    background-color: white;
-    color: #333;
-    padding: 12px 18px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    font-size: 16px;
-    font-weight: 500;
-    white-space: nowrap;
-    z-index: 10;
-    opacity: 0;
-    /* A animação de flutuação foi removida daqui para evitar conflito */
-    animation: fadeInBubble 0.0s ease-out 0s forwards;
-}
-
-/* Ponta do balão */
-.speech-bubble::after  {
-    content: '';
-    position: absolute;
-    top: 25%;
-    left: 320px;
-    transform: translateX(-50%);
-    width: 0;
-    height: 0;
-    border: 12px solid transparent;
-    border-top-color: white;
-
-
-
+/* Manter o fundo transparente para cards e skills */
+.grid-background .card, .grid-background .skill-bar-card, .grid-background .characteristic-card { /* Seleciona vários tipos de cards dentro da seção de grade. */
+    background-color: rgba(0, 0, 0, 0.4); /* Aplica um fundo preto semi-transparente. */
+    box-shadow: 0 4px 15px var(--rgb-shadow-color); /* Adiciona uma sombra sutil. */
+    border: 1px solid rgba(138, 43, 226, 0.3); /* Adiciona uma borda roxa semi-transparente. */
+    backdrop-filter: blur(5px); /* Aplica um efeito de desfoque no que está atrás do card (efeito "vidro fosco"). */
 }
 
 
-/* --- Habilidades --- */
-.skills-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 80px;
-    max-width: 1400px;
-    margin: 0 auto;
+/* --- NAVBAR --- */
+.navbar { /* Estiliza a barra de navegação. */
+    display: flex; /* Habilita o layout flexbox para alinhar os itens. */
+    justify-content: space-between; /* Distribui os itens com espaço entre eles (logo na esquerda, links no centro, ícones na direita). */
+    align-items: center; /* Centraliza os itens verticalmente. */
+    padding: 15px 60px; /* Adiciona espaçamento interno (vertical e horizontal). */
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo preto semi-transparente. */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); /* Adiciona uma sombra para dar profundidade. */
+    position: fixed; /* Fixa a navbar no topo da página ao rolar. */
+    width: 100%; /* Faz a navbar ocupar toda a largura da tela. */
+    top: 0; /* Posiciona no topo. */
+    left: 0; /* Posiciona à esquerda. */
+    z-index: 1000; /* Garante que a navbar fique acima da maioria dos outros elementos. */
+    transition: all 0.4s ease; /* Adiciona transição suave para todas as propriedades que mudam. */
+    box-sizing: border-box; /* Garante que o padding não aumente a largura total do elemento. */
+    backdrop-filter: blur(10px); /* Adiciona um efeito de desfoque no fundo atrás da navbar. */
 }
 
-.skill-card {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 50px;
-    text-align: center;
-    box-shadow: 0 6px 15px var(--shadow-color);
-    transition: transform 0.3s ease, background-color 0.3s;
+/* Classe para esconder a barra de navegação */
+.navbar-hidden { /* Classe para ser adicionada via JavaScript para ocultar a navbar. */
+    opacity: 0; /* Torna a navbar invisível. */
+    visibility: hidden; /* Esconde o elemento e o remove do fluxo de acessibilidade. */
+    transform: translateY(-100%); /* Move a navbar para cima, para fora da tela. */
 }
 
-.skill-card:hover {
-    transform: translateY(-10px) !important;
+.navbar-left { /* Contêiner para os elementos da esquerda da navbar (logo). */
+    display: flex; /* Habilita o flexbox. */
+    align-items: center; /* Alinha os itens verticalmente. */
 }
 
-
-.skill-card img {
-    width: 90px;
-    height: 90px;
-    object-fit: contain;
-    margin-bottom: 30px;
+.logo-container { /* Contêiner específico para o logo. */
+    display: flex; /* Habilita o flexbox. */
+    align-items: center; /* Alinha os itens verticalmente. */
+    gap: 2px; /* Adiciona um pequeno espaço entre os elementos do logo. */
+    height: 50px; /* Define uma altura fixa para o contêiner. */
 }
 
-.skill-card h3 {
-    font-size: 28px;
-    color: var(--text-color);
-    margin-bottom: 20px;
+.logo-container .logo { /* Estiliza o texto do logo. */
+    font-weight: bold; /* Deixa o texto em negrito. */
+    font-size: 26px; /* Define o tamanho da fonte. */
+    color: var(--text-color-light); /* Define a cor do texto usando uma variável. */
 }
 
-.skill-card p {
-    font-size: 20px;
-    color: var(--text-color);
+.navbar-center { /* Contêiner para os links de navegação no centro. */
+    flex-grow: 1; /* Permite que este contêiner cresça para ocupar o espaço disponível. */
+    display: flex; /* Habilita o flexbox. */
+    justify-content: center; /* Centraliza os itens filhos (a lista de links) horizontalmente. */
 }
 
-/* --- Experiência --- */
-.experience-item {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 50px;
-    margin-bottom: 70px;
-    box-shadow: 0 6px 15px var(--shadow-color);
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    transition: background-color 0.3s, transform 0.3s ease;
+.navbar-center ul { /* Estiliza a lista não ordenada (ul) que contém os links. */
+    list-style: none; /* Remove os marcadores (bolinhas) da lista. */
+    margin: 0; /* Remove a margem padrão. */
+    padding: 0; /* Remove o padding padrão. */
+    display: flex; /* Coloca os itens da lista (li) em linha. */
+    gap: 40px; /* Adiciona um espaço entre cada item da lista. */
 }
 
-.experience-item:hover {
-    transform: translateY(-10px) !important;
+.navbar-center ul li a { /* Estiliza os links (a) dentro dos itens da lista. */
+    text-decoration: none; /* Remove o sublinhado padrão dos links. */
+    color: var(--text-color-light); /* Define a cor do texto. */
+    font-weight: bold; /* Deixa o texto em negrito. */
+    padding-bottom: 5px; /* Adiciona um espaçamento inferior para a borda. */
+    transition: color 0.3s ease, border-color 0.3s ease; /* Adiciona transição suave para a cor do texto e da borda. */
+    border-bottom: 2px solid transparent; /* Cria uma borda inferior transparente que aparecerá no hover. */
 }
 
-.experience-item:last-of-type {
-    margin-bottom: 0;
+.navbar-center ul li a:hover { /* Estiliza os links ao passar o mouse sobre eles. */
+    color: var(--rgb-highlight-color); /* Muda a cor do texto para a cor de destaque. */
+    border-bottom-color: var(--rgb-highlight-color); /* Torna a borda inferior visível com a cor de destaque. */
 }
 
-.experience-item h3 {
-    font-size: 30px;
-    color: var(--text-color);
-    margin-bottom: 12px;
+.navbar-right { /* Contêiner para os elementos da direita da navbar (ícones). */
+    display: flex; /* Habilita o flexbox. */
+    align-items: center; /* Alinha os itens verticalmente. */
+    gap: 25px; /* Adiciona um espaço entre os ícones. */
 }
 
-.experience-item p {
-    font-size: 22px;
-    color: var(--text-color);
-    margin-bottom: 12px;
+.navbar-right .icon-button { /* Estiliza os botões de ícone. */
+    background: none; /* Remove o fundo do botão. */
+    border: none; /* Remove a borda do botão. */
+    color: var(--text-color-light); /* Define a cor do ícone. */
+    font-size: 20px; /* Define o tamanho do ícone. */
+    cursor: pointer; /* Muda o cursor para uma mãozinha, indicando que é clicável. */
+    transition: color 0.3s ease, transform 0.2s ease; /* Adiciona transição suave para cor e transformação. */
 }
 
-/* --- Projetos --- */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-    gap: 80px;
-    max-width: 1400px;
-    margin: 0 auto;
+.navbar-right .icon-button:hover { /* Estiliza os botões de ícone no hover. */
+    color: var(--rgb-highlight-color); /* Muda a cor do ícone para a cor de destaque. */
+    transform: translateY(-2px); /* Move o ícone ligeiramente para cima. */
 }
 
-.project-card {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 40px;
-    box-shadow: 0 6px 15px var(--shadow-color);
-    transition: transform 0.3s ease, background-color 0.3s;
+.menu-toggle { /* Estiliza o botão de menu "hambúrguer" para telas pequenas. */
+    display: none; /* Esconde o botão por padrão em telas grandes. */
+    background: none; /* Remove o fundo. */
+    border: none; /* Remove a borda. */
+    color: var(--text-color-light); /* Define a cor do ícone. */
+    font-size: 28px; /* Define o tamanho do ícone. */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável. */
 }
 
-.project-card:hover {
-    transform: translateY(-10px) !important;
+/* --- SEÇÃO HERO --- */
+.hero-section { /* Estiliza a seção principal de apresentação (hero). */
+    display: flex; /* Habilita o flexbox para alinhar conteúdo e imagem. */
+    align-items: center; /* Centraliza os itens verticalmente. */
+    justify-content: center; /* Centraliza horizontalmente o wrapper do conteúdo. */
+    min-height: calc(80vh - 80px); /* Define a altura mínima da seção. */
+    position: relative; /* Define o contexto de posicionamento. */
+    overflow: hidden; /* Esconde qualquer conteúdo que transborde. */
+    max-width: 2000px; /* Define uma largura máxima para o conteúdo da seção. */
+    margin: 0 auto; /* Centraliza a seção na página. */
+    padding: 0 100px; /* Adiciona espaçamento horizontal, remove o vertical. */
+    padding-bottom: 200px; /* Adiciona um espaçamento inferior para acomodar elementos flutuantes ou outros. */
 }
 
-.project-card img {
-    width: 100%;
-    /* Adicione uma altura fixa e mantenha object-fit para cortar se necessário */
-    height: 150px; /* Ou o valor que se adequar melhor ao seu design */
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 30px;
+.hero-content-wrapper { /* Novo contêiner para agrupar o texto e a imagem do hero. */
+    display: flex; /* Habilita o flexbox. */
+    align-items: center; /* Alinha o texto e a imagem verticalmente. */
+    justify-content: space-between; /* Coloca o texto de um lado e a imagem do outro com espaço entre eles. */
+    width: 100%; /* Ocupa toda a largura do .hero-section. */
+    padding-top: 100px; /* Adiciona um espaçamento no topo para empurrar o conteúdo para baixo. */
 }
 
-.project-card h3 {
-    font-size: 28px;
-    color: var(--text-color);
-    margin-bottom: 20px;
+.hero-content { /* Estiliza a parte de texto da seção hero. */
+    flex: 1.5; /* Faz com que o contêiner de texto ocupe mais espaço que o da imagem (1.2 para 0.8). */
+    text-align: left; /* Alinha o texto à esquerda. */
+    z-index: 10; /* Garante que o texto fique acima dos efeitos de fundo. */
+    color: var(--rgb-text-color); /* Define a cor do texto. */
 }
 
-.project-card p {
-    font-size: 20px;
-    color: var(--text-color);
-    margin-bottom: 30px;
+.hero-content .highlight { /* Estiliza texto com a classe 'highlight' dentro do hero. */
+    color: var(--rgb-highlight-color); /* Aplica a cor de destaque. */
 }
 
-.project-tech-icons {
-    display: flex;
-    gap: 25px;
-    margin-top: 25px;
+.hero-content h1 { /* Estiliza o título principal do hero. */
+    font-size: 60px; /* Define o tamanho da fonte. */
+    font-weight: 500; /* Define a espessura da fonte. */
+    margin: 0; /* Remove a margem padrão. */
+    line-height: 1.2; /* Define a altura da linha. */
 }
 
-.project-tech-icons img {
-    width: 45px;
-    height: 45px;
-    object-fit: contain;
+.hero-content p { /* Estiliza o parágrafo do hero. */
+    font-size: 24px; /* Define o tamanho da fonte. */
+    margin-top: 20px; /* Adiciona uma margem superior. */
+    max-width: 600px; /* Limita a largura do parágrafo para melhor legibilidade. */
 }
 
-/* --- Contato --- */
-.contact-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 150px;
-    max-width: 1100px;
-    margin: 0 auto;
+.hero-social-links { /* Estiliza o contêiner dos links de redes sociais. */
+    display: flex; /* Coloca os links em linha. */
+    gap: 25px; /* Adiciona espaço entre os links. */
+    margin-top: 30px; /* Adiciona margem acima dos links. */
 }
 
-.contact-form {
-    flex: 1;
-    min-width: 350px;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+.hero-social-links a { /* Estiliza os links de redes sociais. */
+    color: var(--rgb-text-color); /* Define a cor do ícone. */
+    font-size: 32px; /* Define o tamanho do ícone. */
+    transition: color 0.3s ease, transform 0.3s ease; /* Adiciona transição suave para cor e transformação. */
 }
 
-.contact-form input,
-.contact-form textarea {
-    padding: 22px;
-    border: 1px solid var(--border-color);
-    border-radius: 8px;
-    background-color: var(--card-bg);
-    color: var(--text-color);
-    font-size: 20px;
-    transition: border-color 0.3s, background-color 0.3s;
+.hero-social-links a:hover { /* Estiliza os links de redes sociais no hover. */
+    color: var(--rgb-highlight-color); /* Muda a cor para a cor de destaque. */
+    transform: translateY(-4px); /* Move o ícone ligeiramente para cima. */
 }
 
-.contact-form input:focus,
-.contact-form textarea:focus {
-    border-color: var(--button-bg);
-    outline: none;
+.hero-image-wrapper { /* Contêiner para a imagem do hero. */
+    flex: 1.5; /* Faz com que o contêiner da imagem ocupe menos espaço que o do texto. */
+    display: flex; /* Habilita o flexbox. */
+    justify-content: center; /* Centraliza a imagem horizontalmente. */
+    align-items: center; /* Centraliza a imagem verticalmente. */
+    z-index: 10; /* Garante que a imagem fique acima dos efeitos de fundo. */
 }
 
-.contact-form button {
-    padding: 22px 40px;
-    background-color: var(--button-bg);
-    color: var(--button-text);
-    border: none;
-    border-radius: 8px;
-    font-size: 22px;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+.floating-group { /* Grupo que contém a imagem e o balão de fala, para aplicar a animação de flutuação. */
+    position: relative; /* Necessário para posicionar o balão de fala. */
+    animation: float-image 3s ease-in-out infinite alternate; /* Aplica a animação de flutuação. */
 }
 
-.contact-form button:hover {
-    background-color: var(--navbar-link-hover);
-    transform: translateY(-2px) !important;
+.hero-image { /* Estiliza o contêiner da imagem. */
+    width: 300px; /* Define a largura. */
+    height: 300px; /* Define a altura. */
+    border-radius: 50%; /* Torna o contêiner circular. */
+    box-shadow: 0 8px 30px var(--rgb-shadow-color); /* Adiciona uma sombra. */
+    overflow: hidden; /* Esconde as partes da imagem que saem do círculo. */
+    position: relative; /* Define o contexto de posicionamento para a imagem interna. */
 }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 60px;
-    margin-top: 60px;
+.hero-image img { /* Estiliza a imagem propriamente dita. */
+    width: 100%; /* Faz a imagem ocupar toda a largura do contêiner. */
+    height: 100%; /* Faz a imagem ocupar toda a altura do contêiner. */
+    object-fit: cover; /* Garante que a imagem cubra todo o espaço, cortando o excesso se necessário. */
+    image-rendering: pixelated; /* Mantém a aparência pixelada da imagem, se for o caso. */
 }
 
-.social-icon {
-    font-size: 60px;
-    color: var(--text-color);
-    transition: color 0.3s ease, transform 0.2s ease;
+.speech-bubble h4 { /* Estiliza o balão de fala. */
+    position: absolute; /* Posiciona o balão em relação ao .floating-group. */
+    top: 10%; /* Posição vertical. */
+    left: 90%; /* Posição horizontal. */
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente. */
+    color: var(--rgb-text-color); /* Cor do texto (a variável aqui pode ser trocada por uma cor escura se o fundo é claro). */
+    padding: 12px 18px; /* Espaçamento interno. */
+    border-radius: 12px; /* Bordas arredondadas. */
+    box-shadow: 0 4px 12px var(--rgb-shadow-color); /* Adiciona uma sombra. */
+    font-size: 16px; /* Tamanho da fonte. */
+    white-space: nowrap; /* Impede que o texto quebre em várias linhas. */
+    z-index: 10; /* Garante que fique visível. */
+    opacity: 0; /* Começa invisível para a animação. */
+    animation: fadeInBubble 0.5s 1s ease-out forwards; /* Aplica uma animação de fade-in com um atraso de 1 segundo. */
 }
 
-.social-icon:hover {
-    color: var(--navbar-link-hover);
-    transform: translateY(-3px);
+/* --- SEÇÃO SOBRE MIM --- */
+.about-section { /* Estiliza a seção "Sobre Mim". */
+    text-align: center; /* Centraliza o texto dos filhos diretos, como o h2. */
 }
 
-/* --- Media Queries para Responsividade --- */
+.about-intro { /* Estiliza o parágrafo introdutório da seção. */
+    font-size: 20px; /* Define o tamanho da fonte. */
+    max-width: 800px; /* Limita a largura para melhor legibilidade. */
+    margin: -60px auto 100px auto; /* Define margens: negativa no topo, automática nas laterais (centraliza), e grande na base. */
+    color: var(--rgb-text-color); /* Define a cor do texto. */
+    line-height: 1.6; /* Define a altura da linha. */
+    opacity: 0.9; /* Deixa o texto ligeiramente transparente. */
+}
 
-@media (max-width: 992px) {
-    .navbar {
-        padding: 15px 20px;
-        flex-wrap: wrap;
+.about-content { /* Contêiner que agrupa a timeline e as características. */
+    display: flex; /* Habilita o flexbox para colocar os itens lado a lado. */
+    justify-content: center; /* Centraliza o grupo de itens na página. */
+    gap: 80px; /* Adiciona um espaço grande entre a timeline e as características. */
+    max-width: 1400px; /* Define uma largura máxima. */
+    margin: 0 auto; /* Centraliza na página. */
+    text-align: left; /* Alinha o texto dentro dos filhos à esquerda novamente. */
+}
+
+.about-content h3 { /* Estiliza os subtítulos dentro da seção "Sobre Mim". */
+    font-size: 32px; /* Define o tamanho da fonte. */
+    color: var(--rgb-text-color); /* Define a cor do texto. */
+    margin-bottom: 40px; /* Adiciona uma margem inferior. */
+    text-align: center; /* Centraliza o subtítulo. */
+}
+
+.timeline-container { /* Contêiner para a timeline. */
+    flex: 1; /* Permite que o contêiner cresça e ocupe o espaço disponível. */
+    max-width: 450px; /* Define uma largura máxima. */
+}
+
+.timeline { /* O elemento principal da timeline. */
+    position: relative; /* Necessário para posicionar a linha vertical (::before). */
+}
+
+.timeline::before { /* Pseudo-elemento para criar a linha vertical da timeline. */
+    content: ''; /* Necessário para exibir o pseudo-elemento. */
+    position: absolute; /* Posiciona a linha em relação ao contêiner .timeline. */
+    width: 3px; /* Espessura da linha. */
+    background-color: var(--rgb-border-color); /* Cor da linha. */
+    top: 10px; /* Início da linha. */
+    bottom: 10px; /* Fim da linha. */
+    left: 8px; /* Posição horizontal da linha. */
+    border-radius: 2px; /* Bordas arredondadas. */
+}
+
+.timeline-item { /* Estiliza cada evento na timeline. */
+    position: relative; /* Necessário para posicionar o marcador de ponto (::after) e o conteúdo. */
+    margin-bottom: 40px; /* Adiciona espaço entre os itens. */
+    padding-left: 50px; /* Adiciona espaço à esquerda para o conteúdo, afastando-o da linha. */
+}
+
+.timeline-item:last-child { /* Seleciona o último item da timeline. */
+    margin-bottom: 0; /* Remove a margem inferior do último item. */
+}
+
+.timeline-year { /* Estiliza o ano do evento. */
+    font-size: 1em; /* Tamanho da fonte. */
+    font-weight: bold; /* Texto em negrito. */
+    color: var(--rgb-highlight-color); /* Cor de destaque. */
+    margin-bottom: 15px; /* Margem inferior. */
+    display: block; /* Garante que ocupe sua própria linha. */
+}
+
+.timeline-item::after { /* Pseudo-elemento para criar o ponto/marcador na linha da timeline. */
+    content: ''; /* Necessário para exibir o pseudo-elemento. */
+    position: absolute; /* Posiciona o ponto na linha. */
+    width: 12px; /* Largura do ponto. */
+    height: 12px; /* Altura do ponto. */
+    border-radius: 50%; /* Torna o marcador circular. */
+    background-color: var(--rgb-highlight-color); /* Cor do ponto. */
+    border: 3px solid var(--rgb-background-color); /* Cria uma borda ao redor do ponto com a cor de fundo, para um efeito de "recorte". */
+    left: 0; /* Posição horizontal do ponto. */
+    top: 8px; /* Posição vertical do ponto. */
+    z-index: 1; /* Garante que o ponto fique acima da linha. */
+}
+
+.timeline-content h4 { /* Estiliza o título do evento na timeline. */
+    font-size: 22px; /* Tamanho da fonte. */
+    margin-bottom: 8px; /* Margem inferior. */
+    color: var(--rgb-text-color); /* Cor do texto. */
+}
+
+.timeline-content p { /* Estiliza a descrição do evento na timeline. */
+    font-size: 16px; /* Tamanho da fonte. */
+    line-height: 1.6; /* Altura da linha. */
+    opacity: 0.9; /* Leve transparência. */
+}
+
+.characteristics-container { /* Contêiner para a seção de características. */
+    flex: 1.5; /* Faz com que este contêiner ocupe mais espaço que a timeline. */
+}
+
+.characteristics-grid { /* Estiliza a grade que contém os cards de características. */
+    display: grid; /* Habilita o layout de grade (grid). */
+    grid-template-columns: repeat(2, 1fr); /* Cria duas colunas de largura igual. */
+    gap: 30px; /* Adiciona espaço entre os cards. */
+}
+
+.characteristic-card { /* Estiliza cada card de característica. */
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo preto semi-transparente. */
+    border-radius: 12px; /* Bordas arredondadas. */
+    padding: 30px; /* Espaçamento interno. */
+    box-shadow: 0 4px 15px var(--rgb-shadow-color); /* Adiciona uma sombra. */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para transform e sombra no hover. */
+    border: 1px solid rgba(138, 43, 226, 0.3); /* Adiciona uma borda roxa sutil. */
+    color: var(--rgb-text-color); /* Cor do texto. */
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco. */
+}
+
+.characteristic-card:hover { /* Estiliza o card no hover. */
+    transform: translateY(-8px); /* Move o card ligeiramente para cima. */
+    box-shadow: 0 8px 25px var(--rgb-shadow-color); /* Aumenta a intensidade da sombra. */
+}
+
+.characteristic-card i { /* Estiliza o ícone dentro do card. */
+    font-size: 32px; /* Tamanho do ícone. */
+    color: var(--rgb-highlight-color); /* Cor de destaque para o ícone. */
+    margin-bottom: 20px; /* Margem inferior. */
+}
+
+.characteristic-card h4 { /* Estiliza o título do card. */
+    font-size: 20px; /* Tamanho da fonte. */
+    margin-bottom: 10px; /* Margem inferior. */
+    color: var(--rgb-text-color); /* Cor do texto. */
+}
+
+.characteristic-card p { /* Estiliza o parágrafo do card. */
+    font-size: 15px; /* Tamanho da fonte. */
+    line-height: 1.6; /* Altura da linha. */
+    opacity: 0.9; /* Leve transparência. */
+}
+
+/* --- SEÇÃO DE PROJETOS (EXPANDING GALLERY RESPONSIVA MELHORADA) --- */
+.expanding-gallery { /* Estiliza o contêiner da galeria expansível. */
+    display: flex; /* Habilita o flexbox para colocar os painéis lado a lado. */
+    width: 90vw; /* Largura de 90% da largura da tela. */
+    max-width: 1400px; /* Largura máxima. */
+    margin: 40px auto; /* Centraliza a galeria na página. */
+    height: 70vh; /* Altura de 70% da altura da tela. */
+    gap: 12px; /* Espaço entre os painéis. */
+}
+
+.panel { /* Estiliza cada painel/card da galeria. */
+    background-size: auto 101%; /* Ajusta o tamanho da imagem de fundo para cobrir o painel. */
+    background-position: center 30%; /* Posição da imagem de fundo. */
+    background-repeat: no-repeat; /* Impede que a imagem de fundo se repita. */
+    height: 85%; /* Altura do painel. */
+    border-radius: 10px; /* Bordas arredondadas. */
+    color: var(--text-color-light); /* Cor do texto. */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável. */
+    flex: 1; /* Define o fator de crescimento inicial (todos os painéis têm a mesma largura). */
+    position: relative; /* Necessário para posicionar o conteúdo e o overlay. */
+    overflow: hidden; /* Esconde o conteúdo que transborda. */
+    transition: flex 0.7s cubic-bezier(0.4, 0, 0.2, 1), /* Anima a mudança de 'flex' para o efeito de expansão. */
+                box-shadow 0.3s ease-in-out, /* Anima a sombra. */
+                transform 0.3s ease-in-out; /* Anima a transformação. */
+    box-shadow: 0 8px 25px var(--rgb-shadow-color); /* Sombra inicial. */
+}
+
+.panel:hover { /* Estiliza o painel no hover. */
+    flex: 4; /* Aumenta o fator de crescimento, fazendo o painel expandir. */
+    box-shadow: 0 15px 40px var(--rgb-shadow-color); /* Aumenta a sombra. */
+    transform: translateY(-5px); /* Move o painel ligeiramente para cima. */
+}
+
+.panel::before { /* Pseudo-elemento para criar um overlay escuro sobre a imagem. */
+    content: ''; /* Necessário para exibir o pseudo-elemento. */
+    position: absolute; /* Posição absoluta em relação ao painel. */
+    top: 0; /* Alinha no topo. */
+    left: 0; /* Alinha à esquerda. */
+    width: 100%; /* Largura total. */
+    height: 100%; /* Altura total. */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0,0,0,0) 100%); /* Gradiente de baixo para cima, mais escuro na base. */
+    opacity: 0.6; /* Opacidade inicial. */
+    transition: opacity 0.5s ease; /* Transição suave para a opacidade. */
+    z-index: 1; /* Coloca o overlay acima da imagem de fundo, mas abaixo do texto. */
+}
+
+.panel:hover::before { /* Estiliza o overlay no hover do painel. */
+    opacity: 1; /* Aumenta a opacidade para escurecer mais a imagem e destacar o texto. */
+}
+
+.panel-content { /* Contêiner para o texto dentro do painel. */
+    position: absolute; /* Posicionado em relação ao painel. */
+    bottom: 30px; /* Distância da parte inferior. */
+    left: 30px; /* Distância da esquerda. */
+    right: 30px; /* Distância da direita. */
+    z-index: 2; /* Garante que o texto fique acima do overlay (::before). */
+    opacity: 0; /* Começa invisível. */
+    transform: translateY(20px); /* Começa deslocado para baixo. */
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s, /* Anima a opacidade com um pequeno atraso. */
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1) 0.2s; /* Anima a posição com um pequeno atraso. */
+}
+
+.panel:hover .panel-content { /* Exibe o conteúdo quando o mouse está sobre o painel. */
+    opacity: 1; /* Torna o conteúdo visível. */
+    transform: translateY(0); /* Move o conteúdo para sua posição final. */
+}
+
+.panel-content h3 { /* Estiliza o título do projeto. */
+    font-size: 28px; /* Tamanho da fonte. */
+    margin: 0; /* Remove a margem. */
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.9); /* Adiciona uma sombra ao texto para melhorar a legibilidade sobre a imagem. */
+}
+
+.panel-content p { /* Estiliza a descrição do projeto. */
+    font-size: 16px; /* Tamanho da fonte. */
+    margin-top: 10px; /* Margem superior. */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8); /* Sombra no texto. */
+    max-width: 90%; /* Largura máxima da descrição. */
+    line-height: 1.4; /* Altura da linha. */
+}
+
+/* --- SEÇÃO DE HABILIDADES E OUTRAS --- */
+.skills-grid-container { /* Contêiner para a grade de habilidades. */
+    display: grid; /* Habilita o layout de grade. */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Cria colunas responsivas: elas se ajustam automaticamente, com um tamanho mínimo de 350px. */
+    gap: 30px; /* Espaço entre os cards de habilidade. */
+    max-width: 1400px; /* Largura máxima do contêiner. */
+    margin: 0 auto; /* Centraliza na página. */
+}
+
+.skill-bar-card { /* Estiliza cada card que contém uma barra de habilidade. */
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo preto semi-transparente. */
+    border-radius: 12px; /* Bordas arredondadas. */
+    padding: 25px 30px; /* Espaçamento interno. */
+    box-shadow: 0 4px 15px var(--rgb-shadow-color); /* Adiciona uma sombra. */
+    border: 1px solid rgba(138, 43, 226, 0.3); /* Borda roxa sutil. */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transição suave para o hover. */
+    color: var(--rgb-text-color); /* Cor do texto. */
+    backdrop-filter: blur(5px); /* Efeito de vidro fosco. */
+}
+
+.skill-bar-card:hover { /* Estiliza o card de habilidade no hover. */
+    transform: translateY(-8px); /* Move o card para cima. */
+    box-shadow: 0 8px 25px var(--rgb-shadow-color); /* Aumenta a sombra. */
+}
+
+.skill-header { /* Cabeçalho dentro do card de habilidade. */
+    display: flex; /* Habilita o flexbox. */
+    align-items: center; /* Alinha os itens verticalmente. */
+    justify-content: space-between; /* Coloca os elementos nas extremidades (informações à esquerda, porcentagem à direita). */
+    margin-bottom: 15px; /* Margem inferior. */
+}
+
+.skill-info { /* Contêiner para o ícone e o título da habilidade. */
+    display: flex; /* Habilita o flexbox. */
+    align-items: center; /* Alinha os itens verticalmente. */
+    gap: 15px; /* Espaço entre o ícone e o texto. */
+}
+
+.skill-icon { /* Estiliza o ícone da habilidade. */
+    font-size: 28px; /* Tamanho do ícone. */
+    width: 30px; /* Largura fixa para alinhamento. */
+    text-align: center; /* Centraliza o ícone dentro de sua largura. */
+    color: var(--rgb-text-color); /* Cor do ícone. */
+    opacity: 0.9; /* Leve transparência. */
+}
+
+.skill-title-group { /* Agrupa o nome e a categoria da habilidade. */
+    display: flex; /* Habilita o flexbox. */
+    flex-direction: column; /* Coloca o nome e a categoria um sobre o outro. */
+}
+
+.skill-name { /* Estiliza o nome da habilidade. */
+    font-size: 1.1em; /* Tamanho da fonte. */
+    font-weight: 600; /* Espessura da fonte. */
+    color: var(--rgb-text-color); /* Cor do texto. */
+}
+
+.skill-category { /* Estiliza a categoria da habilidade (ex: Frontend). */
+    font-size: 0.8em; /* Tamanho da fonte menor. */
+    color: var(--rgb-text-color); /* Cor do texto. */
+    opacity: 0.6; /* Deixa o texto mais transparente. */
+}
+
+.skill-percentage { /* Estiliza o texto da porcentagem de habilidade. */
+    font-size: 0.9em; /* Tamanho da fonte. */
+    font-weight: 600; /* Espessura da fonte. */
+    color: var(--rgb-text-color); /* Cor do texto. */
+    opacity: 0.8; /* Leve transparência. */
+}
+
+.progress-bar-container { /* Contêiner da barra de progresso. */
+    width: 100%; /* Largura total. */
+    height: 8px; /* Altura da barra. */
+    background-color: rgba(128, 128, 128, 0.2); /* Cor de fundo da barra (a parte "vazia"). */
+    border-radius: 4px; /* Bordas arredondadas. */
+    overflow: hidden; /* Garante que a barra de preenchimento não saia das bordas arredondadas. */
+}
+
+.progress-bar-level { /* A parte preenchida da barra de progresso. */
+    height: 100%; /* Altura total. */
+    width: 0; /* Começa com largura 0, será animada via JavaScript. */
+    border-radius: 4px; /* Bordas arredondadas. */
+    background-color: var(--rgb-highlight-color); /* Cor padrão do preenchimento. */
+    transition: width 2s ease-in-out; /* Anima a mudança de largura suavemente. */
+}
+
+.bar-html { background: linear-gradient(90deg, #E44D26, #F16529); } /* Gradiente específico para a barra de HTML. */
+.bar-css { background: linear-gradient(90deg, #1572B6, #33A9DC); } /* Gradiente específico para a barra de CSS. */
+.bar-js { background: linear-gradient(90deg, #F7DF1E, #E5C311); } /* Gradiente específico para a barra de JavaScript. */
+.bar-react { background: linear-gradient(90deg, #61DAFB, #3498DB); } /* Gradiente específico para a barra de React. */
+.bar-node { background: linear-gradient(90deg, #8CC84B, #68A063); } /* Gradiente específico para a barra de Node.js. */
+.bar-typescript { background: linear-gradient(90deg, #3178C6, #00529B); } /* Gradiente específico para a barra de TypeScript. */
+.bar-python { background: linear-gradient(90deg, #3776AB, #FFD43B); } /* Gradiente específico para a barra de Python. */
+.bar-yolo { background: linear-gradient(90deg, #8A2BE2, #4B0082); } /* Gradiente específico para a barra de YOLO. */
+.bar-cpp { background: linear-gradient(90deg, #00599C, #659AD2); } /* Gradiente específico para a barra de C++. */
+
+
+/* --- RODAPÉ --- */
+.site-footer { /* Estiliza o rodapé do site. */
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo preto semi-transparente. */
+    padding: 40px 25px; /* Espaçamento interno. */
+    border-top: 1px solid rgba(138, 43, 226, 0.3); /* Linha roxa sutil no topo do rodapé. */
+    position: relative; /* Contexto de posicionamento. */
+    z-index: 1; /* Garante que fique acima de elementos de fundo. */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco. */
+}
+
+.footer-container { /* Contêiner principal do conteúdo do rodapé. */
+    max-width: 1400px; /* Largura máxima. */
+    margin: 0 auto; /* Centraliza na página. */
+    display: flex; /* Habilita o flexbox. */
+    justify-content: space-between; /* Coloca o copyright de um lado e as redes sociais do outro. */
+    align-items: center; /* Alinha verticalmente os itens. */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a linha de baixo em telas pequenas. */
+    gap: 20px; /* Espaço entre os itens se eles quebrarem a linha. */
+}
+
+.footer-copyright p { /* Estiliza o texto de copyright. */
+    margin: 0; /* Remove a margem padrão. */
+    font-size: 1em; /* Tamanho da fonte. */
+    opacity: 0.8; /* Leve transparência. */
+    color: var(--rgb-text-color); /* Cor do texto. */
+}
+
+.footer-social { /* Contêiner para os ícones de redes sociais no rodapé. */
+    display: flex; /* Coloca os ícones em linha. */
+    gap: 25px; /* Espaço entre os ícones. */
+}
+
+.footer-social a { /* Estiliza cada link de rede social. */
+    color: var(--rgb-text-color); /* Cor do ícone. */
+    font-size: 1.5em; /* Tamanho do ícone. */
+    transition: color 0.3s ease, transform 0.3s ease; /* Transição suave para o hover. */
+}
+
+.footer-social a:hover { /* Estiliza o link no hover. */
+    color: var(--rgb-highlight-color); /* Muda a cor para a cor de destaque. */
+    transform: translateY(-3px); /* Move o ícone ligeiramente para cima. */
+}
+
+/* --- ANIMAÇÕES E ESTILOS DO ÍCONE GHOST --- */
+#ghost { /* Contêiner principal da animação do fantasma. */
+    position: relative; /* Contexto de posicionamento para as partes do fantasma. */
+    animation: upNDown infinite 2s; /* Aplica a animação de subir e descer. */
+    transform: scale(0.25); /* Reduz o tamanho do fantasma para 25% do original. */
+    z-index: 2; /* Garante que fique visível. */
+}
+
+#red { /* Contêiner que forma o corpo do fantasma usando CSS Grid. */
+    position: relative; /* Contexto de posicionamento para os olhos. */
+    width: 140px; /* Largura do grid. */
+    height: 140px; /* Altura do grid. */
+    display: grid; /* Habilita o layout de grade. */
+    grid-template-columns: repeat(14, 1fr); /* Cria 14 colunas de igual largura. */
+    grid-template-rows: repeat(14, 1fr); /* Cria 14 linhas de igual altura. */
+    grid-column-gap: 0px; /* Sem espaço entre colunas. */
+    grid-row-gap: 0px; /* Sem espaço entre linhas. */
+    grid-template-areas: /* Mapeia nomes para áreas do grid, desenhando a forma do fantasma. */
+        "a1 a2 a3 a4 a5 top0 top0 top0 top0 a10 a11 a12 a13 a14"
+        "b1 b2 b3 top1 top1 top1 top1 top1 top1 top1 top1 b12 b13 b14"
+        "c1 c2 top2 top2 top2 top2 top2 top2 top2 top2 top2 top2 c13 c14"
+        "d1 top3 top3 top3 top3 top3 top3 top3 top3 top3 top3 top3 top3 d14"
+        "e1 top3 top3 top3 top3 top3 top3 top3 top3 top3 top3 top3 top3 e14"
+        "f1 top3 top3 top3 top3 top3 top3 top3 top3 top3 top3 top3 top3 f14"
+        "top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4"
+        "top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4"
+        "top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4"
+        "top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4"
+        "top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4"
+        "top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4 top4"
+        "st0 st0 an4 st1 an7 st2 an10 an10 st3 an13 st4 an16 st5 st5"
+        "an1 an2 an3 an5 an6 an8 an9 an9 an11 an12 an14 an15 an17 an18";
+}
+
+@keyframes upNDown { /* Define a animação de flutuação vertical. */
+    0%, 100% { transform: translateY(0px) scale(0.25); } /* Posição inicial e final. */
+    50% { transform: translateY(-10px) scale(0.25); } /* Posição no meio da animação (mais alta). */
+}
+
+#top0, #top1, #top2, #top3, #top4, #st0, #st1, #st2, #st3, #st4, #st5 { /* Seleciona todas as partes sólidas do corpo do fantasma. */
+    background-color: var(--rgb-highlight-color); /* Define a cor do corpo do fantasma. */
+}
+
+#top0 { grid-area: top0; } /* Associa o seletor à sua área no grid. */
+#top1 { grid-area: top1; } /* Associa o seletor à sua área no grid. */
+#top2 { grid-area: top2; } /* Associa o seletor à sua área no grid. */
+#top3 { grid-area: top3; } /* Associa o seletor à sua área no grid. */
+#top4 { grid-area: top4; } /* Associa o seletor à sua área no grid. */
+#st0 { grid-area: st0; } /* Associa o seletor à sua área no grid. */
+#st1 { grid-area: st1; } /* Associa o seletor à sua área no grid. */
+#st2 { grid-area: st2; } /* Associa o seletor à sua área no grid. */
+#st3 { grid-area: st3; } /* Associa o seletor à sua área no grid. */
+#st4 { grid-area: st4; } /* Associa o seletor à sua área no grid. */
+#st5 { grid-area: st5; } /* Associa o seletor à sua área no grid. */
+
+/* Animações dos tentáculos */
+#an1, #an18 { animation: flicker0 infinite 0.5s; } /* Aplica a animação 'flicker0' aos "tentáculos" externos. */
+#an2, #an17 { animation: flicker1 infinite 0.5s; } /* Aplica a animação 'flicker1' aos "tentáculos" seguintes. */
+#an3, #an16 { animation: flicker1 infinite 0.5s; } /* Continua aplicando as animações alternadamente. */
+#an4, #an15 { animation: flicker1 infinite 0.5s; }
+#an6, #an12 { animation: flicker0 infinite 0.5s; }
+#an7, #an13 { animation: flicker0 infinite 0.5s; }
+#an9, #an10 { animation: flicker1 infinite 0.5s; }
+#an8, #an11 { animation: flicker0 infinite 0.5s; }
+
+@keyframes flicker0 { /* Define a animação que pisca da cor para transparente. */
+    0%, 49% { background-color: var(--rgb-highlight-color); } /* Visível na primeira metade. */
+    50%, 100% { background-color: transparent; } /* Invisível na segunda metade. */
+}
+
+@keyframes flicker1 { /* Define a animação que pisca de transparente para a cor. */
+    0%, 49% { background-color: transparent; } /* Invisível na primeira metade. */
+    50%, 100% { background-color: var(--rgb-highlight-color); } /* Visível na segunda metade. */
+}
+
+/* Olhos */
+#eye, #eye1 { /* Estiliza a base dos olhos. */
+    width: 40px; /* Largura. */
+    height: 50px; /* Altura. */
+    position: absolute; /* Posiciona em relação ao contêiner #red. */
+    top: 30px; /* Posição vertical. */
+    background-color: white; /* Cor da base do olho. */
+}
+
+#eye { left: 10px; } /* Posição do olho esquerdo. */
+#eye1 { right: 30px; } /* Posição do olho direito. */
+
+#eye::before, #eye1::before { /* Pseudo-elemento para completar a forma do olho. */
+    content: ""; /* Necessário para exibir. */
+    background-color: white; /* Cor branca. */
+    width: 20px; /* Largura. */
+    height: 50px; /* Altura. */
+    transform: translateX(10px); /* Move para o centro do olho base. */
+    display: block; /* Garante que seja exibido. */
+    position: absolute; /* Posição absoluta. */
+}
+
+#eye::after, #eye1::after { /* Outro pseudo-elemento para completar a forma do olho. */
+    content: ""; /* Necessário para exibir. */
+    background-color: white; /* Cor branca. */
+    width: 40px; /* Largura. */
+    height: 30px; /* Altura. */
+    transform: translateY(10px); /* Move para o centro do olho base. */
+    display: block; /* Garante que seja exibido. */
+    position: absolute; /* Posição absoluta. */
+}
+
+#pupil, #pupil1 { /* Estiliza as pupilas dos olhos. */
+    width: 20px; /* Largura. */
+    height: 20px; /* Altura. */
+    background-color: #2e0050; /* Cor da pupila. */
+    position: absolute; /* Posicionada em relação ao contêiner #red. */
+    top: 50px; /* Posição vertical. */
+    z-index: 1; /* Garante que a pupila fique sobre o olho. */
+    animation: eyesMovement infinite 3s; /* Aplica a animação de movimento dos olhos. */
+}
+
+#pupil { left: 10px; } /* Posição da pupila esquerda. */
+#pupil1 { right: 50px; } /* Posição da pupila direita. */
+
+@keyframes eyesMovement { /* Define a animação de movimento das pupilas. */
+    0%, 49% { transform: translateX(0px); } /* Posição inicial (olhando para a esquerda). */
+    50%, 99% { transform: translateX(10px); } /* Posição final (olhando para a direita). */
+    100% { transform: translateX(0px); } /* Volta para a posição inicial. */
+}
+
+#shadow { /* Estiliza a sombra do fantasma. */
+    background-color: black; /* Cor da sombra. */
+    width: 140px; /* Largura. */
+    height: 140px; /* Altura. */
+    position: absolute; /* Posicionada em relação ao #ghost. */
+    border-radius: 50%; /* Torna a sombra circular. */
+    transform: rotateX(80deg); /* Rotaciona a sombra no eixo X para dar a impressão de estar no chão. */
+    filter: blur(20px); /* Desfoca a sombra para um efeito mais suave. */
+    top: 80%; /* Posição vertical. */
+    animation: shadowMovement infinite 0.5s; /* Aplica a animação de pulsar à sombra. */
+}
+
+@keyframes shadowMovement { /* Define a animação da sombra. */
+    0%, 49% { opacity: 0.5; } /* Opacidade na primeira metade. */
+    50%, 100% { opacity: 0.2; } /* Opacidade na segunda metade (mais clara). */
+}
+
+/* --- ANIMAÇÕES GLOBAIS --- */
+@keyframes float-image { /* Animação para a imagem do hero flutuar. */
+    from { transform: translateY(0px); } /* Posição inicial. */
+    to { transform: translateY(-20px); } /* Posição final (mais alta). */
+}
+
+@keyframes fadeInBubble { /* Animação para o balão de fala aparecer. */
+    from { opacity: 0; transform: translateY(10px); } /* Estado inicial: invisível e deslocado para baixo. */
+    to { opacity: 1; transform: translateY(0); } /* Estado final: visível e na posição correta. */
+}
+
+.fade-in-element { /* Classe para elementos que devem aparecer suavemente ao rolar a página. */
+    opacity: 0; /* Começa invisível. */
+    transform: translateY(20px); /* Começa deslocado para baixo. */
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out; /* Transição suave para opacidade e posição. */
+}
+
+.fade-in-element.is-visible { /* Classe adicionada via JS quando o elemento está visível na tela. */
+    opacity: 1; /* Torna o elemento visível. */
+    transform: translateY(0); /* Move para a posição final. */
+}
+
+/* --- ANIMAÇÕES DO TEMA RGB --- */
+@keyframes aurora-drift { /* Animação para o fundo de aurora. */
+    0% { /* Estado inicial. */
+        background-position: /* Posição inicial dos gradientes. */
+            0% 0%,
+            0% 0%,
+            0% 0%;
+        filter: hue-rotate(0deg) brightness(1); /* Matiz e brilho iniciais. */
     }
-    .navbar-center {
-        display: none;
-        flex-basis: 100%;
-        order: 3;
-        flex-direction: column;
-        text-align: center;
-        background-color: var(--navbar-bg);
+    50% { /* Estado no meio da animação. */
+        background-position: /* Nova posição dos gradientes, criando movimento. */
+            -10% -5%,
+            5% 10%,
+            0% 15%;
+        filter: hue-rotate(30deg) brightness(1.2); /* Altera a matiz e aumenta o brilho. */
     }
-    .navbar-center.active {
-        display: flex;
-    }
-    .navbar-center ul {
-        flex-direction: column;
-        width: 100%;
-    }
-    .navbar-center ul li {
-        margin: 10px 0;
-    }
-    .menu-toggle {
-        display: block;
-    }
-    body {
-        padding-top: 50px;
-    }
-    .hero-section {
-        flex-direction: column-reverse;
-        padding: 80px 20px;
-        text-align: center;
-    }
-    .hero-content {
-        margin-right: 0;
-        margin-top: 30px;
-    }
-    .hero-content h1 {
-        font-size: 34px;
-    }
-    .hero-content p {
-        font-size: 18px;
-    }
-    .hero-image {
-        width: 250px;
-        height: 250px;
-    }
-    .section {
-        padding: 60px 20px;
-    }
-    h2 {
-        font-size: 28px;
-        margin-bottom: 40px;
-    }
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-    .contact-container {
-        flex-direction: column;
-        gap: 40px;
+    100% { /* Estado final da animação. */
+        background-position: /* Posição final dos gradientes. */
+            5% 10%,
+            -10% -5%,
+            15% 0%;
+        filter: hue-rotate(60deg) brightness(1); /* Altera a matiz novamente e retorna o brilho ao normal. */
     }
 }
 
-/* --- ANIMAÇÕES --- */
-
-@keyframes float-image {
-    from {
-        transform: translateY(0px);
+@keyframes grid-shift { /* Animação para mover o fundo de grade (não está sendo usada no código atual). */
+    0% { /* Posição inicial. */
+        transform: translate(0, 0);
     }
-    to {
-        transform: translateY(-10px);
+    100% { /* Posição final. */
+        transform: translate(-50%, -50%);
     }
 }
 
-@keyframes pulse-led-white {
-    from {
-        opacity: 0;
-        transform: scale(0.9);
+@keyframes aurora-pulse { /* Animação para o efeito de pulsação no fundo de aurora. */
+    0% { /* Estado inicial. */
+        opacity: 0.8;
+        transform: scale(1);
     }
-    to {
-        opacity: 1;
+    50% { /* Estado no meio da animação. */
+        opacity: 0.5; /* Reduz a opacidade. */
+        transform: scale(1.05); /* Aumenta ligeiramente o tamanho. */
+    }
+    100% { /* Estado final. */
+        opacity: 0.8;
         transform: scale(1);
     }
 }
+/* --- ÍCONE DE SCROLL --- */
+.scrolldown {
+  --color: white; /* Você pode mudar a cor aqui ou direto no HTML com style="--color: skyblue" */
+  --sizeX: 30px;
+  --sizeY: 50px;
 
-@keyframes fadeInBubble {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  /* Posicionamento centralizado na parte inferior */
+  position: absolute;
+  bottom: 30px; /* Distância da parte inferior da tela */
+  left: 50%;
+  transform: translateX(-50%);
+
+  /* Estilos do ícone */
+  width: var(--sizeX);
+  height: var(--sizeY);
+  border: calc(var(--sizeX) / 10) solid var(--color);
+  border-radius: 50px;
+  box-sizing: border-box;
+  cursor: pointer;
+  z-index: 10; /* Garante que fique acima dos efeitos de fundo */
 }
 
-/* --- Estilos para Barras de Habilidades (NOVO) --- */
-.skill-bar {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.1); /* Fundo da barra */
-    border-radius: 5px;
-    margin-top: 25px; /* Espaço entre a descrição e a barra */
-    overflow: hidden; /* Garante que o conteúdo interno não ultrapasse as bordas arredondadas */
-    border: 1px solid var(--border-color);
+.scrolldown::before {
+  content: "";
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  margin-left: -3px;
+  background-color: var(--color);
+  border-radius: 100%;
+  animation: scrolldown-anim 2s infinite;
+  box-sizing: border-box;
+  box-shadow: 0px -5px 3px 1px #2a547066;
 }
 
-body.dark-theme .skill-bar {
-    background-color: rgba(255, 255, 255, 0.1);
-}
+@keyframes scrolldown-anim {
+  0% {
+    opacity: 0;
+    height: 6px;
+  }
 
-.skill-level {
-    height: 20px;
-    width: 0;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    transition: width 1.5s ease-in-out;
-}
-
-.skill-percentage {
-    color: var(--button-text); /* Cor do texto da porcentagem */
-    font-size: 12px;
-    font-weight: bold;
-    padding-right: 8px;
-    opacity: 0; /* Começa invisível */
-    transition: opacity 0.5s ease 1s; /* Aparece com um atraso após a barra crescer */
-}
-
-/* Quando a barra é animada, o texto aparece */
-.skill-level[style*="width:"] .skill-percentage {
+  40% {
     opacity: 1;
-}
-/* --- Cores Específicas para Barras de Habilidades --- */
+    height: 10px;
+  }
 
-.skill-html { background-color: #E44D26; } /* Laranja */
-.skill-css  { background-color: #1572B6; } /* Azul */
-.skill-js   { background-color: #F7DF1E; } /* Amarelo */
-.skill-react{ background-color: #61DAFB; } /* Azul Claro */
-.skill-node { background-color: #339933; } /* Verde */
-.skill-yolo { background-color: #0000b3; } /* Azul Escuro */
+  80% {
+    transform: translate(0, 20px);
+    height: 10px;
+    opacity: 0;
+  }
 
-/* Ajuste de cor do texto para melhor leitura na barra amarela do JS.
-  O texto da porcentagem era branco/escuro dependendo do tema,
-  mas em um fundo amarelo, uma cor fixa escura fica melhor.
-*/
-.skill-js .skill-percentage {
-    color: #333; /* Cor escura para o texto da porcentagem */
+  100% {
+    height: 3px;
+    opacity: 0;
+  }
 }
 
-/* O texto da porcentagem no React azul claro também fica melhor com texto escuro */
-.skill-react .skill-percentage {
-    color: #1a2a3a;
-}
-/* --- Animações de Scroll (Surgimento de Elementos) --- */
-
-/*
-  Esta é a classe que colocaremos nos elementos HTML.
-  Define o estado inicial: invisível e movido para a esquerda.
-  Também define a transição suave.
-*/
-.fade-in-element {
-  opacity: 0;
-  transform: translateX(-50px); /* Começa 50px para a esquerda */
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+.chevrons {
+  padding: 6px 0 0 0;
+  margin-left: -3px;
+  margin-top: 48px;
+  width: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/*
-  Quando o JavaScript adicionar a classe '.is-visible',
-  o elemento se tornará opaco e voltará à sua posição original (translateX(0)).
-  A transição fará isso acontecer de forma suave.
-*/
-.fade-in-element.is-visible {
-  opacity: 1;
-  transform: translateX(0);
+.chevrondown {
+  margin-top: -6px;
+  position: relative;
+  border: solid var(--color);
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  transform: rotate(45deg);
 }
-/* --- Animação de Entrada para a Seção Inicial --- */
 
-/* Keyframe define a animação: da esquerda e invisível para a posição final e visível */
-@keyframes fadeInFromLeft {
+.chevrondown:nth-child(odd) {
+  animation: pulse54012 500ms ease infinite alternate;
+}
+
+.chevrondown:nth-child(even) {
+  animation: pulse54012 500ms ease infinite alternate 250ms;
+}
+
+@keyframes pulse54012 {
   from {
     opacity: 0;
-    transform: translateX(-50px);
   }
+
   to {
-    opacity: 1;
-    transform: translateX(0);
+    opacity: 0.5;
   }
 }
 
-/* Prepara os elementos, garantindo que comecem invisíveis antes da animação */
-.hero-h1, .hero-p, .hero-img {
-  opacity: 0;
-}
-
-/* Aplica a animação ao H1 */
-.hero-h1 {
-  animation: fadeInFromLeft 0.6s ease-out 0.6s forwards;
-  /* Animação | Duração | Curva | Atraso para começar | Manter estado final */
-}
-
-/* Aplica a animação ao Parágrafo, com um atraso maior */
-.hero-p {
-  animation: fadeInFromLeft 0.6s ease-out 0.6s forwards;
-}
-
-/* Aplica a animação à Imagem, com o maior atraso */
-.hero-img {
-  animation: fadeInFromLeft 0.6s ease-out 0.9s forwards;
-}
-/* --- Estilos para a Nova Seção de Contato (Versão Responsiva Final) --- */
-
-/* --- Estilos para a Nova Seção de Contato (Versão Final Completa) --- */
-
-.contact-box {
-    background-color: var(--card-bg);
-    border-radius: 10px;
-    padding: 40px 25px;
-    box-shadow: 0 6px 15px var(--shadow-color);
-    max-width: 800px;
-    margin: 40px auto 0 auto;
-    border: 1px solid var(--border-color);
-}
-
-.contact-box p {
-    font-size: 22px;
-    line-height: 1.6;
-    color: var(--text-color);
-    text-align: left;
-    max-width: 350px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 40px;
-}
-
-.contact-links-list {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-    align-items: flex-start;
-    max-width: 350px;
-    margin: 0 auto;
-}
-
-.contact-link-item {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 20px;
-    font-weight: 500;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.contact-link-item:hover {
-    color: var(--navbar-link-hover);
-    transform: translateX(5px);
-}
-
-.contact-link-item i {
-    font-size: 28px;
-    width: 40px;
-    margin-right: 15px;
-    color: var(--navbar-link-hover);
-}
-
-/* ESTILO PARA TELAS MAIORES (TABLET E DESKTOP) */
-@media (min-width: 768px) {
-    .contact-box {
-        padding: 50px;
+/* --- MEDIA QUERIES PARA RESPONSIVIDADE --- */
+@media (max-width: 1024px) { /* Estilos aplicados em telas com largura máxima de 1024px (tablets e telas menores). */
+    .section { /* Ajusta o padding das seções. */
+        padding: 80px 40px;
     }
-
-    .contact-box p {
-        max-width: 650px;
+    .hero-section { /* Ajusta a seção hero. */
+        flex-direction: column; /* Coloca o texto e a imagem um sobre o outro. */
+        text-align: center; /* Centraliza o texto. */
+        gap: 40px; /* Adiciona espaço entre o texto e a imagem. */
+        padding-bottom: 120px; /* Ajusta o padding inferior. */
+        padding-top: 80px; /* Ajusta o padding superior. */
     }
-
-    .contact-links-list {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 30px 50px;
-        max-width: 650px;
-        justify-items: start;
+    .hero-content-wrapper { /* Ajusta o wrapper do conteúdo do hero. */
+        flex-direction: column; /* Coloca os elementos em coluna. */
+        padding-top: 0; /* Remove o padding superior. */
+    }
+    .hero-content { /* Ajusta o conteúdo do hero. */
+        text-align: center; /* Centraliza o texto. */
+    }
+    .hero-content p { /* Ajusta o parágrafo do hero. */
+        max-width: 100%; /* Permite que o parágrafo ocupe toda a largura disponível. */
+    }
+    .hero-social-links { /* Ajusta os links sociais. */
+        justify-content: center; /* Centraliza os links. */
+    }
+    .hero-image { /* Ajusta a imagem do hero. */
+        width: 250px; /* Reduz a largura. */
+        height: 250px; /* Reduz a altura. */
+    }
+    h2 { /* Ajusta os títulos h2. */
+        font-size: 36px; /* Reduz o tamanho da fonte. */
+        margin-bottom: 60px; /* Reduz a margem inferior. */
+    }
+    .about-content { /* Ajusta o conteúdo da seção "Sobre". */
+        flex-direction: column; /* Coloca a timeline e as características uma sobre a outra. */
+        gap: 60px; /* Ajusta o espaço entre elas. */
     }
 }
-/* --- Estilos do Rodapé --- */
 
-.site-footer {
-    background-color: var(--navbar-bg); /* Usa a cor de fundo da navbar para consistência */
-    padding: 40px 25px;
-    border-top: 1px solid var(--border-color); /* Linha sutil para separar do conteúdo */
-    color: var(--text-color);
-    transition: background-color 0.4s ease, color 0.4s ease;
-}
-
-.footer-container {
-    max-width: 1200px; /* Limita a largura em telas muito grandes */
-    margin: 0 auto; /* Centraliza o conteúdo */
-    display: flex;
-    flex-direction: column; /* Mobile First: empilhado e centralizado */
-    align-items: center;
-    text-align: center;
-    gap: 20px; /* Espaço entre o texto e os ícones no mobile */
-}
-
-.footer-copyright p {
-    margin: 0;
-    font-size: 0.9em; /* Tamanho mais legível */
-    opacity: 0.8; /* Deixa o texto um pouco mais sutil */
-}
-
-.footer-social {
-    display: flex;
-    gap: 20px; /* Espaço entre os ícones */
-}
-
-.footer-social a {
-    color: var(--text-color);
-    font-size: 1.5em; /* Tamanho dos ícones */
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.footer-social a:hover {
-    color: var(--navbar-link-hover); /* Usa a cor de destaque do seu tema */
-    transform: translateY(-3px); /* Efeito de erguer o ícone */
-}
-
-/* Ajustes para telas maiores (tablets e desktops) */
-@media (min-width: 768px) {
-    .footer-container {
-        flex-direction: row; /* Layout lado a lado */
-        justify-content: space-between; /* Texto na esquerda, ícones na direita */
-        text-align: left;
+@media (max-width: 768px) { /* Estilos aplicados em telas com largura máxima de 768px (smartphones). */
+    body { /* Ajusta o padding do body. */
+        padding-top: 70px;
     }
-}
-/* --- NOVOS ESTILOS PARA LOGOS DE CARREIRA E TILT EFFECT --- */
-
-/* Ajuste o item de experiência para ser um flex container */
-.experience-item {
-    /* Mantém os estilos existentes de background, border-radius, box-shadow, transition */
-    display: flex;
-    align-items: center; /* Alinha verticalmente os itens */
-    justify-content: space-between; /* Distribui espaço entre o conteúdo e a logo */
-    gap: 30px; /* Espaçamento entre o conteúdo e a logo */
-    margin-bottom: 70px; /* Mantém o espaçamento entre os itens */
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 50px; /* Mantém o padding existente */
-}
-
-.experience-item:last-of-type {
-    margin-bottom: 0; /* Remove a margem do último item */
-}
-
-/* Garante que o conteúdo de texto ocupe o espaço disponível */
-.experience-content {
-    flex: 1; /* Permite que o texto cresça e ocupe o espaço */
-}
-
-/* Estilos para o container da logo com tilt effect */
-.logo-tilt-container {
-    width: 120px; /* Largura base do container da logo */
-    height: 120px; /* Altura base do container da logo */
-    min-width: 80px; /* Largura mínima para responsividade */
-    min-height: 80px; /* Altura mínima para responsividade */
-    background-color: var(--card-bg); /* AGORA ESTÁ USANDO A VARIÁVEL PARA AMBOS OS TEMAS */
-    border-radius: 10px; /* Cantos arredondados */
-    box-shadow: 0 4px 10px var(--shadow-color); /* Sombra suave */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Garante que a imagem não vaze */
-    transform-style: preserve-3d; /* Essencial para o efeito 3D do tilt */
-    flex-shrink: 0; /* Impede que este container encolha em layouts flex */
-    border: 1px solid var(--border-color); /* Adiciona uma borda sutil para separação */
-}
-
-/* Removemos a regra específica 'body.dark-theme .logo-tilt-container'
-   porque 'background-color: var(--card-bg);' já cuida disso para ambos os temas.
-   Se a logo dentro do container tiver um fundo escuro, podemos clareá-la um pouco:
-*/
-.logo-tilt-container img {
-    max-width: 80%; /* Faz a imagem ocupar 80% do container */
-    max-height: 80%; /* Faz a imagem ocupar 80% do container */
-    object-fit: contain; /* Reduz a imagem sem cortá-la, mantendo proporção */
-    display: block; /* Remove possíveis espaços extras */
-    filter: brightness(0.95); /* Leve ajuste de brilho para destacar a logo */
-}
-
-/* Se as logos originais forem muito escuras para o tema escuro, podemos clareá-las */
-body.dark-theme .logo-tilt-container img {
-    filter: brightness(1.2); /* Aumenta o brilho da imagem da logo no tema escuro */
-}
-
-
-/* Media Query para responsividade da seção Carreira */
-@media (max-width: 768px) {
-    .experience-item {
-        flex-direction: column; /* Empilha o texto e a logo em telas menores */
-        text-align: center; /* Centraliza o texto */
-        padding: 30px; /* Ajusta o padding */
+    .navbar { /* Ajusta a barra de navegação. */
+        padding: 15px 20px; /* Reduz o padding. */
+        flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha. */
+    }
+    .navbar-center { /* Prepara o menu central para o modo "hambúrguer". */
+        display: none; /* Esconde o menu por padrão. */
+        flex-basis: 100%; /* Faz o menu ocupar 100% da largura quando visível. */
+        order: 3; /* Muda a ordem de exibição, colocando-o abaixo do logo e ícones. */
+        flex-direction: column; /* Coloca os links em coluna. */
+        width: 100%; /* Largura total. */
+        padding: 20px 0; /* Adiciona padding. */
+        background-color: var(--navbar-bg); /* Adiciona um fundo quando aberto. */
+    }
+    .navbar-center.active { /* Classe para mostrar o menu. */
+        display: flex; /* Torna o menu visível. */
+    }
+    .navbar-center ul { /* Ajusta a lista de links. */
+        flex-direction: column; /* Coloca os itens em coluna. */
+        gap: 0; /* Remove o espaço entre eles. */
+    }
+    .navbar-center ul li a { /* Ajusta cada link. */
+        display: block; /* Faz o link ocupar toda a largura. */
+        padding: 15px; /* Adiciona padding para facilitar o clique. */
+        text-align: center; /* Centraliza o texto do link. */
+    }
+    .menu-toggle { /* Mostra o botão do menu hambúrguer. */
+        display: block;
     }
 
-    .experience-item h3 {
-        font-size: 24px; /* Ajusta o tamanho do título */
+    .hero-content h1 { /* Reduz o tamanho do título principal. */
+        font-size: 38px;
+    }
+    .hero-content p { /* Reduz o tamanho do parágrafo. */
+        font-size: 18px;
+    }
+    .about-intro { /* Reduz o tamanho da fonte da introdução "Sobre". */
+        font-size: 18px;
+    }
+    .about-content h3 { /* Reduz o tamanho dos subtítulos. */
+        font-size: 28px;
+    }
+    .characteristics-grid { /* Ajusta a grade de características. */
+        grid-template-columns: 1fr; /* Muda para uma única coluna. */
+    }
+    .footer-container { /* Ajusta o rodapé. */
+        flex-direction: column; /* Coloca os itens em coluna. */
+        justify-content: center; /* Centraliza-os. */
     }
 
-    .experience-item p {
-        font-size: 18px; /* Ajusta o tamanho do parágrafo */
-        margin-bottom: 15px; /* Mais espaço entre o texto e a logo empilhados */
+    .expanding-gallery { /* Ajusta a galeria de projetos. */
+        flex-direction: column; /* Empilha os painéis verticalmente. */
+        width: 90vw; /* Ajusta a largura. */
+        margin: 20px auto; /* Ajusta a margem. */
+        height: auto; /* Altura automática para acomodar todos os painéis. */
+        gap: 15px; /* Espaço entre os painéis. */
     }
 
-    .logo-tilt-container {
-        margin-top: 20px; /* Adiciona margem superior quando empilhado */
-        width: 100px; /* Ajusta o tamanho da logo para telas menores */
-        height: 100px;
+    .panel { /* Ajusta cada painel da galeria. */
+        flex: none; /* Remove o comportamento de expansão. */
+        width: 100%; /* Largura total. */
+        height: 220px; /* Altura fixa. */
+        border-radius: 8px; /* Ajusta o raio da borda. */
+        box-shadow: 0 5px 15px var(--shadow-color); /* Ajusta a sombra. */
+    }
+
+    .panel:hover { /* Remove o efeito de hover que não faz sentido no mobile. */
+        flex: none; /* Garante que não expanda. */
+        transform: none; /* Garante que não se mova. */
+        box-shadow: 0 5px 15px var(--shadow-color); /* Mantém a mesma sombra. */
+    }
+
+    .panel::before { /* Ajusta o overlay. */
+        opacity: 0.9; /* Deixa o overlay permanentemente mais escuro para garantir a legibilidade do texto. */
+    }
+    .panel-content { /* Ajusta o conteúdo do painel. */
+        opacity: 1; /* Deixa o conteúdo sempre visível. */
+        transform: translateY(0); /* Posição final permanente. */
+        bottom: 20px; /* Ajusta a posição. */
+        left: 20px; /* Ajusta a posição. */
+        right: 20px; /* Ajusta a posição. */
+    }
+    .panel-content h3 { /* Ajusta o título do painel. */
+        font-size: 22px;
+    }
+    .panel-content p { /* Ajusta o parágrafo do painel. */
+        font-size: 14px; /* Reduz o tamanho da fonte. */
+        max-height: 80px; /* Define uma altura máxima. */
+        overflow: hidden; /* Esconde o texto que transborda. */
+        text-overflow: ellipsis; /* Adiciona "..." ao final do texto cortado. */
+        display: -webkit-box; /* Propriedades para limitar o texto a um número de linhas. */
+        -webkit-line-clamp: 3; /* Limita o texto a 3 linhas. */
+        line-clamp: 3; /* Limita o texto a 3 linhas (padrão). */
+        -webkit-box-orient: vertical; /* Orientação vertical. */
     }
 }
