@@ -31,14 +31,14 @@ const projectsData = [
         id: 'proj-yolo',
         image: 'img/projeto_3.jpg',
         tech: ['yolo'],
-        url: 'https://seunovosite.com/yolov8',
+        url: '',
         target: '_blank'
     },
     {
         id: 'proj-api',
         image: 'img/projeto_4.jpg',
         tech: ['node'],
-        url: 'https://seunovosite.com/projeto-api',
+        url: 'https://agendamentoragi.netlify.app',
         target: '_blank'
     },
     {
