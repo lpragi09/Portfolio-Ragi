@@ -11,12 +11,43 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentLang = localStorage.getItem('language') || 'pt';
 
     // --- DADOS DOS PROJETOS ---
-    const projectsData = [
-        { id: 'proj-portfolio', image: 'img/projeto_1.jpg', tech: ['html', 'css', 'js'] },
-        { id: 'proj-coffee', image: 'img/projeto_2.jpg', tech: ['html', 'css', 'js'] },
-        { id: 'proj-yolo', image: 'img/projeto_3.jpg', tech: ['yolo'] },
-        { id: 'proj-api', image: 'img/projeto_4.jpg', tech: ['node'] },
-        { id: 'proj-dashboard', image: 'img/projeto_5.jpg', tech: ['react', 'node'] },
+    // --- DADOS DOS PROJETOS ---
+const projectsData = [
+    {
+        id: 'proj-portfolio',
+        image: 'img/projeto_1.jpg',
+        tech: ['html', 'css', 'js'],
+        url: 'https://ragiportfolio.netlify.app', // Exemplo de URL
+        target: '_blank' // Opcional: abre o link em uma nova aba
+    },
+    {
+        id: 'proj-coffee',
+        image: 'img/projeto_2.jpg',
+        tech: ['html', 'css', 'js'],
+        url: 'https://cofferagi.netlify.app',
+        target: '_blank'
+    },
+    {
+        id: 'proj-yolo',
+        image: 'img/projeto_3.jpg',
+        tech: ['yolo'],
+        url: 'https://seunovosite.com/yolov8',
+        target: '_blank'
+    },
+    {
+        id: 'proj-api',
+        image: 'img/projeto_4.jpg',
+        tech: ['node'],
+        url: 'https://seunovosite.com/projeto-api',
+        target: '_blank'
+    },
+    {
+        id: 'proj-dashboard',
+        image: 'img/projeto_5.jpg',
+        tech: ['react', 'node'],
+        url: 'https://portal-ragi.netlify.app',
+        target: '_blank'
+    },
     ];
 
     // --- DADOS DAS HABILIDADES ---
@@ -255,27 +286,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- LÓGICA DA GALERIA EXPANSÍVEL ---
     function setupExpandingGallery() {
-        const container = document.getElementById('expanding-gallery-container');
-        if (!container) return;
+    const container = document.getElementById('expanding-gallery-container');
+    if (!container) return;
 
-        container.innerHTML = '';
+    container.innerHTML = '';
 
-        projectsData.forEach((project) => {
-            const title = translations[currentLang][`${project.id}-title`] || 'Project Title';
-            const desc = translations[currentLang][`${project.id}-desc`] || 'Project description.';
+    projectsData.forEach((project) => {
+        const title = translations[currentLang][`${project.id}-title`] || 'Project Title';
+        const desc = translations[currentLang][`${project.id}-desc`] || 'Project description.';
 
-            const panel = document.createElement('div');
-            panel.classList.add('panel');
-            panel.style.backgroundImage = `url('${project.image}')`;
+        const panel = document.createElement('div');
+        panel.classList.add('panel');
+        panel.style.backgroundImage = `url('${project.image}')`;
 
-            panel.innerHTML = `
-                <div class="panel-content">
-                    <h3>${title}</h3>
-                    <p>${desc}</p>
-                </div>
-            `;
-            container.appendChild(panel);
+        panel.innerHTML = `
+            <div class="panel-content">
+                <h3>${title}</h3>
+                <p>${desc}</p>
+            </div>
+        `;
+
+        // Adiciona o event listener de clique para redirecionar para a URL do projeto
+        panel.addEventListener('click', () => {
+            if (project.url) {
+                window.open(project.url, project.target || '_self');
+            }
         });
+
+        container.appendChild(panel);
+    });
     }
 
     // --- Inicialização de todos os módulos ---
