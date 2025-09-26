@@ -110,8 +110,8 @@ h2 .highlight { /* Estiliza um elemento com a classe 'highlight' dentro de um h2
         ),
         radial-gradient( /* Terceiro gradiente - AGORA É MAGENTA/ROXO! */
             ellipse at 10% 80%,
-            rgba(37, 0, 26, 0.7) 0%, /* <-- ESSA LINHA FOI ALTERADA */
-            rgba(0, 0, 0, 0) 50%   /* <-- E ESSA TAMBÉM */
+            rgba(37, 0, 26, 0.7) 0%, 
+            rgba(0, 0, 0, 0) 50%   
         ),
         linear-gradient(135deg, #000000 0%, #0a0520 100%); /* Gradiente de fundo base. */
     background-blend-mode: overlay, screen, hard-light; /* Mistura os gradientes para um efeito mais complexo. */
