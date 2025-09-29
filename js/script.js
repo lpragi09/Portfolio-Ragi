@@ -52,15 +52,15 @@ const projectsData = [
 
     // --- DADOS DAS HABILIDADES ---
     const skillsData = [
-        { id: 'html', iconClass: 'fab fa-html5', level: 50, category: 'frontend' },
-        { id: 'css', iconClass: 'fab fa-css3-alt', level: 50, category: 'styling' },
-        { id: 'js', iconClass: 'fab fa-js-square', level: 50, category: 'language' },
-        { id: 'react', iconClass: 'fab fa-react', level: 50, category: 'frontend' },
-        { id: 'node', iconClass: 'fab fa-node-js', level: 50, category: 'backend' },
-        { id: 'typescript', iconClass: 'fas fa-code', level: 50, category: 'language' },
-        { id: 'python', iconClass: 'fab fa-python', level: 50, category: 'language' },
-        { id: 'yolo', iconClass: 'fas fa-robot', level: 50, category: 'backend' },
-        { id: 'cpp', iconClass: 'fas fa-microchip', level: 50, category: 'language' },
+        { id: 'html', iconClass: 'fab fa-html5',  category: 'frontend' },
+        { id: 'css', iconClass: 'fab fa-css3-alt',  category: 'styling' },
+        { id: 'js', iconClass: 'fab fa-js-square',  category: 'language' },
+        { id: 'react', iconClass: 'fab fa-react', category: 'frontend' },
+        { id: 'node', iconClass: 'fab fa-node-js',  category: 'backend' },
+        { id: 'typescript', iconClass: 'fas fa-code',  category: 'language' },
+        { id: 'python', iconClass: 'fab fa-python',  category: 'language' },
+        { id: 'yolo', iconClass: 'fas fa-robot',  category: 'backend' },
+        { id: 'cpp', iconClass: 'fas fa-microchip',  category: 'language' },
     ];
 
     // --- TRADUÇÕES ---
@@ -178,20 +178,16 @@ const projectsData = [
                 const category = translations[currentLang][`skill-cat-${skill.category}`] || skill.category;
                 return `
                         <div class="skill-bar-card">
-                            <div class="skill-header">
-                                <div class="skill-info">
-                                    <i class="skill-icon ${skill.iconClass}"></i>
-                                    <div class="skill-title-group">
-                                        <div class="skill-name">${name}</div>
-                                        <div class="skill-category">${category}</div>
-                                    </div>
-                                </div>
-                                <div class="skill-percentage">${skill.level}%</div>
-                            </div>
-                            <div class="progress-bar-container">
-                                <div class="progress-bar-level bar-${skill.id}" data-level="${skill.level}%"></div>
+                    <div class="skill-header">
+                        <div class="skill-info">
+                            <i class="skill-icon ${skill.iconClass}"></i>
+                            <div class="skill-title-group">
+                                <div class="skill-name">${name}</div>
+                                <div class="skill-category">${category}</div>
                             </div>
                         </div>
+                        </div>
+                </div>
                     `;
             }).join('');
         }

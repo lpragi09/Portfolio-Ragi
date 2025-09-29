@@ -673,38 +673,7 @@ h2 .highlight { /* Estiliza um elemento com a classe 'highlight' dentro de um h2
     opacity: 0.6; /* Deixa o texto mais transparente. */
 }
 
-.skill-percentage { /* Estiliza o texto da porcentagem de habilidade. */
-    font-size: 0.9em; /* Tamanho da fonte. */
-    font-weight: 600; /* Espessura da fonte. */
-    color: var(--rgb-text-color); /* Cor do texto. */
-    opacity: 0.8; /* Leve transparência. */
-}
 
-.progress-bar-container { /* Contêiner da barra de progresso. */
-    width: 100%; /* Largura total. */
-    height: 8px; /* Altura da barra. */
-    background-color: rgba(128, 128, 128, 0.2); /* Cor de fundo da barra (a parte "vazia"). */
-    border-radius: 4px; /* Bordas arredondadas. */
-    overflow: hidden; /* Garante que a barra de preenchimento não saia das bordas arredondadas. */
-}
-
-.progress-bar-level { /* A parte preenchida da barra de progresso. */
-    height: 100%; /* Altura total. */
-    width: 0; /* Começa com largura 0, será animada via JavaScript. */
-    border-radius: 4px; /* Bordas arredondadas. */
-    background-color: var(--rgb-highlight-color); /* Cor padrão do preenchimento. */
-    transition: width 2s ease-in-out; /* Anima a mudança de largura suavemente. */
-}
-
-.bar-html { background: linear-gradient(90deg, #E44D26, #F16529); } /* Gradiente específico para a barra de HTML. */
-.bar-css { background: linear-gradient(90deg, #1572B6, #33A9DC); } /* Gradiente específico para a barra de CSS. */
-.bar-js { background: linear-gradient(90deg, #F7DF1E, #E5C311); } /* Gradiente específico para a barra de JavaScript. */
-.bar-react { background: linear-gradient(90deg, #61DAFB, #3498DB); } /* Gradiente específico para a barra de React. */
-.bar-node { background: linear-gradient(90deg, #8CC84B, #68A063); } /* Gradiente específico para a barra de Node.js. */
-.bar-typescript { background: linear-gradient(90deg, #3178C6, #00529B); } /* Gradiente específico para a barra de TypeScript. */
-.bar-python { background: linear-gradient(90deg, #3776AB, #FFD43B); } /* Gradiente específico para a barra de Python. */
-.bar-yolo { background: linear-gradient(90deg, #8A2BE2, #4B0082); } /* Gradiente específico para a barra de YOLO. */
-.bar-cpp { background: linear-gradient(90deg, #00599C, #659AD2); } /* Gradiente específico para a barra de C++. */
 
 
 /* --- RODAPÉ --- */
@@ -1200,3 +1169,302 @@ h2 .highlight { /* Estiliza um elemento com a classe 'highlight' dentro de um h2
         -webkit-box-orient: vertical; /* Orientação vertical. */
     }
 }
+
+/* --- ESTILOS DO NOVO BOTÃO 'CONTATE-ME' (TOOLTIP/POPUP) --- */
+
+/* Container Styles */
+.tooltip-container {
+  position: relative;
+  display: inline-block;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  overflow: visible;
+}
+
+/* Button Styles (Cores ajustadas para o seu tema RGB) */
+.button-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--rgb-highlight-color), #4B0082); /* Roxo do seu tema */
+  color: white;
+  padding: 14px 28px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), transform 0.3s ease, box-shadow 0.4s ease;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Sombra mais escura para o tema dark */
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.button-content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.4), rgba(75, 0, 130, 0.4));
+  filter: blur(15px);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.button-content::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, rgba(255, 255, 255, 0) 70%);
+  transform: scale(0);
+  transition: transform 0.6s ease-out;
+  z-index: -1;
+}
+
+.button-content:hover::before {
+  opacity: 1;
+}
+
+.button-content:hover::after {
+  transform: scale(1);
+}
+
+.button-content:hover {
+  background: linear-gradient(135deg, #4B0082, var(--rgb-highlight-color));
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  transform: translateY(-4px) scale(1.03);
+}
+
+.button-content:active {
+  transform: translateY(-2px) scale(0.98);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.text {
+  font-size: 18px;
+  font-weight: 600;
+  margin-right: 12px;
+  white-space: nowrap;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  transition: letter-spacing 0.3s ease;
+}
+
+.button-content:hover .text {
+  letter-spacing: 1px;
+}
+
+.share-icon {
+  fill: white;
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), fill 0.3s ease;
+  filter: drop-shadow(0 1px 2px rgba(255, 255, 255, 0.1));
+}
+
+.button-content:hover .share-icon {
+  transform: rotate(180deg) scale(1.1);
+  fill: #ffffff;
+}
+
+/* Tooltip Styles (Fundo e borda ajustados para o tema dark) */
+.tooltip-content {
+  position: absolute;
+  top: 102%;
+  left: 50%;
+  transform: translateX(-50%) scale(0.8);
+  background: rgba(30, 30, 30, 0.9); /* Fundo escuro semi-transparente */
+  border-radius: 15px;
+  padding: 22px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55), visibility 0.5s ease;
+  z-index: 100;
+  pointer-events: none;
+  backdrop-filter: blur(10px);
+  color: var(--rgb-text-color);
+}
+
+.tooltip-content a {
+    text-decoration: none !important;
+}
+
+.tooltip-container:hover .tooltip-content {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) scale(1);
+  pointer-events: auto;
+}
+
+/* Tooltip Arrow Adjustment */
+.tooltip-content::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 10px 10px 10px;
+  border-style: solid;
+  border-color: transparent transparent rgba(30, 30, 30, 0.9) transparent; /* Cor da seta para o tema dark */
+  filter: drop-shadow(0 -3px 3px rgba(0, 0, 0, 0.2));
+}
+
+/* Social Icons Styles */
+.social-icons {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 500%;
+  background: #4B0082; /* Fundo do ícone para o tema dark */
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), background 0.3s ease, box-shadow 0.4s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-icon::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.8) 0%, rgba(255, 255, 255, 0) 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social-icon:hover::before {
+  opacity: 1;
+}
+
+/* Estilos para Ícones FA (i) e SVG */
+.social-icon i, .social-icon svg {
+  width: 24px;
+  height: 24px;
+  color: var(--rgb-text-color); /* Cor padrão dos ícones */
+  fill: var(--rgb-text-color);
+  transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55), color 0.3s ease, fill 0.3s ease;
+  z-index: 1;
+}
+
+.social-icon:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.social-icon:active {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-icon:hover i, .social-icon:hover svg {
+  transform: scale(1.2);
+  color: white !important;
+  fill: white !important;
+
+}
+
+/* Cores de Hover Específicas */
+.social-icon.github:hover {
+  background: linear-gradient(135deg, #6e5494, #333333); /* GitHub (roxo e preto) */
+}
+
+.social-icon.linkedin:hover {
+  background: linear-gradient(135deg, #0077b5, #005e94);
+}
+
+.social-icon.email:hover {
+  background: linear-gradient(135deg, #D44638, #C53929); /* Email (Vermelho) */
+}
+
+.social-icon.instagram:hover {
+  background: linear-gradient(135deg, #C13584, #405DE6); /* Instagram (Roxo/Azul) */
+}
+
+/* Animação de Pulso */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.4); }
+  70% { box-shadow: 0 0 0 20px rgba(138, 43, 226, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+}
+
+.button-content {
+  animation: pulse 3s infinite;
+}
+
+/* Hover Ripple Effect */
+@keyframes ripple {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+.button-content:active::before {
+  animation: ripple 0.6s linear;
+}
+
+/* Accessibility */
+.button-content:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.5), 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.button-content:focus:not(:focus-visible) {
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .button-content {
+    padding: 12px 24px;
+    border-radius: 40px;
+  }
+  .text {
+    font-size: 16px;
+  }
+  .tooltip-content {
+    width: 240px;
+    padding: 18px;
+  }
+  .social-icon {
+    width: 44px;
+    height: 44px;
+  }
+  .social-icon i, .social-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .button-content {
+    padding: 10px 20px;
+  }
+  .text {
+    font-size: 14px;
+  }
+  .tooltip-content {
+    width: 200px;
+    padding: 15px;
+  }
+  .social-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .social-icon i, .social-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+/* Fim dos estilos do botão Contate-me */
