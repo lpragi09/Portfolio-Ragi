@@ -91,6 +91,7 @@ const projectsData = [
             'skill-cat-frontend': 'frontend', 'skill-cat-backend': 'backend', 'skill-cat-language': 'language', 'skill-cat-styling': 'styling', 'skill-cat-database': 'database', 'skill-cat-state': 'state',
             'skill-name-html': 'HTML', 'skill-name-css': 'CSS', 'skill-name-js': 'JavaScript', 'skill-name-react': 'React', 'skill-name-node': 'Node.js', 'skill-name-typescript': 'TypeScript', 'skill-name-python': 'Python', 'skill-name-yolo': 'YOLOv8', 'skill-name-cpp': 'C++',
             'footer-copyright': '© 2025 Luiz Paulo Moreno Ragi. All rights reserved.',
+            'text': 'Contact me',
         },
         'pt': {
             // ATUALIZADO: Adicionada a tradução do título principal
@@ -118,6 +119,7 @@ const projectsData = [
             'skill-cat-frontend': 'front-end', 'skill-cat-backend': 'back-end', 'skill-cat-language': 'linguagem', 'skill-cat-styling': 'estilização', 'skill-cat-database': 'banco de dados', 'skill-cat-state': 'estado',
             'skill-name-html': 'HTML', 'skill-name-css': 'CSS', 'skill-name-js': 'JavaScript', 'skill-name-react': 'React', 'skill-name-node': 'Node.js', 'skill-name-typescript': 'TypeScript', 'skill-name-python': 'Python', 'skill-name-yolo': 'YOLOv8', 'skill-name-cpp': 'C++',
             'footer-copyright': '© 2025 Luiz Paulo Moreno Ragi. Todos os direitos reservados.',
+            'text': 'Contate-me',
         }
     };
 
