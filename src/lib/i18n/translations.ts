@@ -129,9 +129,9 @@ export const translations: Record<Lang, Dict> = {
     },
     sections: { projects: "My Projects", skills: "Skills", contact: "Contact" },
     contact: {
-      title: "Let’s talk",
+      title: "Let’s talk about the opportunity",
       subtitle:
-        "Tell me what you’re building and what outcome you want. I’ll reply with next steps and options.",
+        "If you’re reviewing my portfolio for a job or internship, send the role, stack and context. I’ll reply quickly with availability and next steps.",
       nameLabel: "Name",
       namePlaceholder: "Your name",
       emailLabel: "E-mail",
@@ -247,9 +247,9 @@ export const translations: Record<Lang, Dict> = {
     },
     sections: { projects: "Meus Projetos", skills: "Skills & Habilidades", contact: "Contato" },
     contact: {
-      title: "Vamos conversar",
+      title: "Vamos falar sobre a oportunidade",
       subtitle:
-        "Me conte o que você quer construir e qual resultado você busca. Eu te respondo com próximos passos e opções.",
+        "Se você está analisando meu portfólio para emprego ou estágio, me envie a vaga, stack e contexto. Eu respondo rápido com disponibilidade e próximos passos.",
       nameLabel: "Nome",
       namePlaceholder: "Seu nome",
       emailLabel: "E-mail",
