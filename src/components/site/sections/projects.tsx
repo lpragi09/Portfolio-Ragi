@@ -46,11 +46,6 @@ export function ProjectsSection() {
                   <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">
                     {desc}
                   </p>
-                  {p.client ? (
-                    <div className="mt-4 inline-flex items-center rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
-                      Cliente
-                    </div>
-                  ) : null}
                 </div>
               </>
             );
