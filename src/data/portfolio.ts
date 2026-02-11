@@ -24,21 +24,10 @@ export const projects: Project[] = [
     url: "https://cofferagi-rework.vercel.app"
   },
   {
-    id: "proj-yolo",
-    image: "/img/projeto_3.jpg",
-    tech: ["yolo"]
-  },
-  {
     id: "proj-api",
     image: "/img/site_barber.svg",
     tech: ["react", "node", "typescript"],
     url: "https://maganhabarb.vercel.app/"
-  },
-  {
-    id: "proj-dashboard",
-    image: "/img/projeto_5.jpg",
-    tech: ["react", "node"],
-    url: "https://portal-ragi.netlify.app"
   },
   {
     id: "proj-imobiliaria",

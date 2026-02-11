@@ -139,7 +139,8 @@ export const translations: Record<Lang, Dict> = {
       whatsappLabel: "WhatsApp (optional)",
       whatsappPlaceholder: "+55 (xx) xxxxx-xxxx",
       messageLabel: "Message",
-      messagePlaceholder: "Ex.: I want a landing page, deadline, budget, references...",
+      messagePlaceholder:
+        "Ex.: Company + role (link), stack, compensation range, main challenge and timeline...",
       submit: "Send",
       successTitle: "Received. Thanks!",
       successDesc: "I’ll get back to you shortly."
@@ -247,9 +248,9 @@ export const translations: Record<Lang, Dict> = {
     },
     sections: { projects: "Meus Projetos", skills: "Skills & Habilidades", contact: "Contato" },
     contact: {
-      title: "Vamos falar sobre a oportunidade",
+      title: "Recrutador(a), vamos falar da vaga",
       subtitle:
-        "Se você está analisando meu portfólio para emprego ou estágio, me envie a vaga, stack e contexto. Eu respondo rápido com disponibilidade e próximos passos.",
+        "Se você está no meu portfólio para me recrutar (emprego ou estágio), me envie o link da vaga, stack e contexto do time. Eu respondo rápido com disponibilidade e próximos passos.",
       nameLabel: "Nome",
       namePlaceholder: "Seu nome",
       emailLabel: "E-mail",
@@ -258,7 +259,7 @@ export const translations: Record<Lang, Dict> = {
       whatsappPlaceholder: "(xx) xxxxx-xxxx",
       messageLabel: "Mensagem",
       messagePlaceholder:
-        "Ex.: Preciso de um site, prazo, orçamento, referências, objetivo (vendas/leads)...",
+        "Ex.: Empresa + vaga (link), modelo (PJ/CLT), stack, faixa, desafio principal e prazo...",
       submit: "Enviar",
       successTitle: "Recebido. Obrigado!",
       successDesc: "Já já eu te respondo com os próximos passos."
