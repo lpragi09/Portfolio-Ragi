@@ -5,7 +5,9 @@ export type ProjectId =
   | "proj-coffee"
   | "proj-yolo"
   | "proj-api"
-  | "proj-dashboard";
+  | "proj-dashboard"
+  | "proj-imobiliaria"
+  | "proj-cs";
 
 type Dict = {
   nav: {
@@ -144,19 +146,27 @@ export const translations: Record<Lang, Dict> = {
       },
       "proj-coffee": {
         title: "Coffee Brand Website",
-        desc: "Development of a responsive website to display a coffee shop."
+        desc: "Responsive coffee brand website built with the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
       },
       "proj-yolo": {
         title: "Image Identification using YoloV8",
         desc: "Identification of boats in Guanabara Bay using Ultralytics YoloV8"
       },
       "proj-api": {
-        title: "Website",
-        desc: "A website created for scheduling a barbershop using Node.js, React and MongoDB."
+        title: "Website Barber",
+        desc: "Barbershop website built with the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
       },
       "proj-dashboard": {
         title: "Portal-Login",
         desc: "A website made for login and first access, using HTML, CSS and JS."
+      },
+      "proj-imobiliaria": {
+        title: "Real Estate Website",
+        desc: "Website built for a client, using the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
+      },
+      "proj-cs": {
+        title: "Counter-Strike Channel Website",
+        desc: "Website built for a Counter-Strike content creator client, using the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
       }
     },
     skills: {
@@ -248,19 +258,27 @@ export const translations: Record<Lang, Dict> = {
       },
       "proj-coffee": {
         title: "Site Marca de Café",
-        desc: "Desenvolvimento de um site responsivo para exibir uma cafeteria."
+        desc: "Site responsivo de marca de café, feito com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
       },
       "proj-yolo": {
         title: "Identificação de Imagens com YoloV8",
         desc: "Identificação de barcos na Baía de Guanabara utilizando Ultralytics YoloV8."
       },
       "proj-api": {
-        title: "Website",
-        desc: "Um website criado para agendamentos de uma barbearia utilizando Node.js, React e MongoDB."
+        title: "Website Barber",
+        desc: "Site de barbearia feito com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
       },
       "proj-dashboard": {
         title: "Portal-Login",
         desc: "Um site feito para login e primeiro acesso, utilizando HTML, CSS e JS."
+      },
+      "proj-imobiliaria": {
+        title: "Website Imobiliária",
+        desc: "Site feito para um cliente, com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
+      },
+      "proj-cs": {
+        title: "Website Canal Counter-Strike",
+        desc: "Site feito para um cliente criador de conteúdo de Counter-Strike, com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
       }
     },
     skills: {

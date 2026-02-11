@@ -7,6 +7,7 @@ export type Project = {
     "html" | "css" | "js" | "react" | "node" | "typescript" | "python" | "yolo" | "cpp"
   >;
   url?: string;
+  client?: boolean;
 };
 
 export const projects: Project[] = [
@@ -18,9 +19,9 @@ export const projects: Project[] = [
   },
   {
     id: "proj-coffee",
-    image: "/img/projeto_2.jpg",
+    image: "/img/site_cofferagi.svg",
     tech: ["html", "css", "js"],
-    url: "https://cofferagi.netlify.app"
+    url: "https://cofferagi-rework.vercel.app"
   },
   {
     id: "proj-yolo",
@@ -29,15 +30,29 @@ export const projects: Project[] = [
   },
   {
     id: "proj-api",
-    image: "/img/projeto_4.jpg",
-    tech: ["node"],
-    url: "https://agendamentoragi.netlify.app"
+    image: "/img/site_barber.svg",
+    tech: ["react", "node", "typescript"],
+    url: "https://maganhabarb.vercel.app/"
   },
   {
     id: "proj-dashboard",
     image: "/img/projeto_5.jpg",
     tech: ["react", "node"],
     url: "https://portal-ragi.netlify.app"
+  },
+  {
+    id: "proj-imobiliaria",
+    image: "/img/site_imobiliaria.svg",
+    tech: ["typescript", "react"],
+    url: "https://www.terrasruraisimoveis.com.br",
+    client: true
+  },
+  {
+    id: "proj-cs",
+    image: "/img/site_cs.svg",
+    tech: ["typescript", "react"],
+    url: "https://canalsoares.vercel.app/",
+    client: true
   }
 ];
 
