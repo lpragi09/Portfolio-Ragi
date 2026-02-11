@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Ajustes globais (Estilo Ragi) */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #000;
+  font-family: var(--font-inter), ui-sans-serif, system-ui, -apple-system, Segoe UI,
+    Roboto, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+}
+
+/* Seleção */
+::selection {
+  background: rgba(138, 43, 226, 0.35);
+}
+
