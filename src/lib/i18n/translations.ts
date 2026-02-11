@@ -3,9 +3,7 @@ export type Lang = "pt" | "en";
 export type ProjectId =
   | "proj-portfolio"
   | "proj-coffee"
-  | "proj-yolo"
   | "proj-api"
-  | "proj-dashboard"
   | "proj-imobiliaria"
   | "proj-cs";
 
@@ -154,17 +152,9 @@ export const translations: Record<Lang, Dict> = {
         title: "Coffee Brand Website",
         desc: "Responsive coffee brand website built with the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
       },
-      "proj-yolo": {
-        title: "Image Identification using YoloV8",
-        desc: "Identification of boats in Guanabara Bay using Ultralytics YoloV8"
-      },
       "proj-api": {
         title: "Website Barber",
         desc: "Barbershop website built with the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
-      },
-      "proj-dashboard": {
-        title: "Portal-Login",
-        desc: "A website made for login and first access, using HTML, CSS and JS."
       },
       "proj-imobiliaria": {
         title: "Real Estate Website",
@@ -273,17 +263,9 @@ export const translations: Record<Lang, Dict> = {
         title: "Site Marca de Café",
         desc: "Site responsivo de marca de café, feito com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
       },
-      "proj-yolo": {
-        title: "Identificação de Imagens com YoloV8",
-        desc: "Identificação de barcos na Baía de Guanabara utilizando Ultralytics YoloV8."
-      },
       "proj-api": {
         title: "Website Barber",
         desc: "Site de barbearia feito com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
-      },
-      "proj-dashboard": {
-        title: "Portal-Login",
-        desc: "Um site feito para login e primeiro acesso, utilizando HTML, CSS e JS."
       },
       "proj-imobiliaria": {
         title: "Website Imobiliária",

@@ -19,26 +19,26 @@ export const projects: Project[] = [
   },
   {
     id: "proj-coffee",
-    image: "/img/site_cofferagi.svg",
+    image: "/img/site_cofferagi.gif",
     tech: ["html", "css", "js"],
     url: "https://cofferagi-rework.vercel.app"
   },
   {
     id: "proj-api",
-    image: "/img/site_barber.svg",
+    image: "/img/site_barber.gif",
     tech: ["react", "node", "typescript"],
     url: "https://maganhabarb.vercel.app/"
   },
   {
     id: "proj-imobiliaria",
-    image: "/img/site_imobiliaria.svg",
+    image: "/img/site_imobiliaria.gif",
     tech: ["typescript", "react"],
     url: "https://www.terrasruraisimoveis.com.br",
     client: true
   },
   {
     id: "proj-cs",
-    image: "/img/site_cs.svg",
+    image: "/img/site_cs.gif",
     tech: ["typescript", "react"],
     url: "https://canalsoares.vercel.app/",
     client: true

@@ -27,13 +27,7 @@ export function ProjectsSection() {
             const Content = (
               <>
                 <div className="absolute inset-0">
-                  <Image
-                    src={p.image}
-                    alt={title}
-                    fill
-                    className="object-cover object-[center_30%]"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
+                  <ProjectMedia src={p.image} alt={title} />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/35 to-black/0 opacity-90 transition md:opacity-70 md:group-hover:opacity-95" />
                 </div>
 
@@ -52,6 +46,11 @@ export function ProjectsSection() {
                   <p className="mt-3 max-w-md text-sm leading-relaxed text-white/70">
                     {desc}
                   </p>
+                  {p.client ? (
+                    <div className="mt-4 inline-flex items-center rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.22em] text-white/60">
+                      Cliente
+                    </div>
+                  ) : null}
                 </div>
               </>
             );
@@ -81,3 +80,25 @@ export function ProjectsSection() {
   );
 }
 
+function ProjectMedia({ src, alt }: { src: string; alt: string }) {
+  const isSvg = src.toLowerCase().endsWith(".svg");
+  const mediaClass =
+    "h-full w-full object-cover object-[center_30%] transition-transform duration-700 ease-out md:group-hover:scale-[1.04]";
+
+  if (isSvg) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img src={src} alt={alt} className={mediaClass} />
+    );
+  }
+
+  return (
+    <Image
+      src={src}
+      alt={alt}
+      fill
+      className={mediaClass}
+      sizes="(max-width: 768px) 100vw, 33vw"
+    />
+  );
+}

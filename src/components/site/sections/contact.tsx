@@ -71,16 +71,6 @@ export function ContactSection() {
               <p className="mt-4 text-base leading-relaxed text-white/70">
                 {t.contact.subtitle}
               </p>
-
-              <div className="mt-8 rounded-2xl border border-white/10 bg-black/20 p-5">
-                <div className="text-xs font-semibold uppercase tracking-[0.26em] text-white/50">
-                  Dica
-                </div>
-                <p className="mt-2 text-sm leading-relaxed text-white/70">
-                  Quanto mais contexto (prazo, budget, referência e objetivo), mais rápido eu
-                  te respondo com uma proposta bem direcionada.
-                </p>
-              </div>
             </div>
           </div>
         </Reveal>
