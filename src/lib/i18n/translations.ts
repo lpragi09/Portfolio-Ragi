@@ -25,7 +25,7 @@ type Dict = {
     characteristicsTitle: string;
   };
   timeline: Record<
-    "2023" | "2024" | "2025",
+    "2023" | "2024" | "2025" | "2026",
     { title: string; desc: string }
   >;
   characteristics: {
@@ -98,7 +98,7 @@ export const translations: Record<Lang, Dict> = {
     },
     about: {
       intro:
-        "Passionate developer creating incredible web experiences and solving problems through technology.",
+        "Developer focused on modern, conversion-first web experiences. I handle the full flow — from the first client call to building landing pages and full web products.",
       journeyTitle: "My Journey",
       characteristicsTitle: "Characteristics"
     },
@@ -114,6 +114,10 @@ export const translations: Record<Lang, Dict> = {
       "2025": {
         title: "Specialization",
         desc: "Deepened my knowledge in Full Stack development and modern technologies."
+      },
+      "2026": {
+        title: "Client Work & Landing Pages",
+        desc: "Started working with real clients, leading first calls, building high-conversion landing pages and modern web experiences end-to-end."
       }
     },
     characteristics: {
@@ -209,7 +213,7 @@ export const translations: Record<Lang, Dict> = {
     },
     about: {
       intro:
-        "Desenvolvedor apaixonado por criar experiências web incríveis e solucionar problemas através da tecnologia.",
+        "Desenvolvedor focado em experiências web modernas e alta conversão. Cuido do fluxo completo — do primeiro contato com clientes à entrega de landing pages e produtos web.",
       journeyTitle: "Minha Jornada",
       characteristicsTitle: "Características"
     },
@@ -225,6 +229,10 @@ export const translations: Record<Lang, Dict> = {
       "2025": {
         title: "Especialização",
         desc: "Aprofundei meus conhecimentos em desenvolvimento Full Stack e tecnologias modernas."
+      },
+      "2026": {
+        title: "Clientes & Landing Pages",
+        desc: "Comecei a atender clientes de verdade, fazendo o primeiro contato, entendendo necessidades e entregando landing pages de alta conversão e soluções web modernas."
       }
     },
     characteristics: {

@@ -52,6 +52,11 @@ export function AboutSection() {
                 title={t.timeline["2025"].title}
                 desc={t.timeline["2025"].desc}
               />
+              <TimelineItem
+                year="2026"
+                title={t.timeline["2026"].title}
+                desc={t.timeline["2026"].desc}
+              />
             </div>
           </div>
         </Reveal>
