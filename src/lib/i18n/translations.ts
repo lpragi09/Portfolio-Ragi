@@ -238,7 +238,7 @@ export const translations: Record<Lang, Dict> = {
     },
     sections: { projects: "Meus Projetos", skills: "Skills & Habilidades", contact: "Contato" },
     contact: {
-      title: "Recrutador(a), vamos falar da vaga",
+      title: "Vamos falar sobre a oportunidade",
       subtitle:
         "Se você está no meu portfólio para me recrutar (emprego ou estágio), me envie o link da vaga, stack e contexto do time. Eu respondo rápido com disponibilidade e próximos passos.",
       nameLabel: "Nome",
