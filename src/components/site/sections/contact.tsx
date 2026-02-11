@@ -7,12 +7,14 @@ import { Reveal } from "@/components/effects/reveal";
 import { Section, SectionTitle } from "@/components/ui/section";
 import { cn } from "@/lib/utils/cn";
 import { useT } from "@/lib/i18n/language";
+import { Turnstile } from "@/components/forms/turnstile";
 
 type FormState = {
   name: string;
   email: string;
   whatsapp: string;
   message: string;
+  website: string; // honeypot
 };
 
 export function ContactSection() {
@@ -21,29 +23,63 @@ export function ContactSection() {
     name: "",
     email: "",
     whatsapp: "",
-    message: ""
+    message: "",
+    website: ""
   });
   const [status, setStatus] = useState<"idle" | "success">("idle");
+  const [turnstileToken, setTurnstileToken] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [isSending, setIsSending] = useState(false);
 
   const isValid = useMemo(() => {
     if (!state.name.trim()) return false;
     if (!state.email.trim()) return false;
     if (!state.message.trim()) return false;
+    if (!turnstileToken) return false;
     return true;
-  }, [state.email, state.message, state.name]);
+  }, [state.email, state.message, state.name, turnstileToken]);
 
   function onChange<K extends keyof FormState>(key: K, value: FormState[K]) {
     setStatus("idle");
+    setError(null);
     setState((prev) => ({ ...prev, [key]: value }));
   }
 
-  function onSubmit(e: React.FormEvent) {
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!isValid) return;
 
-    // Placeholder (lead): aqui você pode integrar Supabase/edge function depois (com RLS no banco).
-    setStatus("success");
-    setState({ name: "", email: "", whatsapp: "", message: "" });
+    try {
+      setIsSending(true);
+      setError(null);
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({
+          name: state.name,
+          email: state.email,
+          whatsapp: state.whatsapp,
+          message: state.message,
+          website: state.website,
+          turnstileToken
+        })
+      });
+
+      const data = (await res.json()) as { ok?: boolean; error?: string };
+      if (!res.ok || !data?.ok) {
+        setError(data?.error || "Não foi possível enviar agora. Tente novamente.");
+        return;
+      }
+
+      setStatus("success");
+      setTurnstileToken("");
+      setState({ name: "", email: "", whatsapp: "", message: "", website: "" });
+    } catch {
+      setError("Não foi possível enviar agora. Tente novamente.");
+    } finally {
+      setIsSending(false);
+    }
   }
 
   return (
@@ -80,6 +116,17 @@ export function ContactSection() {
             onSubmit={onSubmit}
             className="rounded-3xl border border-white/10 bg-white/5 p-8 shadow-[0_18px_60px_rgba(0,0,0,0.55)]"
           >
+            {/* Honeypot (anti-spam) */}
+            <input
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="hidden"
+              value={state.website}
+              onChange={(e) => onChange("website", e.target.value)}
+              placeholder="website"
+            />
+
             <div className="grid gap-5 md:grid-cols-2">
               <Field
                 label={t.contact.nameLabel}
@@ -118,10 +165,19 @@ export function ContactSection() {
               />
             </div>
 
+            <div className="mt-6">
+              <Turnstile
+                onToken={(token) => {
+                  setError(null);
+                  setTurnstileToken(token);
+                }}
+              />
+            </div>
+
             <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <button
                 type="submit"
-                disabled={!isValid}
+                disabled={!isValid || isSending}
                 className={cn(
                   "inline-flex items-center justify-center gap-3 rounded-2xl px-7 py-4 text-sm font-semibold text-white",
                   "bg-gradient-to-br from-ragi-accent to-ragi-accent2 shadow-[0_12px_30px_rgba(0,0,0,0.55)]",
@@ -130,7 +186,7 @@ export function ContactSection() {
                 )}
               >
                 <Send className="h-5 w-5" />
-                {t.contact.submit}
+                {isSending ? "Enviando..." : t.contact.submit}
               </button>
 
               {status === "success" ? (
@@ -139,6 +195,11 @@ export function ContactSection() {
                     {t.contact.successTitle}
                   </div>
                   <div className="mt-1 text-xs text-white/60">{t.contact.successDesc}</div>
+                </div>
+              ) : error ? (
+                <div className="rounded-2xl border border-white/10 bg-black/20 px-5 py-4">
+                  <div className="text-sm font-semibold text-white">Erro ao enviar</div>
+                  <div className="mt-1 text-xs text-white/60">{error}</div>
                 </div>
               ) : (
                 <div className="text-xs leading-relaxed text-white/50">
