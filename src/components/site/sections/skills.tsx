@@ -11,7 +11,7 @@ import {
   LucideIcon,
   Package,
   Palette,
-  Robot,
+  Bot,
   Server
 } from "lucide-react";
 
@@ -29,7 +29,7 @@ const iconBySkill: Record<SkillId, LucideIcon> = {
   node: Server,
   typescript: Braces,
   python: Package,
-  yolo: Robot,
+  yolo: Bot,
   cpp: Cpu
 };
 
