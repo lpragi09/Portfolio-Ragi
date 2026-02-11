@@ -1,4 +1,3 @@
-import { MouseGlow } from "@/components/effects/mouse-glow";
 import { Reveal } from "@/components/effects/reveal";
 import { Footer } from "@/components/site/footer";
 import { Navbar } from "@/components/site/navbar";
@@ -11,7 +10,6 @@ import { LanguageProvider } from "@/lib/i18n/language";
 export default function HomePage() {
   return (
     <LanguageProvider>
-      <MouseGlow />
       <Navbar />
       <main className="relative z-10 pt-20">
         <HeroSection />
