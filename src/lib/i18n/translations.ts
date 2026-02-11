@@ -150,19 +150,19 @@ export const translations: Record<Lang, Dict> = {
       },
       "proj-coffee": {
         title: "Coffee Brand Website",
-        desc: "Responsive coffee brand website built with the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
+        desc: "Built with Next.js 14 + TypeScript + Tailwind CSS + Supabase. Responsive coffee brand website with premium layout and conversion-focused UX."
       },
       "proj-api": {
         title: "Website Barber",
-        desc: "Barbershop website built with the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
+        desc: "Built with Next.js 14 + TypeScript + Tailwind CSS + Supabase. Barbershop website with premium UI and conversion-focused sections."
       },
       "proj-imobiliaria": {
         title: "Real Estate Website",
-        desc: "Website built for a client, using the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
+        desc: "Built with Next.js 14 + TypeScript + Tailwind CSS + Supabase. Real estate website built for a client, focused on speed and lead capture."
       },
       "proj-cs": {
         title: "Counter-Strike Channel Website",
-        desc: "Website built for a Counter-Strike content creator client, using the same stack as this project: Next.js 14 + TypeScript + Tailwind + Supabase."
+        desc: "Built with Next.js 14 + TypeScript + Tailwind CSS + Supabase. Website built for a Counter-Strike content creator client with premium visuals."
       }
     },
     skills: {
@@ -261,19 +261,19 @@ export const translations: Record<Lang, Dict> = {
       },
       "proj-coffee": {
         title: "Site Marca de Café",
-        desc: "Site responsivo de marca de café, feito com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
+        desc: "Feito com Next.js 14 + TypeScript + Tailwind CSS + Supabase. Site responsivo de marca de café com layout premium e foco em conversão."
       },
       "proj-api": {
         title: "Website Barber",
-        desc: "Site de barbearia feito com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
+        desc: "Feito com Next.js 14 + TypeScript + Tailwind CSS + Supabase. Site de barbearia com UI premium e seções pensadas para conversão."
       },
       "proj-imobiliaria": {
         title: "Website Imobiliária",
-        desc: "Site feito para um cliente, com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
+        desc: "Feito com Next.js 14 + TypeScript + Tailwind CSS + Supabase. Site feito para um cliente, com foco em performance e captação de leads."
       },
       "proj-cs": {
         title: "Website Canal Counter-Strike",
-        desc: "Site feito para um cliente criador de conteúdo de Counter-Strike, com a mesma stack deste projeto: Next.js 14 + TypeScript + Tailwind + Supabase."
+        desc: "Feito com Next.js 14 + TypeScript + Tailwind CSS + Supabase. Site feito para um cliente criador de conteúdo de Counter-Strike, com visual premium."
       }
     },
     skills: {
