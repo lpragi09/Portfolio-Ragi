@@ -13,6 +13,7 @@ type Dict = {
     about: string;
     projects: string;
     skills: string;
+    contact: string;
   };
   hero: {
     subtitle: string;
@@ -36,6 +37,22 @@ type Dict = {
   sections: {
     projects: string;
     skills: string;
+    contact: string;
+  };
+  contact: {
+    title: string;
+    subtitle: string;
+    nameLabel: string;
+    namePlaceholder: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    whatsappLabel: string;
+    whatsappPlaceholder: string;
+    messageLabel: string;
+    messagePlaceholder: string;
+    submit: string;
+    successTitle: string;
+    successDesc: string;
   };
   projects: Record<ProjectId, { title: string; desc: string }>;
   skills: {
@@ -63,7 +80,13 @@ type Dict = {
 
 export const translations: Record<Lang, Dict> = {
   en: {
-    nav: { home: "Home", about: "About", projects: "Projects", skills: "Skills" },
+    nav: {
+      home: "Home",
+      about: "About",
+      projects: "Projects",
+      skills: "Skills",
+      contact: "Contact"
+    },
     hero: {
       subtitle: "Trainee Full Stack Web Developer | Tech Enthusiast | Always Learning",
       cta: "Contact me"
@@ -97,7 +120,23 @@ export const translations: Record<Lang, Dict> = {
       teamwork: { title: "Teamwork", desc: "Effective collaboration and clear communication" },
       learning: { title: "Continuous Learning", desc: "Always seeking new knowledge and technologies" }
     },
-    sections: { projects: "My Projects", skills: "Skills" },
+    sections: { projects: "My Projects", skills: "Skills", contact: "Contact" },
+    contact: {
+      title: "Let’s talk",
+      subtitle:
+        "Tell me what you’re building and what outcome you want. I’ll reply with next steps and options.",
+      nameLabel: "Name",
+      namePlaceholder: "Your name",
+      emailLabel: "E-mail",
+      emailPlaceholder: "you@example.com",
+      whatsappLabel: "WhatsApp (optional)",
+      whatsappPlaceholder: "+55 (xx) xxxxx-xxxx",
+      messageLabel: "Message",
+      messagePlaceholder: "Ex.: I want a landing page, deadline, budget, references...",
+      submit: "Send",
+      successTitle: "Received. Thanks!",
+      successDesc: "I’ll get back to you shortly."
+    },
     projects: {
       "proj-portfolio": {
         title: "Personal Portfolio Website",
@@ -141,10 +180,16 @@ export const translations: Record<Lang, Dict> = {
         cpp: "C++"
       }
     },
-    footer: { copyright: "© 2025 Luiz Paulo Moreno Ragi. All rights reserved." }
+    footer: { copyright: "© 2026 Luiz Paulo Moreno Ragi. All rights reserved." }
   },
   pt: {
-    nav: { home: "Início", about: "Sobre", projects: "Projetos", skills: "Habilidades" },
+    nav: {
+      home: "Início",
+      about: "Sobre",
+      projects: "Projetos",
+      skills: "Habilidades",
+      contact: "Contato"
+    },
     hero: {
       subtitle: "Desenvolvedor Trainee Web Full Stack | Entusiasta de Tecnologia | Sempre aprendendo",
       cta: "Contate-me"
@@ -178,7 +223,24 @@ export const translations: Record<Lang, Dict> = {
       teamwork: { title: "Trabalho em Equipe", desc: "Colaboração efetiva e comunicação clara" },
       learning: { title: "Aprendizado Contínuo", desc: "Sempre buscando novos conhecimentos e tecnologias" }
     },
-    sections: { projects: "Meus Projetos", skills: "Skills & Habilidades" },
+    sections: { projects: "Meus Projetos", skills: "Skills & Habilidades", contact: "Contato" },
+    contact: {
+      title: "Vamos conversar",
+      subtitle:
+        "Me conte o que você quer construir e qual resultado você busca. Eu te respondo com próximos passos e opções.",
+      nameLabel: "Nome",
+      namePlaceholder: "Seu nome",
+      emailLabel: "E-mail",
+      emailPlaceholder: "voce@exemplo.com",
+      whatsappLabel: "WhatsApp (opcional)",
+      whatsappPlaceholder: "(xx) xxxxx-xxxx",
+      messageLabel: "Mensagem",
+      messagePlaceholder:
+        "Ex.: Preciso de um site, prazo, orçamento, referências, objetivo (vendas/leads)...",
+      submit: "Enviar",
+      successTitle: "Recebido. Obrigado!",
+      successDesc: "Já já eu te respondo com os próximos passos."
+    },
     projects: {
       "proj-portfolio": {
         title: "Site de Portfólio Pessoal",
@@ -222,7 +284,7 @@ export const translations: Record<Lang, Dict> = {
         cpp: "C++"
       }
     },
-    footer: { copyright: "© 2025 Luiz Paulo Moreno Ragi. Todos os direitos reservados." }
+    footer: { copyright: "© 2026 Luiz Paulo Moreno Ragi. Todos os direitos reservados." }
   }
 };
 

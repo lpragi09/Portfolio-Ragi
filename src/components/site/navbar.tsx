@@ -21,7 +21,8 @@ export function Navbar() {
         { href: "#inicio", label: "Home" },
         { href: "#sobre", label: "About" },
         { href: "#projetos", label: "Projects" },
-        { href: "#habilidades", label: "Skills" }
+        { href: "#habilidades", label: "Skills" },
+        { href: "#contato", label: "Contact" }
       ];
     }
 
@@ -29,7 +30,8 @@ export function Navbar() {
       { href: "#inicio", label: "Início" },
       { href: "#sobre", label: "Sobre" },
       { href: "#projetos", label: "Projetos" },
-      { href: "#habilidades", label: "Habilidades" }
+      { href: "#habilidades", label: "Habilidades" },
+      { href: "#contato", label: "Contato" }
     ];
   }, [lang]);
 
