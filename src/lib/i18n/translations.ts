@@ -58,8 +58,9 @@ type Dict = {
   };
   projects: Record<ProjectId, { title: string; desc: string }>;
   skills: {
+    blurb: string;
     categories: Record<
-      "frontend" | "backend" | "language" | "styling" | "database" | "state",
+      "frontend" | "backend" | "language" | "styling" | "database" | "state" | "platform",
       string
     >;
     names: Record<
@@ -71,7 +72,11 @@ type Dict = {
       | "typescript"
       | "python"
       | "yolo"
-      | "cpp",
+      | "cpp"
+      | "nextjs"
+      | "tailwind"
+      | "supabase"
+      | "vercel",
       string
     >;
   };
@@ -90,7 +95,7 @@ export const translations: Record<Lang, Dict> = {
       contact: "Contact"
     },
     hero: {
-      subtitle: "Trainee Full Stack Web Developer | Tech Enthusiast | Always Learning",
+      subtitle: "Full Stack Web Developer | Tech Enthusiast | Always Learning",
       cta: "Contact me"
     },
     about: {
@@ -170,13 +175,16 @@ export const translations: Record<Lang, Dict> = {
       }
     },
     skills: {
+      blurb:
+        "Stack used here: Next.js 14 (App Router) + TypeScript + Tailwind CSS + Supabase (RLS) + Vercel Analytics/Speed Insights.",
       categories: {
         frontend: "frontend",
         backend: "backend",
         language: "language",
         styling: "styling",
         database: "database",
-        state: "state"
+        state: "state",
+        platform: "platform"
       },
       names: {
         html: "HTML",
@@ -187,7 +195,11 @@ export const translations: Record<Lang, Dict> = {
         typescript: "TypeScript",
         python: "Python",
         yolo: "YOLOv8",
-        cpp: "C++"
+        cpp: "C++",
+        nextjs: "Next.js",
+        tailwind: "Tailwind CSS",
+        supabase: "Supabase (RLS)",
+        vercel: "Vercel Analytics"
       }
     },
     footer: { copyright: "© 2026 Luiz Paulo Moreno Ragi. All rights reserved." }
@@ -201,7 +213,7 @@ export const translations: Record<Lang, Dict> = {
       contact: "Contato"
     },
     hero: {
-      subtitle: "Desenvolvedor Trainee Web Full Stack | Entusiasta de Tecnologia | Sempre aprendendo",
+      subtitle: "Desenvolvedor Web Full Stack | Entusiasta de Tecnologia | Sempre aprendendo",
       cta: "Contate-me"
     },
     about: {
@@ -282,13 +294,16 @@ export const translations: Record<Lang, Dict> = {
       }
     },
     skills: {
+      blurb:
+        "Stack usada aqui: Next.js 14 (App Router) + TypeScript + Tailwind CSS + Supabase (RLS) + Vercel Analytics/Speed Insights.",
       categories: {
         frontend: "front-end",
         backend: "back-end",
         language: "linguagem",
         styling: "estilização",
         database: "banco de dados",
-        state: "estado"
+        state: "estado",
+        platform: "plataforma"
       },
       names: {
         html: "HTML",
@@ -299,7 +314,11 @@ export const translations: Record<Lang, Dict> = {
         typescript: "TypeScript",
         python: "Python",
         yolo: "YOLOv8",
-        cpp: "C++"
+        cpp: "C++",
+        nextjs: "Next.js",
+        tailwind: "Tailwind CSS",
+        supabase: "Supabase (RLS)",
+        vercel: "Vercel Analytics"
       }
     },
     footer: { copyright: "© 2026 Luiz Paulo Moreno Ragi. Todos os direitos reservados." }

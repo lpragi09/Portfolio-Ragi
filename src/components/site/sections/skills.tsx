@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Activity,
   Blocks,
   Braces,
   CodeXml,
@@ -8,11 +9,13 @@ import {
   Database,
   FileJson2,
   LayoutPanelLeft,
+  Layers,
   LucideIcon,
   Package,
   Palette,
   Bot,
-  Server
+  Server,
+  Wand2
 } from "lucide-react";
 
 import { skills } from "@/data/portfolio";
@@ -30,7 +33,11 @@ const iconBySkill: Record<SkillId, LucideIcon> = {
   typescript: Braces,
   python: Package,
   yolo: Bot,
-  cpp: Cpu
+  cpp: Cpu,
+  nextjs: Layers,
+  tailwind: Wand2,
+  supabase: Database,
+  vercel: Activity
 };
 
 export function SkillsSection() {
@@ -43,6 +50,12 @@ export function SkillsSection() {
       </Reveal>
 
       <Reveal delayMs={120}>
+        <p className="mx-auto mt-6 max-w-3xl text-center text-sm leading-relaxed text-white/65 md:text-base">
+          {t.skills.blurb}
+        </p>
+      </Reveal>
+
+      <Reveal delayMs={180}>
         <div className="mt-14 grid gap-4 md:grid-cols-2">
           {skills.map((s) => {
             const Icon = iconBySkill[s.id] ?? Blocks;

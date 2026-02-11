@@ -65,9 +65,19 @@ export type SkillId =
   | "typescript"
   | "python"
   | "yolo"
-  | "cpp";
+  | "cpp"
+  | "nextjs"
+  | "tailwind"
+  | "supabase"
+  | "vercel";
 
-export type SkillCategory = "frontend" | "backend" | "language" | "styling";
+export type SkillCategory =
+  | "frontend"
+  | "backend"
+  | "language"
+  | "styling"
+  | "database"
+  | "platform";
 
 export type Skill = {
   id: SkillId;
@@ -75,6 +85,10 @@ export type Skill = {
 };
 
 export const skills: Skill[] = [
+  { id: "nextjs", category: "frontend" },
+  { id: "tailwind", category: "styling" },
+  { id: "supabase", category: "database" },
+  { id: "vercel", category: "platform" },
   { id: "html", category: "frontend" },
   { id: "css", category: "styling" },
   { id: "js", category: "language" },

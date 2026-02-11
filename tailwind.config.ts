@@ -8,6 +8,16 @@ const config: Config = {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui"],
         serif: ["var(--font-playfair)", "ui-serif", "Georgia"]
       },
+      keyframes: {
+        floatSlow: {
+          "0%": { transform: "translateY(0px)" },
+          "50%": { transform: "translateY(-10px)" },
+          "100%": { transform: "translateY(0px)" }
+        }
+      },
+      animation: {
+        "float-slow": "floatSlow 10s ease-in-out infinite"
+      },
       colors: {
         ragi: {
           bg: "#0a0520",

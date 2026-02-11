@@ -104,7 +104,7 @@ export function HeroSection() {
         </div>
 
         <Reveal delayMs={160} className="flex justify-center md:justify-end">
-          <div className="relative">
+          <div className="relative animate-float-slow">
             <div className="absolute -inset-6 rounded-full bg-[radial-gradient(circle_at_center,rgba(138,43,226,0.22),transparent_65%)] blur-2xl" />
             <div className="relative h-72 w-72 overflow-hidden rounded-full border border-white/10 bg-white/5 shadow-[0_18px_60px_rgba(0,0,0,0.6)] md:h-80 md:w-80">
               <Image
